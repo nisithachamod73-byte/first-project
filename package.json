@@ -1,0 +1,15 @@
+{
+  "name": "quest-mode-study-guides",
+  "version": "1.0.0",
+  "description": "Gamified A/L Study Guides with Quest Mode",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Tests run via GitHub Actions\" && exit 0"
+  },
+  "keywords": ["education", "gamification", "study", "physics", "chemistry", "mathematics"],
+  "author": "nisithachamod73-byte",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
