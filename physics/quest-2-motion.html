@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 2: Linear Motion - Physics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <header class="quest-header physics">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 2: Linear Motion</h1>
+        <p style="color: #666; margin-top: 8px;">Understand motion, velocity, and acceleration</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring physics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div>
+                    <div style="font-weight: 600;">Progress</div>
+                    <div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div>
+                </div>
+            </div>
+            <div>
+                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+            </div>
+        </div>
+    </header>
+    
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-1-measurements.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-3-forces.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-motion-concepts" data-big-quest="1" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-motion-concepts')">
+                <div class="quest-icon">📚</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 2.1: Motion Concepts</h3>
+                    <p>Displacement, velocity, and acceleration explained</p>
+                </div>
+                <div class="side-quest-status" id="sq-motion-concepts-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: The Science of Motion</h4>
+                    <p><strong>Galileo Galilei (1564-1642):</strong> The "Father of Modern Physics" who first systematically studied motion using inclined planes and mathematical analysis.</p>
+                    <p><strong>Isaac Newton (1643-1727):</strong> Developed the mathematical framework for motion in his "Principia Mathematica" (1687), laying foundation for classical mechanics.</p>
+                    <p><strong>Impact:</strong> Their work revolutionized how we understand everything from falling objects to planetary motion!</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>📚 Moving Through Life</h4>
+                    <p>Everything around us is in motion. The car on the road, the ball you throw, the earth orbiting the sun - all exhibit motion. But how do we describe this mathematically?</p>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px; color: #1565c0;">The Big Four Quantities</h3>
+                
+                <div class="concept-box">
+                    <h4>🔑 Displacement vs Distance</h4>
+                    <p>Imagine walking 5 meters east, then 5 meters west. Your <strong>distance</strong> traveled is 10 meters. But your <strong>displacement</strong> from where you started is 0!</p>
+                    <p><strong>Key difference:</strong> Displacement is a vector (has direction), distance is a scalar (just magnitude).</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>🔑 Speed vs Velocity</h4>
+                    <p><strong>Speed</strong> tells us "how fast" - like the speedometer on your bike showing 20 km/h.</p>
+                    <p><strong>Velocity</strong> tells us "how fast AND in which direction" - like saying "I'm going 20 km/h north."</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>🔑 Acceleration</h4>
+                    <p>Acceleration is <strong>how fast velocity changes</strong>. When you press the gas pedal in a car, you accelerate. When you brake, you decelerate (negative acceleration).</p>
+                    <p>Fun fact: The letter 'g' we use for gravitational acceleration (9.81 m/s²) means "every second, your speed increases by 9.81 meters per second!"</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚗 Transportation:</strong> Car safety systems use acceleration data to deploy airbags during crashes
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚀 Space Exploration:</strong> NASA calculates precise velocity changes for spacecraft orbital maneuvers
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>📱 Technology:</strong> Your smartphone uses accelerometers to detect motion for games and screen rotation
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Confusing speed and velocity
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Remember: Velocity includes direction, speed does not!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Using distance when displacement is needed
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Ask: "Where did I end up relative to where I started?"</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> A cyclist travels 3 km north, then 4 km east. What is their total distance traveled and displacement?</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            Distance = 3 km + 4 km = <strong>7 km</strong><br>
+                            Displacement = √(3² + 4²) = √(9 + 16) = √25 = <strong>5 km northeast</strong><br>
+                            <em>Hint: Use Pythagorean theorem for displacement!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'motion-concepts', 'sq-motion-concepts')">
+                    ✅ Mark as Complete (+10 XP)
+                </button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-equations" data-big-quest="1" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-equations')">
+                <div class="quest-icon">📐</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 2.2: Equations of Motion</h3>
+                    <p>Master the four equations for constant acceleration</p>
+                </div>
+                <div class="side-quest-status" id="sq-equations-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: Newton's Mathematical Framework</h4>
+                    <p><strong>Isaac Newton (1643-1727):</strong> Developed these equations as part of his "method of fluxions" (calculus) to describe motion mathematically.</p>
+                    <p><strong>Gottfried Leibniz (1646-1716):</strong> Independently developed calculus, contributing to the mathematical language of motion.</p>
+                    <p><strong>Impact:</strong> These equations became the foundation for classical mechanics, enabling predictions of everything from cannonball trajectories to planetary orbits!</p>
+                </div>
+                
+                <div class="formula-box">
+                    <p class="formula-name">The 4 Equations of Motion (Memorize These!)</p>
+                    <p>These equations apply <strong>ONLY when acceleration is constant</strong>.</p>
+                    <p style="margin-top: 15px;"><strong>1. v = u + at</strong> - Find final velocity</p>
+                    <p><strong>2. s = ut + ½at²</strong> - Find displacement</p>
+                    <p><strong>3. v² = u² + 2as</strong> - Link velocity and displacement</p>
+                    <p><strong>4. s = ½(u + v)t</strong> - Average velocity method</p>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: #90caf9;">u = initial velocity | v = final velocity | a = acceleration | s = displacement | t = time</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚗 Automotive Safety:</strong> Engineers use these equations to design braking systems and calculate stopping distances
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏀 Sports Science:</strong> Coaches analyze athlete performance using motion equations for sprinting and jumping
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚀 Aerospace Engineering:</strong> Rocket scientists calculate fuel requirements and orbital maneuvers using motion equations
+                    </div>
+                </div>
+                
+                <div class="worked-example">
+                    <h4>📝 Let's Solve Together: Free Fall</h4>
+                    <div class="problem"><strong>Scenario:</strong> You drop a stone from rest (u = 0) from a bridge. It falls 45 meters. Find (a) how long it takes, and (b) how fast it's going when it hits the water. (g = 9.81 m/s²)</div>
+                    <div class="solution">
+                        <div class="step"><strong>Step 1:</strong> Write down what we know</div>
+                        <div class="step">u = 0, s = 45 m, a = 9.81 m/s²</div>
+                        <div class="step"><strong>Step 2:</strong> For time, use s = ut + ½at²</div>
+                        <div class="step">45 = 0 + ½(9.81)t² → t = <strong>3.03 seconds</strong></div>
+                        <div class="step"><strong>Step 3:</strong> For velocity, v = u + at</div>
+                        <div class="step">v = 0 + 9.81 × 3.03 = <strong>29.7 m/s</strong></div>
+                    </div>
+                </div>
+                
+                <!-- Additional Worked Examples -->
+                <div class="worked-example">
+                    <h4>📝 Advanced Example: Car Acceleration</h4>
+                    <div class="problem"><strong>Scenario:</strong> A car accelerates from 20 m/s to 35 m/s over a distance of 150 meters. Find the acceleration and time taken.</div>
+                    <div class="solution">
+                        <div class="step"><strong>Step 1:</strong> Use v² = u² + 2as</div>
+                        <div class="step">35² = 20² + 2×a×150 → 1225 = 400 + 300a → a = <strong>2.75 m/s²</strong></div>
+                        <div class="step"><strong>Step 2:</strong> Use v = u + at</div>
+                        <div class="step">35 = 20 + 2.75×t → t = <strong>5.45 seconds</strong></div>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Using wrong sign for acceleration (especially gravity)
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Define your coordinate system first - positive direction matters!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Mixing up displacement and distance
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Remember: displacement is vector, distance is scalar</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Using equations when acceleration is not constant
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Check if acceleration changes - these equations only work for constant acceleration!</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> A train accelerates from rest at 2 m/s² for 10 seconds. What is its final velocity and how far does it travel?</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            v = u + at = 0 + 2×10 = <strong>20 m/s</strong><br>
+                            s = ut + ½at² = 0 + ½×2×10² = <strong>100 meters</strong><br>
+                            <em>Hint: Use equations 1 and 2!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'equations', 'sq-equations')">
+                    ✅ Mark as Complete (+10 XP)
+                </button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-motion-quiz" data-big-quest="1" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-motion-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 2.3: Quiz Challenge</h3>
+                    <p>Test your knowledge of motion</p>
+                </div>
+                <div class="side-quest-status" id="sq-motion-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Quiz Introduction -->
+                <div class="concept-box">
+                    <h4>📝 Quiz Challenge: Test Your Motion Knowledge</h4>
+                    <p>This quiz covers all concepts from this quest: displacement vs distance, speed vs velocity, acceleration, and motion equations.</p>
+                    <p><strong>Tip:</strong> Read each question carefully and think about which motion concept applies!</p>
+                </div>
+                
+                <div class="mcq-container">
+                    <div class="mcq-question"><strong>Question 1:</strong> A car accelerates from 0 to 60 m/s in 5 seconds. What is its acceleration?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) 10 m/s²</li>
+                        <li class="mcq-option" data-answer="b">B) 12 m/s²</li>
+                        <li class="mcq-option" data-answer="c">C) 15 m/s²</li>
+                        <li class="mcq-option" data-answer="d">D) 20 m/s²</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: B) 12 m/s²</strong><br>a = (v-u)/t = (60-0)/5 = 12 m/s²</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 2:</strong> Which quantity is a vector?</div>
+                    <ul class="mcq-options" data-question="q2">
+                        <li class="mcq-option" data-answer="a">A) Speed</li>
+                        <li class="mcq-option" data-answer="b">B) Distance</li>
+                        <li class="mcq-option" data-answer="c">C) Velocity</li>
+                        <li class="mcq-option" data-answer="d">D) Time</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q2-explanation"><strong>Answer: C) Velocity</strong><br>Velocity has both magnitude AND direction, making it a vector.</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 3:</strong> A ball is thrown upward with initial velocity 20 m/s. How high does it go? (g = 10 m/s²)</div>
+                    <ul class="mcq-options" data-question="q3">
+                        <li class="mcq-option" data-answer="a">A) 10 m</li>
+                        <li class="mcq-option" data-answer="b">B) 15 m</li>
+                        <li class="mcq-option" data-answer="c">C) 20 m</li>
+                        <li class="mcq-option" data-answer="d">D) 25 m</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q3-explanation"><strong>Answer: C) 20 m</strong><br>At maximum height, v = 0. Using v² = u² + 2as: 0 = 20² - 2×10×s → s = 400/20 = 20 m</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 4:</strong> Which equation would you use to find time when you know initial velocity, acceleration, and displacement?</div>
+                    <ul class="mcq-options" data-question="q4">
+                        <li class="mcq-option" data-answer="a">A) v = u + at</li>
+                        <li class="mcq-option" data-answer="b">B) s = ut + ½at²</li>
+                        <li class="mcq-option" data-answer="c">C) v² = u² + 2as</li>
+                        <li class="mcq-option" data-answer="d">D) s = ½(u + v)t</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q4-explanation"><strong>Answer: B) s = ut + ½at²</strong><br>This equation directly gives time when you know u, a, and s.</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 5:</strong> A person walks 3 km north, then 4 km east. What is their displacement?</div>
+                    <ul class="mcq-options" data-question="q5">
+                        <li class="mcq-option" data-answer="a">A) 5 km northeast</li>
+                        <li class="mcq-option" data-answer="b">B) 7 km</li>
+                        <li class="mcq-option" data-answer="c">C) 12 km²</li>
+                        <li class="mcq-option" data-answer="d">D) 1 km southwest</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q5-explanation"><strong>Answer: A) 5 km northeast</strong><br>Displacement = √(3² + 4²) = √25 = 5 km at 53° east of north.</div>
+                    
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                
+                <!-- Quiz Performance Feedback -->
+                <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
+                    <h4>🎯 Performance Feedback</h4>
+                    <div id="feedbackContent"></div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'motion-quiz', 'sq-motion-quiz')">
+                    ✅ Complete Quiz (+10 XP)
+                </button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-1-measurements.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-3-forces.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+     <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        document.getElementById('currentLevel').textContent = progress.level;
+        updateAllStatuses();
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        
+        function updateAllStatuses() {
+            const physicsData = QuestSystem.QUEST_DATA.physics;
+            const bigQuest = physicsData.bigQuests[1];
+            
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const element = document.getElementById('sq-' + sq.id);
+                if (element) {
+                    const status = QuestSystem.getStatusIcon('physics', 1, index, progress);
+                    const statusElement = document.getElementById('sq-' + sq.id + '-status');
+                    element.dataset.status = status.status;
+                    if (statusElement) statusElement.textContent = status.icon;
+                    element.classList.remove('unlocked', 'locked', 'completed');
+                    element.classList.add(status.status);
+                }
+            });
+            
+            let completedCount = 0;
+            bigQuest.sideQuests.forEach(sq => {
+                if (progress.physics.completedSideQuests.includes(sq.id)) completedCount++;
+            });
+            
+            const progressPercent = Math.round((completedCount / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', progressPercent + '%');
+            document.getElementById('subjectProgress').textContent = progressPercent + '% Complete';
+            
+            if (completedCount === bigQuest.sideQuests.length) {
+            }
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sideQuestId, elementId) {
+            const result = QuestSystem.completeSideQuest(subject, sideQuestId, progress);
+            if (result) {
+                const element = document.getElementById(elementId);
+                element.classList.remove('unlocked');
+                element.classList.add('completed');
+                const statusElement = document.getElementById(elementId.replace('sq-', 'sq-') + 'status');
+                if (statusElement) statusElement.textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                document.getElementById('currentLevel').textContent = progress.level;
+                
+                const nextElement = element.nextElementSibling;
+                if (nextElement && nextElement.classList.contains('side-quest')) {
+                    nextElement.classList.remove('locked');
+                    nextElement.classList.add('unlocked');
+                    const nextStatusElement = nextElement.querySelector('.side-quest-status');
+                    if (nextStatusElement) nextStatusElement.textContent = '🔓';
+                }
+                
+                updateAllStatuses();
+            }
+        }
+        
+        // Interactive practice solution toggle
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#c62828';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#1976d2';
+            }
+        }
+                updateAllStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b', q2: 'c', q3: 'c', q4: 'b', q5: 'a' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            
+            const percentage = Math.round((score / 5) * 100);
+            document.getElementById('quizScore').textContent = `Score: ${score}/5 (${percentage}%)`;
+            
+            // Performance feedback
+            const feedback = document.getElementById('quizFeedback');
+            const feedbackContent = document.getElementById('feedbackContent');
+            feedback.style.display = 'block';
+            
+            if (percentage >= 80) {
+                feedback.style.background = 'linear-gradient(135deg, #e8f5e9, #c8e6c9)';
+                feedbackContent.innerHTML = '<strong>🎉 Excellent!</strong> You have mastered motion concepts. Ready to move to the next quest!';
+            } else if (percentage >= 60) {
+                feedback.style.background = 'linear-gradient(135deg, #fff3e0, #ffe0b2)';
+                feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
+            } else {
+                feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
+                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+            }
+        }
+            document.getElementById('quizScore').textContent = `Score: ${score}/2`;
+        }
+        
+        function goToNextQuest() {
+        }
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

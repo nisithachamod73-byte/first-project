@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 6: Circular Motion - Physics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header physics">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 6: Circular Motion</h1>
+        <p style="color: #666; margin-top: 8px;">Understanding centripetal force</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring physics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
+            </div>
+            <div>
+                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+            </div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-5-momentum.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-7-waves.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-circular-basics" data-big-quest="5" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-circular-basics')">
+                <div class="quest-icon">📚</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 6.1: Circular Motion Basics</h3>
+                    <p>Centripetal acceleration and force</p>
+                </div>
+                <div class="side-quest-status" id="sq-circular-basics-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Key Concepts</h4>
+                    <p><strong>Centripetal Acceleration:</strong> a_c = v²/r = rω² (always toward center)</p>
+                    <p><strong>Centripetal Force:</strong> F_c = mv²/r = mrω² (required to keep object moving in circle)</p>
+                    <p><strong>Angular Velocity:</strong> ω = 2πf = v/r</p>
+                </div>
+                <div class="why-box"><h4>💡 Why This Matters</h4><p>Satellites, cars turning corners, electrons orbiting nuclei - all require centripetal force.</p></div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'circular-basics', 'sq-circular-basics')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-gravitation" data-big-quest="5" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-gravitation')">
+                <div class="quest-icon">🌍</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 6.2: Gravitation</h3>
+                    <p>Newton's law of gravitation</p>
+                </div>
+                <div class="side-quest-status" id="sq-gravitation-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Newton's Law of Gravitation</h4>
+                    <p>F = Gm₁m₂/r² where G = 6.67 × 10⁻¹¹ N·m²/kg²</p>
+                </div>
+                <div class="formula-box">
+                    <p class="formula-name">Key Formulas</p>
+                    <p>Gravitational field: g = GM/r²</p>
+                    <p>Orbital velocity: v = √(GM/r)</p>
+                    <p>Escape velocity: v_e = √(2GM/R) = 11.2 km/s (Earth)</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'gravitation', 'sq-gravitation')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-circular-quiz" data-big-quest="5" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-circular-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 6.3: Quiz Challenge</h3>
+                    <p>Test your circular motion knowledge</p>
+                </div>
+                <div class="side-quest-status" id="sq-circular-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container">
+                    <div class="mcq-question"><strong>Question 1:</strong> What provides the centripetal force for a car turning on a flat road?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) Engine force</li>
+                        <li class="mcq-option" data-answer="b">B) Friction</li>
+                        <li class="mcq-option" data-answer="c">C) Gravity</li>
+                        <li class="mcq-option" data-answer="d">D) Tension</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: B) Friction</strong><br>Friction between tires and road provides the centripetal force.</div>
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'circular-quiz', 'sq-circular-quiz')">✅ Complete Quiz (+10 XP)</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-5-momentum.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-7-waves.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const physicsData = QuestSystem.QUEST_DATA.physics;
+            const bigQuest = physicsData.bigQuests[5];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('physics', 5, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.physics.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+            document.getElementById('subjectProgress').textContent = percent + '% Complete';
+            if (completed === bigQuest.sideQuests.length) {
+            }
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                document.getElementById('currentLevel').textContent = progress.level;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            document.getElementById('quizScore').textContent = `Score: ${score}/1`;
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

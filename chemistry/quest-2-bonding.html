@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 2: Chemical Bonding - Chemistry Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>:root { --chemistry-primary: #c62828; }</style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header chemistry">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 2: Chemical Bonding</h1>
+        <p style="color: #666; margin-top: 8px;">Ionic, covalent, and metallic bonds</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring chemistry" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
+            </div>
+            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span></div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back to Home</a>
+            <a href="quest-1-atomic.html" class="nav-btn" >← Previous</a>
+            <a href="quest-3-energetics.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-ionic" data-big-quest="1" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-ionic')">
+                <div class="quest-icon">🔗</div>
+                <div class="side-quest-info"><h3>Side Quest 2.1: Ionic Bonding</h3><p>Metal + Non-metal transfer</p></div>
+                <div class="side-quest-status" id="sq-ionic-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Svante Arrhenius (1884)</strong> - First proposed ionic theory explaining how salts dissociate into ions in water.</p>
+                    <p><strong>Gilbert N. Lewis (1916)</strong> - Developed electron pair theory and octet rule, explaining ionic bond formation.</p>
+                    <p><strong>Linus Pauling (1930s)</strong> - Applied quantum mechanics to chemical bonding, quantifying ionic character.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Ionic Bonds</h4>
+                    <p><strong>Formation:</strong> Metal loses electrons → cation, non-metal gains → anion</p>
+                    <p><strong>Properties:</strong> High melting points, soluble in water, conduct when molten</p>
+                </div>
+                <div class="formula-box"><p class="formula-name">Example</p><p>Na + Cl → NaCl (sodium chloride)</p><p>Na → Na⁺ + e⁻</p><p>Cl + e⁻ → Cl⁻</p></div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Table Salt (NaCl)</strong> - Essential electrolyte for nerve conduction and muscle contraction
+                    </div>
+                    <div class="application-example">
+                        <strong>Batteries</strong> - Ionic compounds conduct electricity when molten or dissolved
+                    </div>
+                    <div class="application-example">
+                        <strong>Water Treatment</strong> - Calcium chloride removes impurities through ionic interactions
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> Predict the formula for magnesium oxide and explain the electron transfer process.</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> MgO (magnesium oxide)</p>
+                        <p><strong>Electron Transfer:</strong> Mg (Group 2) loses 2 electrons → Mg²⁺, O (Group 6) gains 2 electrons → O²⁻</p>
+                        <p><strong>Reasoning:</strong> Magnesium needs to lose 2 electrons to achieve noble gas configuration, while oxygen needs to gain 2 electrons.</p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Thinking ionic bonds form between any metal and non-metal (must have significant electronegativity difference)</p>
+                    <p><strong>Tip:</strong> Use the periodic table - metals on left, non-metals on right typically form ionic bonds</p>
+                    <p><strong>Mistake:</strong> Forgetting that ionic compounds form crystal lattices, not discrete molecules</p>
+                    <p><strong>Tip:</strong> Remember ionic compounds have high melting points due to strong electrostatic attractions</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'ionic', 'sq-ionic')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-covalent" data-big-quest="1" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-covalent')">
+                <div class="quest-icon">🧪</div>
+                <div class="side-quest-info"><h3>Side Quest 2.2: Covalent Bonding</h3><p>Non-metal + Non-metal share</p></div>
+                <div class="side-quest-status" id="sq-covalent-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Gilbert N. Lewis (1916)</strong> - Proposed covalent bonding as electron pair sharing between atoms.</p>
+                    <p><strong>Irving Langmuir (1919)</strong> - Expanded Lewis theory and coined term "covalent bond."</p>
+                    <p><strong>Linus Pauling (1930s)</strong> - Developed valence bond theory and introduced concept of hybridization.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Covalent Bonds</h4>
+                    <p><strong>Single:</strong> 2 electrons shared (H-H)</p>
+                    <p><strong>Double:</strong> 4 electrons shared (O=O)</p>
+                    <p><strong>Triple:</strong> 6 electrons shared (N≡N)</p>
+                </div>
+                <div class="remember-box"><h4>⚠️ Polar vs Non-polar</h4><p>Equal sharing = non-polar. Unequal sharing = polar covalent.</p></div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Water (H₂O)</strong> - Polar covalent bonds enable hydrogen bonding, essential for life
+                    </div>
+                    <div class="application-example">
+                        <strong>Plastics & Polymers</strong> - Long chains of covalently bonded carbon atoms
+                    </div>
+                    <div class="application-example">
+                        <strong>Pharmaceuticals</strong> - Covalent bonds create stable drug molecules
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> Draw the Lewis structure for carbon dioxide (CO₂) and explain why it has a linear shape.</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> O=C=O (linear molecule)</p>
+                        <p><strong>Lewis Structure:</strong> Carbon shares 2 double bonds with oxygen atoms</p>
+                        <p><strong>Shape Explanation:</strong> CO₂ has linear shape due to sp hybridization and 180° bond angles to minimize electron pair repulsion.</p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Thinking covalent bonds are weaker than ionic bonds (some covalent bonds are very strong)</p>
+                    <p><strong>Tip:</strong> Bond strength depends on bond order - triple bonds > double bonds > single bonds</p>
+                    <p><strong>Mistake:</strong> Forgetting that covalent bonds can be polar or non-polar</p>
+                    <p><strong>Tip:</strong> Check electronegativity difference - if >0.4, bond is polar covalent</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'covalent', 'sq-covalent')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-bonding-quiz" data-big-quest="1" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-bonding-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info"><h3>Side Quest 2.3: Quiz Challenge</h3><p>Test your bonding knowledge</p></div>
+                <div class="side-quest-status" id="sq-bonding-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Quiz Performance Feedback System -->
+                <div class="quiz-intro">
+                    <h4>🧪 Bonding Concepts Quiz</h4>
+                    <p>Test your understanding of ionic, covalent, and metallic bonding concepts.</p>
+                </div>
+                
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary);">
+                    <div class="mcq-question"><strong>Question 1:</strong> NaCl is what type of compound?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) Covalent</li>
+                        <li class="mcq-option" data-answer="b">B) Ionic</li>
+                        <li class="mcq-option" data-answer="c">C) Metallic</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: B) Ionic</strong><br>NaCl forms between metal (Na) and non-metal (Cl).</div>
+                </div>
+                
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary); margin-top: 20px;">
+                    <div class="mcq-question"><strong>Question 2:</strong> Which type of bond involves electron sharing?</div>
+                    <ul class="mcq-options" data-question="q2">
+                        <li class="mcq-option" data-answer="a">A) Ionic</li>
+                        <li class="mcq-option" data-answer="b">B) Covalent</li>
+                        <li class="mcq-option" data-answer="c">C) Metallic</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q2-explanation"><strong>Answer: B) Covalent</strong><br>Covalent bonds form when atoms share electron pairs.</div>
+                </div>
+                
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary); margin-top: 20px;">
+                    <div class="mcq-question"><strong>Question 3:</strong> Metallic bonding is characterized by:</div>
+                    <ul class="mcq-options" data-question="q3">
+                        <li class="mcq-option" data-answer="a">A) Electron transfer</li>
+                        <li class="mcq-option" data-answer="b">B) Delocalized electrons</li>
+                        <li class="mcq-option" data-answer="c">C) Electron sharing between specific atoms</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q3-explanation"><strong>Answer: B) Delocalized electrons</strong><br>Metallic bonds involve a "sea" of delocalized electrons.</div>
+                </div>
+                
+                <div style="text-align: center; margin: 20px 0;">
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                    <div class="performance-feedback" id="performanceFeedback" style="margin-top: 15px;"></div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'bonding-quiz', 'sq-bonding-quiz')">✅ Complete Quiz (+10 XP)</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back to Home</a>
+            <a href="quest-1-atomic.html" class="nav-btn" >← Previous</a>
+            <a href="quest-3-energetics.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const chemData = QuestSystem.QUEST_DATA.chemistry;
+            const bigQuest = chemData.bigQuests[1];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('chemistry', 1, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.chemistry.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#c62828';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#1976d2';
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b', q2: 'b', q3: 'b' };
+            let score = 0;
+            const totalQuestions = Object.keys(correct).length;
+            
+            // Add click handlers for MCQ options
+            document.querySelectorAll('.mcq-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.mcq-options').dataset.question;
+                    document.querySelectorAll(`[data-question="${question}"] .mcq-option`).forEach(o => {
+                        o.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Check answers
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            
+            // Performance feedback
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const scoreElement = document.getElementById('quizScore');
+            const feedbackElement = document.getElementById('performanceFeedback');
+            
+            scoreElement.textContent = `Score: ${score}/${totalQuestions} (${percentage}%)`;
+            
+            // Color-coded performance feedback
+            if (percentage === 100) {
+                scoreElement.style.color = '#4caf50';
+                feedbackElement.innerHTML = '<span style="color: #4caf50;">🎉 Excellent! Perfect score!</span>';
+            } else if (percentage >= 70) {
+                scoreElement.style.color = '#2196f3';
+                feedbackElement.innerHTML = '<span style="color: #2196f3;">👍 Good job! Review the explanations to improve.</span>';
+            } else if (percentage >= 50) {
+                scoreElement.style.color = '#ff9800';
+                feedbackElement.innerHTML = '<span style="color: #ff9800;">📚 Keep practicing! Study the concepts again.</span>';
+            } else {
+                scoreElement.style.color = '#f44336';
+                feedbackElement.innerHTML = '<span style="color: #f44336;">📖 Needs improvement. Review the side quests carefully.</span>';
+            }
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

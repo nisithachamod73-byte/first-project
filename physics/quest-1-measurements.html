@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 1: Measurements & Units - Physics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --physics-primary: #1565c0;
+            --physics-secondary: #1976d2;
+            --physics-accent: #4fc3f7;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f5f5f5;
+            color: #212121;
+            line-height: 1.8;
+        }
+        
+        .quest-header {
+            border-left-color: var(--physics-primary) !important;
+        }
+        
+        .quest-header.physics {
+            border-left-color: var(--physics-primary);
+        }
+        
+        .nav-btn {
+            background: var(--physics-primary);
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: var(--physics-secondary);
+        }
+        
+        .side-quest.unlocked .side-quest-header {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb) !important;
+        }
+        
+        .side-quest.completed .side-quest-header {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9) !important;
+        }
+        
+        /* Content styling */
+        .concept-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 14px 0;
+            border-left: 4px solid #1976d2;
+        }
+        
+        .concept-box h4 {
+            color: #1565c0;
+            margin-bottom: 8px;
+        }
+        
+        .formula-box {
+            background: #263238;
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 12px 0;
+            overflow-x: auto;
+            font-family: 'Cambria Math', serif;
+            font-size: 1rem;
+        }
+        
+        .formula-box .formula-name {
+            color: #90caf9;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+        
+        .remember-box {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 14px 0;
+            border-left: 4px solid #c62828;
+        }
+        
+        .remember-box h4 {
+            color: #b71c1c;
+            margin-bottom: 8px;
+        }
+        
+        .worked-example {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 16px 0;
+            border: 1px solid #a5d6a7;
+        }
+        
+        .worked-example h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .worked-example .problem {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .worked-example .solution {
+            background: #fafafa;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .worked-example .step {
+            margin-bottom: 6px;
+            padding-left: 8px;
+            border-left: 3px solid var(--physics-accent);
+        }
+        
+        /* MCQ Styles */
+        .mcq-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--physics-primary);
+        }
+        
+        .mcq-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .mcq-options {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .mcq-option {
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .mcq-option:hover {
+            border-color: var(--physics-primary);
+            background: #e3f2fd;
+        }
+        
+        .mcq-option.selected {
+            border-color: var(--physics-primary);
+            background: #bbdefb;
+        }
+        
+        .mcq-option.correct {
+            border-color: #2e7d32;
+            background: #c8e6c9;
+        }
+        
+        .mcq-option.incorrect {
+            border-color: #c62828;
+            background: #ffcdd2;
+        }
+        
+        .mcq-explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff3e0;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .mcq-explanation.visible {
+            display: block;
+        }
+        
+        .mcq-check-btn {
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: var(--physics-primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .mcq-check-btn:hover {
+            background: var(--physics-secondary);
+        }
+        
+        .mcq-score {
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: var(--physics-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+    
+    <!-- Quest Header -->
+    <header class="quest-header physics">
+        <h1>🎯 Quest 1: Measurements & Units</h1>
+        <p style="color: #666; margin-top: 8px;">Learn about SI Units and Dimensional Analysis</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring physics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div>
+                    <div style="font-weight: 600;">Progress</div>
+                    <div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div>
+                </div>
+            </div>
+            <div>
+                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+            </div>
+        </div>
+    </header>
+    
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <!-- Navigation -->
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-2-motion.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <!-- Side Quest 1: SI Units -->
+        <article class="side-quest unlocked" id="sq-si-units" data-big-quest="0" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-si-units')">
+                <div class="quest-icon">📚</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 1.1: SI Units</h3>
+                    <p>Learn about the International System of Units</p>
+                </div>
+                <div class="side-quest-status" id="sq-si-units-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: The Birth of Standardization</h4>
+                    <p><strong>French Revolution (1790s):</strong> The metric system was born during the French Revolution as part of a movement to create universal standards based on nature rather than arbitrary royal measurements.</p>
+                    <p><strong>Gabriel Mouton (1618-1694):</strong> Proposed the first decimal-based measurement system using Earth's circumference as reference.</p>
+                    <p><strong>International System (1960):</strong> SI units were officially adopted by international treaty, creating the first truly global measurement standard.</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>📚 Welcome to Physics!</h4>
+                    <p>Have you ever wondered why scientists all over the world use the same units? Why doesn't Japan use different units than Sri Lanka, or the USA use different units than England?</p>
+                    <p>The answer is <strong>SI Units</strong> - the International System of Units. Think of it as a universal language for measurement that every scientist, engineer, and researcher on Earth can understand.</p>
+                </div>
+                
+                <div class="why-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left-color: #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4 style="color: #e65100; margin-bottom: 8px;">💡 The Problem Before SI</h4>
+                    <p style="font-size: 0.95rem;">Before SI units, different countries (and even different cities!) used different units. This caused confusion and even disasters. In 1999, NASA lost a $125 million Mars probe because one team used metric units and another used imperial units. That's why we have a universal system!</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🌐 Global Trade:</strong> SI units enable seamless international commerce - cargo ships worldwide use metric tons for consistent weight measurement
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>⚕️ Healthcare:</strong> Medical dosages are standardized using milligrams and milliliters to prevent dangerous medication errors
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏗️ Construction:</strong> Engineers worldwide collaborate using standardized meters and kilograms for building safe structures
+                    </div>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px; color: var(--physics-primary);">The 7 Base SI Units</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="background: var(--physics-primary); color: white;">
+                            <th style="padding: 10px; text-align: left;">Quantity</th>
+                            <th style="padding: 10px; text-align: left;">Unit</th>
+                            <th style="padding: 10px; text-align: left;">Symbol</th>
+                        </tr>
+                    </thead>
+                    <tbody style="background: white;">
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Length</td>
+                            <td style="padding: 10px;">meter</td>
+                            <td style="padding: 10px;">m</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Mass</td>
+                            <td style="padding: 10px;">kilogram</td>
+                            <td style="padding: 10px;">kg</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Time</td>
+                            <td style="padding: 10px;">second</td>
+                            <td style="padding: 10px;">s</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Electric Current</td>
+                            <td style="padding: 10px;">ampere</td>
+                            <td style="padding: 10px;">A</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Temperature</td>
+                            <td style="padding: 10px;">kelvin</td>
+                            <td style="padding: 10px;">K</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Amount of Substance</td>
+                            <td style="padding: 10px;">mole</td>
+                            <td style="padding: 10px;">mol</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">Luminous Intensity</td>
+                            <td style="padding: 10px;">candela</td>
+                            <td style="padding: 10px;">cd</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="formula-box">
+                    <p class="formula-name">Prefixes You MUST Know</p>
+                    <p style="margin-bottom: 8px;"><strong>Giga (G)</strong> = 10⁹ = 1,000,000,000</p>
+                    <p style="margin-bottom: 8px;"><strong>Mega (M)</strong> = 10⁶ = 1,000,000</p>
+                    <p style="margin-bottom: 8px;"><strong>Kilo (k)</strong> = 10³ = 1,000</p>
+                    <p style="margin-bottom: 8px;"><strong>Centi (c)</strong> = 10⁻² = 0.01</p>
+                    <p style="margin-bottom: 8px;"><strong>Milli (m)</strong> = 10⁻³ = 0.001</p>
+                    <p><strong>Micro (μ)</strong> = 10⁻⁶ = 0.000001</p>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Writing "kilometers" as "kms"
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Unit symbols are singular - it's always <strong>km</strong>, never "kms"!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Using gram instead of kilogram for mass
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> The SI base unit for mass is <strong>kilogram (kg)</strong>, not gram!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Capitalizing unit symbols incorrectly
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Unit symbols are lowercase except when named after people: <strong>s</strong> not <strong>S</strong>, but <strong>A</strong> for Ampere</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> Convert 2.5 kilometers to meters and millimeters.</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            2.5 km = <strong>2,500 meters</strong> (×1000)<br>
+                            2.5 km = <strong>2,500,000 millimeters</strong> (×1,000,000)<br>
+                            <em>Hint: Remember kilo = ×1000, milli = ÷1000!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'si-units', 'sq-si-units')">
+                    ✅ Mark as Complete (+10 XP)
+                </button>
+            </div>
+        </article>
+        
+        <!-- Side Quest 2: Dimensional Analysis -->
+        <article class="side-quest locked" id="sq-dimensional" data-big-quest="0" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-dimensional')">
+                <div class="quest-icon">📐</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 1.2: Dimensional Analysis</h3>
+                    <p>Master checking equations using dimensions</p>
+                </div>
+                <div class="side-quest-status" id="sq-dimensional-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: The Language of Dimensions</h4>
+                    <p><strong>Jean-Baptiste Fourier (1768-1830):</strong> Pioneered dimensional analysis in his work on heat transfer, showing that physical equations must be dimensionally consistent.</p>
+                    <p><strong>Lord Rayleigh (1842-1919):</strong> Developed the method of dimensional analysis for solving complex physics problems without detailed mathematical analysis.</p>
+                    <p><strong>Edgar Buckingham (1867-1940):</strong> Formulated Buckingham π theorem, which provides a systematic way to derive dimensionless parameters.</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>📚 What is Dimensional Analysis?</h4>
+                    <p>Dimensional analysis is a powerful tool to check if equations make sense. Every physical quantity has dimensions - we represent them with square brackets [].</p>
+                    <p>Think of dimensions like "types" of measurements - you can't add length to mass!</p>
+                </div>
+                
+                <div class="formula-box">
+                    <p class="formula-name">Fundamental Dimensions</p>
+                    <p>• Length: [L]</p>
+                    <p>• Mass: [M]</p>
+                    <p>• Time: [T]</p>
+                    <p>• Electric Current: [I]</p>
+                    <p>• Temperature: [Θ]</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏭 Engineering Design:</strong> Engineers use dimensional analysis to verify that bridge designs and machinery specifications are physically possible
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🔬 Scientific Research:</strong> Researchers use dimensional analysis to check if proposed equations make physical sense before expensive experiments
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>📊 Data Analysis:</strong> Statisticians use dimensional consistency to verify that calculated results have the correct physical meaning
+                    </div>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px; color: var(--physics-primary);">Examples of Dimensions</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="background: var(--physics-primary); color: white;">
+                            <th style="padding: 10px; text-align: left;">Quantity</th>
+                            <th style="padding: 10px; text-align: left;">Formula</th>
+                            <th style="padding: 10px; text-align: left;">Dimensions</th>
+                        </tr>
+                    </thead>
+                    <tbody style="background: white;">
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Area</td>
+                            <td style="padding: 10px;">length × width</td>
+                            <td style="padding: 10px;">[L²]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Volume</td>
+                            <td style="padding: 10px;">length³</td>
+                            <td style="padding: 10px;">[L³]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Velocity</td>
+                            <td style="padding: 10px;">distance ÷ time</td>
+                            <td style="padding: 10px;">[LT⁻¹]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Acceleration</td>
+                            <td style="padding: 10px;">velocity ÷ time</td>
+                            <td style="padding: 10px;">[LT⁻²]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px;">Force</td>
+                            <td style="padding: 10px;">mass × acceleration</td>
+                            <td style="padding: 10px;">[MLT⁻²]</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">Energy</td>
+                            <td style="padding: 10px;">force × distance</td>
+                            <td style="padding: 10px;">[ML²T⁻²]</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="worked-example">
+                    <h4>📝 Worked Example: Check if v² = u² + 2as is correct</h4>
+                    <div class="problem">
+                        <strong>Problem:</strong> Check if the equation v² = u² + 2as is dimensionally correct.
+                    </div>
+                    <div class="solution">
+                        <div class="step"><strong>Step 1:</strong> Write dimensions of each term</div>
+                        <div class="step">v² → [LT⁻¹]² = [L²T⁻²]</div>
+                        <div class="step">u² → [LT⁻¹]² = [L²T⁻²]</div>
+                        <div class="step">2as → [L] × [LT⁻²] = [L²T⁻²]</div>
+                        <div class="step"><strong>Step 2:</strong> Compare dimensions</div>
+                        <div class="step">All terms: [L²T⁻²] ✓</div>
+                        <div class="step"><strong>Conclusion:</strong> The equation is dimensionally correct!</div>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Thinking dimensional analysis can prove an equation is correct
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Dimensional analysis only checks if an equation is POSSIBLY correct - it can't prove it's right!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Forgetting that constants have no dimensions
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Remember: numerical constants like ½, π, and 4 have NO dimensions!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Mixing up dimensions of different quantities
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Think of dimensions as "types" - you can't add length to mass!</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> Check if the equation for kinetic energy, KE = ½mv², is dimensionally correct.</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            KE = [ML²T⁻²] (energy dimensions)<br>
+                            ½mv² = [M] × [LT⁻¹]² = [M] × [L²T⁻²] = [ML²T⁻²]<br>
+                            Dimensions match! ✓ The equation is dimensionally correct.<br>
+                            <em>Hint: Remember energy has dimensions [ML²T⁻²]!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'dimensional', 'sq-dimensional')">
+                    ✅ Mark as Complete (+10 XP)
+                </button>
+            </div>
+        </article>
+        
+        <!-- Side Quest 3: Quiz -->
+        <article class="side-quest locked" id="sq-measurements-quiz" data-big-quest="0" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-measurements-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 1.3: Quiz Challenge</h3>
+                    <p>Test your knowledge of measurements & units</p>
+                </div>
+                <div class="side-quest-status" id="sq-measurements-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container">
+                    <h3 style="margin-bottom: 15px;">🎯 Measurements & Units Quiz</h3>
+                    
+                    <div class="mcq-question">
+                        <strong>Question 1:</strong> Which of the following is NOT an SI base unit?
+                    </div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) Kilogram</li>
+                        <li class="mcq-option" data-answer="b">B) Meter</li>
+                        <li class="mcq-option" data-answer="c">C) Liter</li>
+                        <li class="mcq-option" data-answer="d">D) Second</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation">
+                        <strong>Answer: C) Liter</strong><br>
+                        Liter (L) is NOT an SI base unit - it's a derived unit (1 L = 0.001 m³). The SI unit for volume is cubic meters (m³).
+                    </div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;">
+                        <strong>Question 2:</strong> The prefix "micro" (μ) represents:
+                    </div>
+                    <ul class="mcq-options" data-questio="q2">
+                        <li class="mcq-option" data-answer="a">A) 10⁻³</li>
+                        <li class="mcq-option" data-answer="b">B) 10⁻⁶</li>
+                        <li class="mcq-option" data-answer="c">C) 10⁻⁹</li>
+                        <li class="mcq-option" data-answer="d">D) 10⁻¹²</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q2-explanation">
+                        <strong>Answer: B) 10⁻⁶</strong><br>
+                        Micro (μ) = 10⁻⁶. One micrometer (μm) = 0.000001 meters = 10⁻⁶ m.
+                    </div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;">
+                        <strong>Question 3:</strong> Which of these has dimensions of [ML²T⁻²]?
+                    </div>
+                    <ul class="mcq-options" data-question="q3">
+                        <li class="mcq-option" data-answer="a">A) Force</li>
+                        <li class="mcq-option" data-answer="b">B) Power</li>
+                        <li class="mcq-option" data-answer="c">C) Energy</li>
+                        <li class="mcq-option" data-answer="d">D) Momentum</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q3-explanation">
+                        <strong>Answer: C) Energy</strong><br>
+                        Energy = force × distance = [MLT⁻²] × [L] = [ML²T⁻²]. This is also the dimensions of work and torque.
+                    </div>
+                    
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                
+                <!-- Quiz Performance Feedback -->
+                <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
+                    <h4>🎯 Performance Feedback</h4>
+                    <div id="feedbackContent"></div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'measurements-quiz', 'sq-measurements-quiz')">
+                    ✅ Complete Quiz (+10 XP)
+                </button>
+            </div>
+        </article>
+        
+        <!-- Navigation -->
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-2-motion.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        
+        // Initialize page
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        // Update side quest statuses
+        updateAllStatuses();
+        
+        // Calculate overall progress for this quest
+        const physicsData = QuestSystem.QUEST_DATA.physics;
+        const bigQuest = physicsData.bigQuests[0];
+        let completedCount = 0;
+        
+        bigQuest.sideQuests.forEach((sq, index) => {
+            if (progress.physics.completedSideQuests.includes(sq.id)) {
+                completedCount++;
+            }
+        });
+        
+        const totalSideQuests = bigQuest.sideQuests.length;
+        const progressPercent = Math.round((completedCount / totalSideQuests) * 100);
+        
+        document.getElementById('questProgressRing').style.setProperty('--progress', progressPercent + '%');
+        document.getElementById('questProgressRing').setAttribute('data-progress', progressPercent);
+        document.getElementById('subjectProgress').textContent = progressPercent + '% Complete';
+        
+        function updateAllStatuses() {
+            const physicsData = QuestSystem.QUEST_DATA.physics;
+            const bigQuest = physicsData.bigQuests[0];
+            
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const element = document.getElementById('sq-' + sq.id);
+                if (element) {
+                    const status = QuestSystem.getStatusIcon('physics', 0, index, progress);
+                    const statusElement = document.getElementById('sq-' + sq.id + '-status');
+                    
+                    element.dataset.status = status.status;
+                    if (statusElement) {
+                        statusElement.textContent = status.icon;
+                    }
+                    
+                    if (status.status === 'completed') {
+                        element.classList.remove('unlocked', 'locked');
+                        element.classList.add('completed');
+                    } else if (status.status === 'unlocked') {
+                        element.classList.remove('completed', 'locked');
+                        element.classList.add('unlocked');
+                    }
+                }
+            });
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+            element.classList.toggle('active');
+        }
+        
+        function completeSideQuest(subject, sideQuestId, elementId) {
+            const result = QuestSystem.completeSideQuest(subject, sideQuestId, progress);
+            if (result) {
+                // Update UI
+                const element = document.getElementById(elementId);
+                element.classList.remove('unlocked');
+                element.classList.add('completed');
+                
+                const statusElement = document.getElementById(elementId + '-status');
+                if (statusElement) {
+                    statusElement.textContent = '✅';
+                }
+                
+                // Update progress display
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                document.getElementById('currentLevel').textContent = progress.level;
+                
+                // Update progress ring
+                const physicsData = QuestSystem.QUEST_DATA.physics;
+                const bigQuest = physicsData.bigQuests[0];
+                let completedCount = 0;
+                
+                bigQuest.sideQuests.forEach((sq, index) => {
+                    if (progress.physics.completedSideQuests.includes(sq.id)) {
+                        completedCount++;
+                    }
+                });
+                
+                const totalSideQuests = bigQuest.sideQuests.length;
+                const progressPercent = Math.round((completedCount / totalSideQuests) * 100);
+                
+                document.getElementById('questProgressRing').style.setProperty('--progress', progressPercent + '%');
+                document.getElementById('questProgressRing').setAttribute('data-progress', progressPercent);
+                document.getElementById('subjectProgress').textContent = progressPercent + '% Complete';
+                
+                // Unlock next quest if applicable
+                const nextIndex = Array.from(element.parentElement.children).indexOf(element) + 1;
+                if (nextIndex < element.parentElement.children.length) {
+                    const nextElement = element.parentElement.children[nextIndex];
+                    nextElement.classList.remove('locked');
+                    nextElement.classList.add('unlocked');
+                    const nextStatus = nextElement.querySelector('.side-quest-status');
+                    if (nextStatus) {
+                        nextStatus.textContent = '🔓';
+                    }
+                    nextElement.dataset.status = 'unlocked';
+                }
+            }
+        }
+                document.getElementById('questProgressRing').setAttribute('data-progress', progressPercent);
+                document.getElementById('subjectProgress').textContent = progressPercent + '% Complete';
+                
+                // Unlock next quest if applicable
+                const nextIndex = Array.from(element.parentElement.children).indexOf(element) + 1;
+                if (nextIndex < element.parentElement.children.length) {
+                    const nextElement = element.parentElement.children[nextIndex];
+                    nextElement.classList.remove('locked');
+                    nextElement.classList.add('unlocked');
+                    const nextStatus = nextElement.querySelector('.side-quest-status');
+                    if (nextStatus) {
+                        nextStatus.textContent = '🔓';
+                    }
+                    nextElement.dataset.status = 'unlocked';
+                }
+            }
+        }
+        
+        // Interactive practice solution toggle
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#c62828';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#1976d2';
+            }
+        }
+        
+        // Quiz checking logic
+        function checkQuiz() {
+            const correct = { q1: 'c', q2: 'b', q3: 'c' };
+            let score = 0;
+            
+            // Initialize MCQ selection
+            document.querySelectorAll('.mcq-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const question = this.closest('.mcq-options').dataset.question;
+                    document.querySelectorAll(`[data-question="${question}"] .mcq-option`).forEach(o => {
+                        o.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            
+            const percentage = Math.round((score / 3) * 100);
+            document.getElementById('quizScore').textContent = `Score: ${score}/3 (${percentage}%)`;
+            
+            // Performance feedback
+            const feedback = document.getElementById('quizFeedback');
+            const feedbackContent = document.getElementById('feedbackContent');
+            feedback.style.display = 'block';
+            
+            if (percentage >= 80) {
+                feedback.style.background = 'linear-gradient(135deg, #e8f5e9, #c8e6c9)';
+                feedbackContent.innerHTML = '<strong>🎉 Excellent!</strong> You have mastered measurements and units. Ready to move to the next quest!';
+            } else if (percentage >= 60) {
+                feedback.style.background = 'linear-gradient(135deg, #fff3e0, #ffe0b2)';
+                feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
+            } else {
+                feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
+                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+            }
+        }
+        
+        // Initialize KaTeX
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

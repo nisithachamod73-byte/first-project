@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 4: Equilibrium - Chemistry Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>:root { --chemistry-primary: #c62828; }</style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header chemistry">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 4: Chemical Equilibrium</h1>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring chemistry" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress">0% Complete</div></div>
+            </div>
+            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge">📊 Level <span id="currentLevel">1</span></span></div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-3-energetics.html" class="nav-btn" >← Prev</a>
+            <a href="quest-5-electro.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-equilibrium-basics" data-big-quest="3" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-equilibrium-basics')">
+                <div class="quest-icon">⚖️</div>
+                <div class="side-quest-info"><h3>Side Quest 4.1: Equilibrium Basics</h3><p>Dynamic equilibrium</p></div>
+                <div class="side-quest-status" id="sq-equilibrium-basics-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Cato Guldberg & Peter Waage (1864)</strong> - Developed law of mass action and equilibrium constant concept.</p>
+                    <p><strong>Henry Le Chatelier (1884)</strong> - Formulated principle predicting equilibrium shifts.</p>
+                    <p><strong>Jacobus van 't Hoff (1880s)</strong> - Applied thermodynamics to chemical equilibrium.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Equilibrium</h4>
+                    <p><strong>Reversible reactions:</strong> aA + bB ⇌ cC + dD</p>
+                    <p><strong>At equilibrium:</strong> rate forward = rate reverse</p>
+                    <p><strong>Kc =</strong> [C]^c[D]^d / [A]^a[B]^b</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Haber Process</strong> - Industrial ammonia production using equilibrium principles
+                    </div>
+                    <div class="application-example">
+                        <strong>Buffer Solutions</strong> - Maintain pH stability in biological systems
+                    </div>
+                    <div class="application-example">
+                        <strong>Oxygen Transport</strong> - Hemoglobin-oxygen equilibrium in blood
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> For the reaction N₂ + 3H₂ ⇌ 2NH₃, Kc = 0.5 at 400°C. If [N₂] = 0.2 M, [H₂] = 0.6 M, is the system at equilibrium?</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> Calculate Q = [NH₃]² / ([N₂][H₂]³)</p>
+                        <p>Q = (0.1)² / (0.2 × 0.6³) = 0.01 / (0.2 × 0.216) = 0.01 / 0.0432 ≈ 0.23</p>
+                        <p>Since Q < Kc (0.23 < 0.5), reaction will shift right to reach equilibrium.</p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Thinking equilibrium means concentrations are equal</p>
+                    <p><strong>Tip:</strong> Equilibrium means rates are equal, not concentrations</p>
+                    <p><strong>Mistake:</strong> Forgetting to raise concentrations to their coefficients</p>
+                    <p><strong>Tip:</strong> Always include stoichiometric coefficients in Kc expression</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'equilibrium-basics', 'sq-equilibrium-basics')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-le-chatelier" data-big-quest="3" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-le-chatelier')">
+                <div class="quest-icon">📊</div>
+                <div class="side-quest-info"><h3>Side Quest 4.2: Le Chatelier's Principle</h3><p>Shifting equilibrium</p></div>
+                <div class="side-quest-status" id="sq-le-chatelier-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Le Chatelier's Principle</h4>
+                    <p><strong>Concentration:</strong> Increase → shift away</p>
+                    <p><strong>Temperature:</strong> Exothermic + heat → shifts left</p>
+                    <p><strong>Pressure:</strong> Increase → shift to fewer moles</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'le-chatelier', 'sq-le-chatelier')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-equilibrium-quiz" data-big-quest="3" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-equilibrium-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info"><h3>Side Quest 4.3: Quiz</h3><p>Test knowledge</p></div>
+                <div class="side-quest-status" id="sq-equilibrium-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary);">
+                    <div class="mcq-question"><strong>Q:</strong> If you increase temperature of exothermic reaction, which way does equilibrium shift?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) Forward</li>
+                        <li class="mcq-option" data-answer="b">B) Backward</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>A: B</strong> Adding heat to exothermic shifts to absorb it (left).</div>
+                    <button class="mcq-check-btn"  onclick="checkQuiz()">Check</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'equilibrium-quiz', 'sq-equilibrium-quiz')">✅ Complete Quiz</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-3-energetics.html" class="nav-btn" >← Prev</a>
+            <a href="quest-5-electro.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const chemData = QuestSystem.QUEST_DATA.chemistry;
+            const bigQuest = chemData.bigQuests[3];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('chemistry', 3, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.chemistry.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+            document.getElementById('subjectProgress').textContent = percent + '% Complete';
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            document.getElementById('quizScore').textContent = `Score: ${score}/1`;
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

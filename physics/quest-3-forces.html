@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 3: Newton's Laws - Physics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header physics">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 3: Newton's Laws</h1>
+        <p style="color: #666; margin-top: 8px;">The foundation of classical mechanics</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring physics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
+            </div>
+            <div>
+                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+            </div>
+        </div>
+    </header>
+    
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-2-motion.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-4-energy.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-first-law" data-big-quest="2" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-first-law')">
+                <div class="quest-icon">📚</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 3.1: Newton's First Law</h3>
+                    <p>The law of inertia</p>
+                </div>
+                <div class="side-quest-status" id="sq-first-law-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: Isaac Newton's Revolution</h4>
+                    <p><strong>Isaac Newton (1643-1727):</strong> Published "Philosophiæ Naturalis Principia Mathematica" in 1687, containing the three laws of motion.</p>
+                    <p><strong>Galileo Galilei (1564-1642):</strong> Pioneered the concept of inertia through experiments with inclined planes.</p>
+                    <p><strong>Impact:</strong> Newton's laws became the foundation of classical mechanics, revolutionizing physics and engineering!</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>📚 First Law (Inertia)</h4>
+                    <p><strong>"An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by a net force."</strong></p>
+                    <p>This is called the <strong>law of inertia</strong>. Inertia is the tendency of objects to resist changes in their state of motion.</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚗 Car Safety:</strong> Seatbelts prevent passengers from continuing forward motion during sudden stops
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏀 Sports:</strong> Basketball players use inertia to dribble and pass the ball effectively
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚀 Space Travel:</strong> Satellites maintain motion in orbit due to inertia
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Thinking objects "want" to stop moving
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Objects naturally continue moving - friction and air resistance cause them to stop!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Confusing inertia with momentum
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Inertia is the resistance to change, momentum is mass × velocity</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> A book is resting on a table. Explain why it doesn't move using Newton's First Law.</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            The book is at rest and stays at rest because:<br>
+                            • Gravity pulls it down, but the table pushes up with equal force<br>
+                            • Net force = 0, so no acceleration occurs<br>
+                            • This is inertia - the book resists changes to its state of rest<br>
+                            <em>Hint: Look for balanced forces!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'first-law', 'sq-first-law')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-second-law" data-big-quest="2" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-second-law')">
+                <div class="quest-icon">📐</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 3.2: Newton's Second Law</h3>
+                    <p>F = ma</p>
+                </div>
+                <div class="side-quest-status" id="sq-second-law-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: The Birth of Dynamics</h4>
+                    <p><strong>Isaac Newton (1643-1727):</strong> Developed the second law as part of his comprehensive theory of motion.</p>
+                    <p><strong>Leonhard Euler (1707-1783):</strong> Later formalized F = ma as the fundamental equation of dynamics.</p>
+                    <p><strong>Impact:</strong> This law enabled engineers to calculate forces needed for bridges, buildings, and machinery!</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>📚 Second Law: F = ma</h4>
+                    <p><strong>"The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass."</strong></p>
+                    <p>F = ma, where F = net force (N), m = mass (kg), a = acceleration (m/s²)</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏗️ Construction:</strong> Engineers use F = ma to design safe building foundations and bridges
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚗 Automotive:</strong> Car designers calculate braking forces needed for safe stopping distances
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏃 Sports Science:</strong> Coaches analyze athlete acceleration using force-mass relationships
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <p class="formula-name">Key Formulas</p>
+                    <p>F = ma (Newton's Second Law)</p>
+                    <p>Weight: W = mg (force of gravity)</p>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Forgetting that F is NET force
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Always calculate the vector sum of all forces acting on the object!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Confusing mass and weight
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Mass is constant (kg), weight depends on gravity (N)!</div>
+                    </div>
+                </div>
+                
+                <div class="worked-example">
+                    <h4>📝 Worked Example</h4>
+                    <div class="problem"><strong>Problem:</strong> A 1000 kg car accelerates at 2 m/s². What force is needed?</div>
+                    <div class="solution">
+                        <div class="step">F = ma = 1000 × 2 = 2000 N</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> A 50 kg object experiences a net force of 200 N. What is its acceleration?</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            F = ma → a = F/m<br>
+                            a = 200 N / 50 kg = <strong>4 m/s²</strong><br>
+                            <em>Hint: Rearrange F = ma to solve for acceleration!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'second-law', 'sq-second-law')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-third-law" data-big-quest="2" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-third-law')">
+                <div class="quest-icon">⚖️</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 3.3: Newton's Third Law</h3>
+                    <p>Action and reaction</p>
+                </div>
+                <div class="side-quest-status" id="sq-third-law-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: Newton's Complete Picture</h4>
+                    <p><strong>Isaac Newton (1643-1727):</strong> The third law completed his comprehensive theory of motion.</p>
+                    <p><strong>Impact:</strong> This law explains everything from rocket propulsion to walking - forces always come in pairs!</p>
+                </div>
+                
+                <div class="concept-box">
+                    <h4>📚 Third Law: Action-Reaction</h4>
+                    <p><strong>"For every action, there is an equal and opposite reaction."</strong></p>
+                    <p>Forces always come in pairs. If object A exerts a force on object B, then object B exerts an equal and opposite force on object A.</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🚀 Rocket Propulsion:</strong> Rockets push exhaust gases backward, gases push rocket forward
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏃 Walking:</strong> Your foot pushes backward on the ground, ground pushes you forward
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏀 Sports:</strong> Basketball players push the ball, ball pushes back on their hand
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Thinking action-reaction forces cancel
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Action-reaction forces act on DIFFERENT objects, so they never cancel!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Confusing with balanced forces
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Balanced forces act on the SAME object, action-reaction on DIFFERENT objects!</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> A book rests on a table. Identify the action-reaction pair between the book and table.</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            Action: Book pushes DOWN on table (force of weight)<br>
+                            Reaction: Table pushes UP on book (normal force)<br>
+                            These forces are equal and opposite, acting on different objects!<br>
+                            <em>Hint: Look for forces between two different objects!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'third-law', 'sq-third-law')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-newton-quiz" data-big-quest="2" data-side-quest="3">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-newton-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 3.4: Quiz Challenge</h3>
+                    <p>Test your knowledge of Newton's Laws</p>
+                </div>
+                <div class="side-quest-status" id="sq-newton-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container">
+                    <h3 style="margin-bottom: 15px;">🎯 Newton's Laws Quiz</h3>
+                    
+                    <div class="mcq-question"><strong>Question 1:</strong> A 5 kg object accelerates at 3 m/s². What is the net force?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) 10 N</li>
+                        <li class="mcq-option" data-answer="b">B) 15 N</li>
+                        <li class="mcq-option" data-answer="c">C) 20 N</li>
+                        <li class="mcq-option" data-answer="d">D) 8 N</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: B) 15 N</strong><br>F = ma = 5 × 3 = 15 N</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 2:</strong> When you push against a wall, the wall pushes back with equal force. This is an example of:</div>
+                    <ul class="mcq-options" data-question="q2">
+                        <li class="mcq-option" data-answer="a">A) First Law</li>
+                        <li class="mcq-option" data-answer="b">B) Second Law</li>
+                        <li class="mcq-option" data-answer="c">C) Third Law</li>
+                        <li class="mcq-option" data-answer="d">D) Gravity</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q2-explanation"><strong>Answer: C) Third Law</strong><br>Equal and opposite forces between two objects.</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 3:</strong> A book rests on a table. Why doesn't it fall through?</div>
+                    <ul class="mcq-options" data-question="q3">
+                        <li class="mcq-option" data-answer="a">A) First Law (inertia)</li>
+                        <li class="mcq-option" data-answer="b">B) Second Law (F = ma)</li>
+                        <li class="mcq-option" data-answer="c">C) Third Law (action-reaction)</li>
+                        <li class="mcq-option" data-answer="d">D) All of the above</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q3-explanation"><strong>Answer: A) First Law</strong><br>Net force = 0, so no acceleration (inertia keeps it at rest).</div>
+                    
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                
+                <!-- Quiz Performance Feedback -->
+                <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
+                    <h4>🎯 Performance Feedback</h4>
+                    <div id="feedbackContent"></div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'newton-quiz', 'sq-newton-quiz')">✅ Complete Quiz (+10 XP)</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-2-motion.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-4-energy.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        document.getElementById('currentLevel').textContent = progress.level;
+        updateAllStatuses();
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        
+        function updateAllStatuses() {
+            const physicsData = QuestSystem.QUEST_DATA.physics;
+            const bigQuest = physicsData.bigQuests[2];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const element = document.getElementById('sq-' + sq.id);
+                if (element) {
+                    const status = QuestSystem.getStatusIcon('physics', 2, index, progress);
+                    element.dataset.status = status.status;
+                    element.classList.remove('unlocked', 'locked', 'completed');
+                    element.classList.add(status.status);
+                    const statusElement = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusElement) statusElement.textContent = status.icon;
+                }
+            });
+            
+            let completedCount = bigQuest.sideQuests.filter(sq => progress.physics.completedSideQuests.includes(sq.id)).length;
+            const progressPercent = Math.round((completedCount / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', progressPercent + '%');
+            document.getElementById('subjectProgress').textContent = progressPercent + '% Complete';
+            
+            if (completedCount === bigQuest.sideQuests.length) {
+            }
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        // Interactive practice solution toggle
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#c62828';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#1976d2';
+            }
+        }
+        
+        function completeSideQuest(subject, sideQuestId, elementId) {
+            const result = QuestSystem.completeSideQuest(subject, sideQuestId, progress);
+            if (result) {
+                const element = document.getElementById(elementId);
+                element.classList.remove('unlocked');
+                element.classList.add('completed');
+                const statusElement = document.getElementById(elementId.replace('sq-', 'sq-') + 'status');
+                if (statusElement) statusElement.textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                document.getElementById('currentLevel').textContent = progress.level;
+                
+                const nextElement = element.nextElementSibling;
+                if (nextElement && nextElement.classList.contains('side-quest')) {
+                    nextElement.classList.remove('locked');
+                    nextElement.classList.add('unlocked');
+                    nextElement.dataset.status = 'unlocked';
+                    const nextStatus = nextElement.querySelector('.side-quest-status');
+                    if (nextStatus) nextStatus.textContent = '🔓';
+                }
+                updateAllStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b', q2: 'c', q3: 'a' };
+            let score = 0;
+            
+            // Initialize MCQ selection
+            document.querySelectorAll('.mcq-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const question = this.closest('.mcq-options').dataset.question;
+                    document.querySelectorAll(`[data-question="${question}"] .mcq-option`).forEach(o => {
+                        o.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            
+            const percentage = Math.round((score / 3) * 100);
+            document.getElementById('quizScore').textContent = `Score: ${score}/3 (${percentage}%)`;
+            
+            // Performance feedback
+            const feedback = document.getElementById('quizFeedback');
+            const feedbackContent = document.getElementById('feedbackContent');
+            feedback.style.display = 'block';
+            
+            if (percentage >= 80) {
+                feedback.style.background = 'linear-gradient(135deg, #e8f5e9, #c8e6c9)';
+                feedbackContent.innerHTML = '<strong>🎉 Excellent!</strong> You have mastered Newton\'s Laws. Ready to move to the next quest!';
+            } else if (percentage >= 60) {
+                feedback.style.background = 'linear-gradient(135deg, #fff3e0, #ffe0b2)';
+                feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
+            } else {
+                feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
+                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+            }
+        }
+            document.getElementById('quizScore').textContent = `Score: ${score}/2`;
+        }
+        
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Mode - A/L Study Guides</title>
+    <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+    <!-- Hero Header -->
+    <header class="hero">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto 20px;">
+            <h1 style="font-size: 1.8rem; margin: 0;">🎮 Quest Mode - A/L Study Guides</h1>
+            <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+        <p>Your gamified learning adventure. Complete quests, earn XP, and unlock your potential!</p>
+    </header>
+
+    <main class="container">
+        <!-- Bookmarks Section -->
+        <div class="bookmarks-section" id="bookmarksSection" style="display: none;">
+            <h3 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                <span>🔖</span> Your Bookmarks
+            </h3>
+            <div class="bookmarks-list" id="bookmarksList"></div>
+        </div>
+        
+        <!-- Achievements Section -->
+        <div class="achievements-section" id="achievementsSection" style="display: none;">
+            <h3 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                <span>🏆</span> Your Achievements
+            </h3>
+            <div class="achievements-list" id="achievementsList"></div>
+        </div>
+        
+        <h2 class="section-title">Choose Your Subject</h2>
+        
+        <div class="subjects-grid">
+            <!-- Physics Card -->
+            <div class="subject-card physics">
+                <div class="subject-header physics">
+                    <h2>🔬 Physics</h2>
+                    <p>9 Big Quests • 31 Side Quests</p>
+                </div>
+                <div class="subject-body">
+                    <!-- Progress Section -->
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Overall Progress</span>
+                            <span id="physicsProgress">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="physicsProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Row -->
+                    <div class="stats-row">
+                        <div class="stat">
+                            <div class="stat-value" id="physicsCompleted">0</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="physicsTotal">31</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                    </div>
+                    
+                    <!-- XP & Level -->
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <span class="xp-badge">⚡ <span id="physicsXP">0</span> XP</span>
+                    </div>
+                    
+                    <!-- Quest Preview -->
+                    <div class="quest-list-preview">
+                        <h4>All Physics Quests</h4>
+                        <a href="physics/quest-1-measurements.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>1. Measurements & Units</span>
+                            <span id="physics-quest-1-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-2-motion.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>2. Linear Motion</span>
+                            <span id="physics-quest-2-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-3-forces.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>3. Newton's Laws</span>
+                            <span id="physics-quest-3-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-4-energy.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>4. Work, Energy & Power</span>
+                            <span id="physics-quest-4-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-5-momentum.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>5. Momentum & Collisions</span>
+                            <span id="physics-quest-5-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-6-circular.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>6. Circular Motion</span>
+                            <span id="physics-quest-6-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-7-waves.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>7. Waves & Oscillations</span>
+                            <span id="physics-quest-7-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-8-electricity.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>8. Electricity & Magnetism</span>
+                            <span id="physics-quest-8-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="physics/quest-9-modern.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>9. Modern Physics</span>
+                            <span id="physics-quest-9-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                    </div>
+                    
+                    <a href="#" id="physics-continue-btn" class="open-btn" onclick="return false;">📖 Continue Learning</a>
+                </div>
+            </div>
+            
+            <!-- Chemistry Card -->
+            <div class="subject-card chemistry">
+                <div class="subject-header chemistry">
+                    <h2>⚗️ Chemistry</h2>
+                    <p>7 Big Quests • 21 Side Quests</p>
+                </div>
+                <div class="subject-body">
+                    <!-- Progress Section -->
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Overall Progress</span>
+                            <span id="chemistryProgress">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="chemistryProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Row -->
+                    <div class="stats-row">
+                        <div class="stat">
+                            <div class="stat-value" id="chemistryCompleted">0</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="chemistryTotal">21</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                    </div>
+                    
+                    <!-- XP & Level -->
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <span class="xp-badge">⚡ <span id="chemistryXP">0</span> XP</span>
+                    </div>
+                    
+                    <!-- Quest Preview -->
+                    <div class="quest-list-preview">
+                        <h4>All Chemistry Quests</h4>
+                        <a href="chemistry/quest-1-atomic.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>1. Atomic Structure</span>
+                            <span id="chemistry-quest-1-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="chemistry/quest-2-bonding.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>2. Chemical Bonding</span>
+                            <span id="chemistry-quest-2-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="chemistry/quest-3-energetics.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>3. Energetics & Kinetics</span>
+                            <span id="chemistry-quest-3-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="chemistry/quest-4-equilibrium.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>4. Chemical Equilibrium</span>
+                            <span id="chemistry-quest-4-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="chemistry/quest-5-electro.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>5. Electrochemistry</span>
+                            <span id="chemistry-quest-5-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="chemistry/quest-6-organic-basics.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>6. Organic Basics</span>
+                            <span id="chemistry-quest-6-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="chemistry/quest-7-organic-advanced.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>7. Organic Advanced</span>
+                            <span id="chemistry-quest-7-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                    </div>
+                    
+                    <a href="#" id="chemistry-continue-btn" class="open-btn" onclick="return false;">📖 Continue Learning</a>
+                </div>
+            </div>
+            
+            <!-- Mathematics Card -->
+            <div class="subject-card mathematics">
+                <div class="subject-header mathematics">
+                    <h2>📐 Mathematics</h2>
+                    <p>8 Big Quests • 24 Side Quests</p>
+                </div>
+                <div class="subject-body">
+                    <!-- Progress Section -->
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Overall Progress</span>
+                            <span id="mathematicsProgress">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="mathematicsProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Row -->
+                    <div class="stats-row">
+                        <div class="stat">
+                            <div class="stat-value" id="mathematicsCompleted">0</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="mathematicsTotal">24</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                    </div>
+                    
+                    <!-- XP & Level -->
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <span class="xp-badge">⚡ <span id="mathematicsXP">0</span> XP</span>
+                    </div>
+                    
+                    <!-- Quest Preview -->
+                    <div class="quest-list-preview">
+                        <h4>All Mathematics Quests</h4>
+                        <a href="mathematics/quest-1-algebra.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>1. Algebra & Polynomials</span>
+                            <span id="mathematics-quest-1-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="mathematics/quest-2-binomial.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>2. Binomial & Sequences</span>
+                            <span id="mathematics-quest-2-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="mathematics/quest-3-trigonometry.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>3. Trigonometry</span>
+                            <span id="mathematics-quest-3-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="mathematics/quest-4-differentiation.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>4. Differentiation</span>
+                            <span id="mathematics-quest-4-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="mathematics/quest-5-integration.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>5. Integration</span>
+                            <span id="mathematics-quest-5-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="mathematics/quest-6-vectors.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>6. Vectors</span>
+                            <span id="mathematics-quest-6-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="mathematics/quest-7-complex.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>7. Complex Numbers</span>
+                            <span id="mathematics-quest-7-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                        <a href="mathematics/quest-8-statistics.html" class="quest-preview-item">
+                            <span class="quest-preview-icon">📚</span>
+                            <span>8. Statistics & Probability</span>
+                            <span id="mathematics-quest-8-status" style="margin-left: auto;">🔓</span>
+                        </a>
+                    </div>
+                    
+                    <a href="#" id="mathematics-continue-btn" class="open-btn" onclick="return false;">📖 Continue Learning</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Overall Stats Section -->
+        <div class="subject-card" style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <div class="subject-body">
+                <h2 style="margin-bottom: 20px;">📊 Your Overall Stats</h2>
+                <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 20px;">
+                    <div class="stat">
+                        <div class="stat-value" id="totalXP">0</div>
+                        <div class="stat-label">Total XP</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="totalLevel">1</div>
+                        <div class="stat-label">Level</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="totalCompleted">0</div>
+                        <div class="stat-label">Quests Done</div>
+                    </div>
+                </div>
+                <div class="progress-section" style="max-width: 400px; margin: 0 auto;">
+                    <div class="progress-label">
+                        <span>XP to Next Level</span>
+                        <span id="xpToNext">50 / 50</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="xpProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How It Works -->
+        <div style="margin-top: 50px; text-align: center;">
+            <h2 style="margin-bottom: 30px;">🎯 How Quest Mode Works</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px;">
+                <div class="subject-card" style="padding: 25px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">📚</div>
+                    <h3 style="margin-bottom: 10px;">Study Content</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Read through each side quest's educational content at your own pace.</p>
+                </div>
+                <div class="subject-card" style="padding: 25px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">✅</div>
+                    <h3 style="margin-bottom: 10px;">Complete Quizzes</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Test your knowledge with built-in quizzes at the end of each section.</p>
+                </div>
+                <div class="subject-card" style="padding: 25px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🔓</div>
+                    <h3 style="margin-bottom: 10px;">Unlock Next</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Finish one quest to unlock the next. Complete all to finish the subject!</p>
+                </div>
+                <div class="subject-card" style="padding: 25px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">⚡</div>
+                    <h3 style="margin-bottom: 10px;">Earn XP</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Earn 10 XP for each completed quest. Level up as you learn!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="shared/game-elements.js"></script>
+    <script>
+        // Dark Mode Toggle
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            // Check saved preference or system preference
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    
+                    // Play click sound
+                    playSound('click');
+                });
+            }
+            
+            // Sound effects system
+            window.playSound = function(type) {
+                // Simple audio feedback using Web Audio API
+                try {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioContext) return;
+                    
+                    const ctx = new AudioContext();
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    
+                    if (type === 'click') {
+                        osc.frequency.value = 800;
+                        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                        osc.start();
+                        osc.stop(ctx.currentTime + 0.1);
+                    } else if (type === 'success') {
+                        osc.frequency.value = 523;
+                        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                        osc.start();
+                        setTimeout(() => {
+                            osc.frequency.value = 659;
+                        }, 100);
+                        setTimeout(() => {
+                            osc.frequency.value = 784;
+                        }, 200);
+                        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+                        osc.stop(ctx.currentTime + 0.4);
+                    } else if (type === 'unlock') {
+                        osc.frequency.value = 440;
+                        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                        osc.start();
+                        setTimeout(() => {
+                            osc.frequency.value = 554;
+                        }, 100);
+                        setTimeout(() => {
+                            osc.frequency.value = 659;
+                        }, 200);
+                        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                        osc.stop(ctx.currentTime + 0.3);
+                    }
+                } catch (e) {
+                    // Audio not supported
+                }
+            };
+            
+            // Keyboard Navigation
+            document.addEventListener('keydown', function(e) {
+                // Ignore if typing in input
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    const navBtns = document.querySelectorAll('.nav-btn[href]');
+                    const currentFocus = document.activeElement;
+                    let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                    
+                    if (currentIndex === -1) currentIndex = 0;
+                    
+                    if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                        navBtns[currentIndex + 1].focus();
+                    } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                        navBtns[currentIndex - 1].focus();
+                    }
+                }
+                
+                // Enter to click
+                if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                    document.activeElement.click();
+                }
+                
+                // D key for dark mode
+                if (e.key === 'd' || e.key === 'D') {
+                    if (toggleBtn) toggleBtn.click();
+                }
+            });
+        })();
+        // Helper function to get quest link by index
+        function getQuestLink(subject, index) {
+            const questData = {
+                physics: [
+                    'physics/quest-1-measurements.html',
+                    'physics/quest-2-motion.html',
+                    'physics/quest-3-forces.html',
+                    'physics/quest-4-energy.html',
+                    'physics/quest-5-momentum.html',
+                    'physics/quest-6-circular.html',
+                    'physics/quest-7-waves.html',
+                    'physics/quest-8-electricity.html',
+                    'physics/quest-9-modern.html'
+                ],
+                chemistry: [
+                    'chemistry/quest-1-atomic.html',
+                    'chemistry/quest-2-bonding.html',
+                    'chemistry/quest-3-energetics.html',
+                    'chemistry/quest-4-equilibrium.html',
+                    'chemistry/quest-5-electro.html',
+                    'chemistry/quest-6-organic-basics.html',
+                    'chemistry/quest-7-organic-advanced.html'
+                ],
+                mathematics: [
+                    'mathematics/quest-1-algebra.html',
+                    'mathematics/quest-2-binomial.html',
+                    'mathematics/quest-3-trigonometry.html',
+                    'mathematics/quest-4-differentiation.html',
+                    'mathematics/quest-5-integration.html',
+                    'mathematics/quest-6-vectors.html',
+                    'mathematics/quest-7-complex.html',
+                    'mathematics/quest-8-statistics.html'
+                ]
+            };
+            return questData[subject] ? questData[subject][index] : '#';
+        }
+
+        // Helper function to find first uncompleted quest for a subject
+        function getContinueQuestLink(subject, progress) {
+            const subjectData = QuestSystem.QUEST_DATA[subject];
+            const bigQuests = subjectData.bigQuests;
+
+            // Find first big quest with incomplete side quests
+            for (let bqIndex = 0; bqIndex < bigQuests.length; bqIndex++) {
+                const bigQuest = bigQuests[bqIndex];
+                const allCompleted = bigQuest.sideQuests.every(sq =>
+                    progress[subject].completedSideQuests.includes(sq.id)
+                );
+
+                if (!allCompleted) {
+                    return getQuestLink(subject, bqIndex);
+                }
+            }
+
+            // All completed, return to last quest
+            return getQuestLink(subject, bigQuests.length - 1);
+        }
+
+        // Helper function to get current quest index for highlighting
+        function getCurrentQuestIndex(subject, progress) {
+            return progress[subject].currentBigQuest || 0;
+        }
+
+        // Initialize home page when loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const QuestSystem = window.QuestSystem;
+
+            // Load progress
+            const progress = QuestSystem.getProgress();
+
+            // Update each subject
+            ['physics', 'chemistry', 'mathematics'].forEach(subject => {
+                const subjectData = QuestSystem.QUEST_DATA[subject];
+                const subjectProgress = QuestSystem.getSubjectProgress(subject, progress);
+
+                // Update progress percentage
+                const progressElement = document.getElementById(`${subject}Progress`);
+                const progressBar = document.getElementById(`${subject}ProgressBar`);
+                if (progressElement) {
+                    progressElement.textContent = `${subjectProgress.percentage}%`;
+                }
+                if (progressBar) {
+                    progressBar.style.width = `${subjectProgress.percentage}%`;
+                }
+
+                // Update completed count
+                const completedElement = document.getElementById(`${subject}Completed`);
+                if (completedElement) {
+                    completedElement.textContent = subjectProgress.completed;
+                }
+
+                // Update XP
+                const xpElement = document.getElementById(`${subject}XP`);
+                if (xpElement) {
+                    xpElement.textContent = progress.totalXP;
+                }
+
+                // Update big quest status icons and highlight current quest
+                const currentQuestIndex = getCurrentQuestIndex(subject, progress);
+                subjectData.bigQuests.forEach((bq, index) => {
+                    const statusElement = document.getElementById(`${subject}-quest-${index + 1}-status`);
+                    const questItem = document.querySelector(`a[href="${getQuestLink(subject, index)}"]`);
+
+                    if (statusElement) {
+                        const status = QuestSystem.getBigQuestStatus(subject, index, progress);
+                        // Show completion percentage with icon
+                        if (status.status === 'completed') {
+                            statusElement.textContent = '✅';
+                        } else if (status.progress > 0) {
+                            statusElement.textContent = `📊 ${Math.round(status.progress)}%`;
+                        } else {
+                            statusElement.textContent = status.icon;
+                        }
+                    }
+
+                    // Highlight current quest
+                    if (questItem) {
+                        if (index === currentQuestIndex) {
+                            questItem.classList.add('current-quest');
+                        } else {
+                            questItem.classList.remove('current-quest');
+                        }
+                    }
+                });
+
+                // Set Continue Learning button to first uncompleted quest
+                const continueBtn = document.getElementById(`${subject}-continue-btn`);
+                if (continueBtn) {
+                    const continueLink = getContinueQuestLink(subject, progress);
+                    continueBtn.href = continueLink;
+                    continueBtn.onclick = null;
+                    continueBtn.style.pointerEvents = 'auto';
+                    continueBtn.style.opacity = '1';
+                }
+            });
+
+            // Update overall stats
+            document.getElementById('totalXP').textContent = progress.totalXP;
+            document.getElementById('totalLevel').textContent = progress.level;
+
+            const totalCompleted =
+                QuestSystem.getSubjectProgress('physics', progress).completed +
+                QuestSystem.getSubjectProgress('chemistry', progress).completed +
+                QuestSystem.getSubjectProgress('mathematics', progress).completed;
+            document.getElementById('totalCompleted').textContent = totalCompleted;
+
+            // XP progress to next level
+            const xpInCurrentLevel = progress.totalXP % QuestSystem.XP_PER_LEVEL;
+            const xpProgress = (xpInCurrentLevel / QuestSystem.XP_PER_LEVEL) * 100;
+            document.getElementById('xpProgressBar').style.width = `${xpProgress}%`;
+            document.getElementById('xpToNext').textContent = `${xpInCurrentLevel} / ${QuestSystem.XP_PER_LEVEL}`;
+            
+            // Update streak
+            const streak = QuestSystem.updateStreak(progress);
+            updateStreakDisplay(streak);
+            
+            // Update bookmarks
+            updateBookmarksDisplay(progress);
+            
+            // Update achievements
+            updateAchievementsDisplay(progress);
+        });
+        
+        // Update streak display
+        function updateStreakDisplay(streak) {
+            let streakContainer = document.getElementById('streakContainer');
+            if (!streakContainer && document.querySelector('.hero')) {
+                streakContainer = document.createElement('div');
+                streakContainer.id = 'streakContainer';
+                streakContainer.className = 'streak-badge';
+                streakContainer.style.marginLeft = '20px';
+                streakContainer.innerHTML = `🔥 ${streak.current} day${streak.current !== 1 ? 's' : ''}`;
+                document.querySelector('.quest-meta').appendChild(streakContainer);
+            } else if (streakContainer) {
+                streakContainer.innerHTML = `🔥 ${streak.current} day${streak.current !== 1 ? 's' : ''}`;
+            }
+        }
+        
+        // Update bookmarks display
+        function updateBookmarksDisplay(progress) {
+            const bookmarksSection = document.getElementById('bookmarksSection');
+            const bookmarksList = document.getElementById('bookmarksList');
+            const bookmarkedQuests = QuestSystem.getBookmarkedQuests(progress);
+            
+            if (bookmarkedQuests.length === 0) {
+                bookmarksSection.style.display = 'none';
+                return;
+            }
+            
+            bookmarksSection.style.display = 'block';
+            bookmarksList.innerHTML = '';
+            
+            bookmarkedQuests.forEach(questId => {
+                const questInfo = getQuestInfoFromId(questId);
+                if (questInfo) {
+                    const item = document.createElement('a');
+                    item.className = 'bookmark-item';
+                    item.href = questInfo.link;
+                    item.innerHTML = `
+                        <span>${questInfo.icon}</span>
+                        <span>${questInfo.title}</span>
+                        <button class="remove-btn" onclick="event.preventDefault(); removeBookmark('${questId}')" aria-label="Remove bookmark">✕</button>
+                    `;
+                    bookmarksList.appendChild(item);
+                }
+            });
+        }
+        
+        function getQuestInfoFromId(questId) {
+            const subjects = ['physics', 'chemistry', 'mathematics'];
+            for (const subject of subjects) {
+                const subjectData = QuestSystem.QUEST_DATA[subject];
+                for (let i = 0; i < subjectData.bigQuests.length; i++) {
+                    const bigQuest = subjectData.bigQuests[i];
+                    for (const sq of bigQuest.sideQuests) {
+                        if (sq.id === questId) {
+                            const questLinks = {
+                                physics: 'physics/quest-1-measurements.html',
+                                chemistry: 'chemistry/quest-1-atomic.html',
+                                mathematics: 'mathematics/quest-1-algebra.html'
+                            };
+                            return {
+                                icon: subjectData.icon,
+                                title: `${bigQuest.title}: ${sq.title}`,
+                                link: questLinks[subject] + '#sq-' + sq.id
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+        
+window.removeBookmark = function(questId) {
+    const progress = QuestSystem.getProgress();
+    QuestSystem.toggleBookmark(questId, progress);
+    updateBookmarksDisplay(progress);
+};
+
+function updateAchievementsDisplay(progress) {
+    const achievements = QuestSystem.getAchievements(progress);
+    const achievementsSection = document.getElementById('achievementsSection');
+    const achievementsList = document.getElementById('achievementsList');
+    
+    if (!achievementsSection || !achievementsList) return;
+    
+    const unlockedCount = achievements.filter(a => a.unlocked).length;
+    const totalCount = achievements.length;
+    
+    if (unlockedCount === 0) {
+        achievementsSection.style.display = 'none';
+        return;
+    }
+    
+    achievementsSection.style.display = 'block';
+    achievementsList.innerHTML = '';
+    
+    achievements.forEach(achievement => {
+        const badge = document.createElement('div');
+        badge.className = `achievement-badge ${achievement.unlocked ? '' : 'locked'}`;
+        badge.innerHTML = `
+            <span>${achievement.icon}</span>
+            <span>${achievement.name}</span>
+        `;
+        achievementsList.appendChild(badge);
+    });
+}
+    </script>
+</body>
+</html>

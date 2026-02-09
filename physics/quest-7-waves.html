@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 7: Waves - Physics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header physics">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 7: Waves & Oscillations</h1>
+        <p style="color: #666; margin-top: 8px;">Understanding wave motion and properties</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring physics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
+            </div>
+            <div>
+                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+            </div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-6-circular.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-8-electricity.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-wave-basics" data-big-quest="6" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-wave-basics')">
+                <div class="quest-icon">🌊</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 7.1: Wave Properties</h3>
+                    <p>Understanding wave characteristics</p>
+                </div>
+                <div class="side-quest-status" id="sq-wave-basics-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Wave Fundamentals</h4>
+                    <p><strong>Transverse:</strong> Oscillation perpendicular to wave direction (light, waves on string)</p>
+                    <p><strong>Longitudinal:</strong> Oscillation parallel to wave direction (sound)</p>
+                    <p><strong>Key quantities:</strong> λ = wavelength, f = frequency, T = period, v = fλ</p>
+                </div>
+                <div class="formula-box">
+                    <p class="formula-name">Wave Equation</p>
+                    <p>v = f × λ (speed = frequency × wavelength)</p>
+                    <p>f = 1/T (frequency = 1/period)</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'wave-basics', 'sq-wave-basics')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-superposition" data-big-quest="6" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-superposition')">
+                <div class="quest-icon">📐</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 7.2: Superposition</h3>
+                    <p>Interference and standing waves</p>
+                </div>
+                <div class="side-quest-status" id="sq-superposition-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Superposition Principle</h4>
+                    <p>When two waves meet, the resultant displacement is the sum of individual displacements.</p>
+                    <p><strong>Constructive interference:</strong> Waves in phase → larger amplitude</p>
+                    <p><strong>Destructive interference:</strong> Waves out of phase → smaller amplitude</p>
+                </div>
+                <div class="remember-box">
+                    <h4>⚠️ Standing Waves</h4>
+                    <p>Standing waves form when waves reflect and interfere with incident waves. They only occur at specific frequencies (harmonics).</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'superposition', 'sq-superposition')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-waves-quiz" data-big-quest="6" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-waves-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 7.3: Quiz Challenge</h3>
+                    <p>Test your wave knowledge</p>
+                </div>
+                <div class="side-quest-status" id="sq-waves-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container">
+                    <div class="mcq-question"><strong>Question 1:</strong> Sound waves are:</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) Transverse</li>
+                        <li class="mcq-option" data-answer="b">B) Longitudinal</li>
+                        <li class="mcq-option" data-answer="c">C) Both</li>
+                        <li class="mcq-option" data-answer="d">D) Neither</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: B) Longitudinal</strong><br>Sound waves cause air molecules to oscillate parallel to wave direction.</div>
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'waves-quiz', 'sq-waves-quiz')">✅ Complete Quiz (+10 XP)</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-6-circular.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-8-electricity.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const physicsData = QuestSystem.QUEST_DATA.physics;
+            const bigQuest = physicsData.bigQuests[6];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('physics', 6, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.physics.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+            document.getElementById('subjectProgress').textContent = percent + '% Complete';
+            if (completed === bigQuest.sideQuests.length) {
+            }
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                document.getElementById('currentLevel').textContent = progress.level;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            document.getElementById('quizScore').textContent = `Score: ${score}/1`;
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

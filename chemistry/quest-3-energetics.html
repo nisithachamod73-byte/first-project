@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 3: Energetics - Chemistry Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>:root { --chemistry-primary: #c62828; }</style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header chemistry">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 3: Energetics & Kinetics</h1>
+        <p style="color: #666; margin-top: 8px;">Heat changes and reaction rates</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring chemistry" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress">0% Complete</div></div>
+            </div>
+            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span></div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-2-bonding.html" class="nav-btn" >← Prev</a>
+            <a href="quest-4-equilibrium.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-enthalpy" data-big-quest="2" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-enthalpy')">
+                <div class="quest-icon">🔥</div>
+                <div class="side-quest-info"><h3>Side Quest 3.1: Enthalpy</h3><p>Heat changes in reactions</p></div>
+                <div class="side-quest-status" id="sq-enthalpy-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Germain Hess (1840)</strong> - Developed Hess's Law, stating enthalpy change is path-independent.</p>
+                    <p><strong>James Prescott Joule (1840s)</strong> - Established mechanical equivalent of heat.</p>
+                    <p><strong>Josiah Willard Gibbs (1870s)</strong> - Developed chemical thermodynamics and free energy concept.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Enthalpy Change (ΔH)</h4>
+                    <p><strong>Exothermic:</strong> Heat released, ΔH < 0</p>
+                    <p><strong>Endothermic:</strong> Heat absorbed, ΔH > 0</p>
+                    <p><strong>Formula:</strong> ΔH = H_products - H_reactants</p>
+                </div>
+                <div class="formula-box"><p class="formula-name">Bond Energies</p><p>ΔH = Σ(bond energies broken) - Σ(bond energies formed)</p></div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Fuel Combustion</strong> - Exothermic reactions power engines and heating systems
+                    </div>
+                    <div class="application-example">
+                        <strong>Cold Packs</strong> - Endothermic reactions absorb heat for medical use
+                    </div>
+                    <div class="application-example">
+                        <strong>Food Digestion</strong> - Endothermic processes break down complex molecules
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> Calculate ΔH for the reaction: CH₄ + 2O₂ → CO₂ + 2H₂O using bond energies.</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> ΔH = Σ(bonds broken) - Σ(bonds formed)</p>
+                        <p><strong>Bonds broken:</strong> 4 C-H (413 kJ/mol each) + 2 O=O (498 kJ/mol each) = 2648 kJ/mol</p>
+                        <p><strong>Bonds formed:</strong> 2 C=O (799 kJ/mol each) + 4 O-H (463 kJ/mol each) = 3450 kJ/mol</p>
+                        <p><strong>ΔH =</strong> 2648 - 3450 = -802 kJ/mol (exothermic)</p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Confusing ΔH sign with heat flow direction</p>
+                    <p><strong>Tip:</strong> ΔH < 0 = exothermic (heat released), ΔH > 0 = endothermic (heat absorbed)</p>
+                    <p><strong>Mistake:</strong> Forgetting to multiply bond energies by bond count</p>
+                    <p><strong>Tip:</strong> Count bonds carefully - CH₄ has 4 C-H bonds, not 1</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'enthalpy', 'sq-enthalpy')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-hess" data-big-quest="2" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-hess')">
+                <div class="quest-icon">📐</div>
+                <div class="side-quest-info"><h3>Side Quest 3.2: Hess's Law</h3><p>Calculating enthalpy from cycles</p></div>
+                <div class="side-quest-status" id="sq-hess-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Germain Hess (1840)</strong> - Russian chemist who discovered Hess's Law while studying thermochemistry.</p>
+                    <p><strong>Pierre Duhem (1880s)</strong> - Extended thermodynamic principles to chemical systems.</p>
+                    <p><strong>Modern Applications</strong> - Used in industrial process optimization and energy calculations.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Hess's Law</h4>
+                    <p>Total enthalpy change is independent of route taken.</p>
+                    <p><strong>Rules:</strong> 1) Keep equations as is, 2) Reverse = change sign, 3) Multiply = multiply ΔH</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Industrial Synthesis</strong> - Calculate energy requirements for chemical manufacturing
+                    </div>
+                    <div class="application-example">
+                        <strong>Fuel Efficiency</strong> - Optimize combustion processes using enthalpy cycles
+                    </div>
+                    <div class="application-example">
+                        <strong>Environmental Science</strong> - Assess energy costs of pollution control methods
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> Use Hess's Law to find ΔH for: C + O₂ → CO₂ given:</p>
+                    <p>C + ½O₂ → CO, ΔH = -110 kJ/mol</p>
+                    <p>CO + ½O₂ → CO₂, ΔH = -283 kJ/mol</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> Add both equations:</p>
+                        <p>C + ½O₂ → CO (-110 kJ/mol)</p>
+                        <p>CO + ½O₂ → CO₂ (-283 kJ/mol)</p>
+                        <p>Total: C + O₂ → CO₂ (-110 - 283 = -393 kJ/mol)</p>
+                        <p><strong>Answer:</strong> ΔH = -393 kJ/mol</p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Forgetting to reverse sign when flipping equations</p>
+                    <p><strong>Tip:</strong> Always check direction - products must match target equation</p>
+                    <p><strong>Mistake:</strong> Adding ΔH values incorrectly when multiplying equations</p>
+                    <p><strong>Tip:</strong> Multiply ΔH by same factor as equation coefficients</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'hess-law', 'sq-hess')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-kinetics" data-big-quest="2" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-kinetics')">
+                <div class="quest-icon">⚡</div>
+                <div class="side-quest-info"><h3>Side Quest 3.3: Reaction Rates</h3><p>Factors affecting rate</p></div>
+                <div class="side-quest-status" id="sq-kinetics-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Svante Arrhenius (1889)</strong> - Developed Arrhenius equation relating temperature to reaction rate.</p>
+                    <p><strong>Jacobus van 't Hoff (1884)</strong> - Pioneered chemical kinetics and rate laws.</p>
+                    <p><strong>Max Bodenstein (1890s)</strong> - Studied chain reactions and reaction mechanisms.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Factors Affecting Rate</h4>
+                    <p>1) Temperature (higher = faster)</p>
+                    <p>2) Concentration (higher = faster)</p>
+                    <p>3) Catalysts (lower activation energy)</p>
+                    <p>4) Surface area (larger = faster)</p>
+                </div>
+                <div class="formula-box"><p class="formula-name">Rate = k[A]^m[B]^n</p><p>Rate = -d[A]/dt = k[A]^x</p></div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Food Preservation</strong> - Lower temperatures slow spoilage reactions
+                    </div>
+                    <div class="application-example">
+                        <strong>Catalytic Converters</strong> - Reduce activation energy for pollution control
+                    </div>
+                    <div class="application-example">
+                        <strong>Pharmaceuticals</strong> - Control reaction rates for drug synthesis
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> If a reaction rate doubles when temperature increases from 25°C to 35°C, what is the activation energy?</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> Use Arrhenius equation: k₂/k₁ = e^(-Ea/R)(1/T₂ - 1/T₁)</p>
+                        <p>2 = e^(-Ea/8.314)(1/308 - 1/298)</p>
+                        <p>ln(2) = (-Ea/8.314)(-0.00107)</p>
+                        <p>0.693 = Ea × 0.0001287</p>
+                        <p><strong>Ea ≈ 5386 J/mol</strong></p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Thinking catalysts affect equilibrium position</p>
+                    <p><strong>Tip:</strong> Catalysts only affect rate, not equilibrium constant</p>
+                    <p><strong>Mistake:</strong> Confusing rate constant (k) with rate</p>
+                    <p><strong>Tip:</strong> Rate = k[concentration], k depends on temperature</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'kinetics', 'sq-kinetics')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-energetics-quiz" data-big-quest="2" data-side-quest="3">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-energetics-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info"><h3>Side Quest 3.4: Quiz</h3><p>Test your knowledge</p></div>
+                <div class="side-quest-status" id="sq-energetics-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Quiz Performance Feedback System -->
+                <div class="quiz-intro">
+                    <h4>🔥 Energetics Concepts Quiz</h4>
+                    <p>Test your understanding of enthalpy, Hess's Law, and reaction kinetics.</p>
+                </div>
+                
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary);">
+                    <div class="mcq-question"><strong>Question 1:</strong> Burning fuel is:</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) Endothermic</li>
+                        <li class="mcq-option" data-answer="b">B) Exothermic</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: B) Exothermic</strong><br>Burning releases heat, so ΔH < 0.</div>
+                </div>
+                
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary); margin-top: 20px;">
+                    <div class="mcq-question"><strong>Question 2:</strong> Hess's Law states that enthalpy change:</div>
+                    <ul class="mcq-options" data-question="q2">
+                        <li class="mcq-option" data-answer="a">A) Depends on reaction path</li>
+                        <li class="mcq-option" data-answer="b">B) Is independent of reaction path</li>
+                        <li class="mcq-option" data-answer="c">C) Always equals zero</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q2-explanation"><strong>Answer: B) Is independent of reaction path</strong><br>Hess's Law shows enthalpy change depends only on initial and final states.</div>
+                </div>
+                
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary); margin-top: 20px;">
+                    <div class="mcq-question"><strong>Question 3:</strong> Which factor does NOT affect reaction rate?</div>
+                    <ul class="mcq-options" data-question="q3">
+                        <li class="mcq-option" data-answer="a">A) Temperature</li>
+                        <li class="mcq-option" data-answer="b">B) Pressure</li>
+                        <li class="mcq-option" data-answer="c">C) Catalyst</li>
+                        <li class="mcq-option" data-answer="d">D) Time</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q3-explanation"><strong>Answer: D) Time</strong><br>Time measures the rate but doesn't affect it.</div>
+                </div>
+                
+                <div style="text-align: center; margin: 20px 0;">
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                    <div class="performance-feedback" id="performanceFeedback" style="margin-top: 15px;"></div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'energetics-quiz', 'sq-energetics-quiz')">✅ Complete Quiz (+10 XP)</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-2-bonding.html" class="nav-btn" >← Prev</a>
+            <a href="quest-4-equilibrium.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const chemData = QuestSystem.QUEST_DATA.chemistry;
+            const bigQuest = chemData.bigQuests[2];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('chemistry', 2, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.chemistry.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#c62828';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#1976d2';
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b', q2: 'b', q3: 'd' };
+            let score = 0;
+            const totalQuestions = Object.keys(correct).length;
+            
+            // Add click handlers for MCQ options
+            document.querySelectorAll('.mcq-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.mcq-options').dataset.question;
+                    document.querySelectorAll(`[data-question="${question}"] .mcq-option`).forEach(o => {
+                        o.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Check answers
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            
+            // Performance feedback
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const scoreElement = document.getElementById('quizScore');
+            const feedbackElement = document.getElementById('performanceFeedback');
+            
+            scoreElement.textContent = `Score: ${score}/${totalQuestions} (${percentage}%)`;
+            
+            // Color-coded performance feedback
+            if (percentage === 100) {
+                scoreElement.style.color = '#4caf50';
+                feedbackElement.innerHTML = '<span style="color: #4caf50;">🎉 Excellent! Perfect score!</span>';
+            } else if (percentage >= 70) {
+                scoreElement.style.color = '#2196f3';
+                feedbackElement.innerHTML = '<span style="color: #2196f3;">👍 Good job! Review the explanations to improve.</span>';
+            } else if (percentage >= 50) {
+                scoreElement.style.color = '#ff9800';
+                feedbackElement.innerHTML = '<span style="color: #ff9800;">📚 Keep practicing! Study the concepts again.</span>';
+            } else {
+                scoreElement.style.color = '#f44336';
+                feedbackElement.innerHTML = '<span style="color: #f44336;">📖 Needs improvement. Review the side quests carefully.</span>';
+            }
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

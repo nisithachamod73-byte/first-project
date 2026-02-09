@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 8: Statistics - Mathematics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>:root { --math-primary: #1a5f7a; }</style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header mathematics">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 8: Statistics & Probability</h1>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring mathematics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress">0% Complete</div></div>
+            </div>
+            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge">📊 Level <span id="currentLevel">1</span></span></div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-7-complex.html" class="nav-btn" >← Prev</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-probability" data-big-quest="7" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-probability')">
+                <div class="quest-icon">🎲</div>
+                <div class="side-quest-info"><h3>Side Quest 8.1: Probability</h3><p>Basic probability rules</p></div>
+                <div class="side-quest-status" id="sq-probability-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="formula-box">
+                    <p class="formula-name">Probability Rules</p>
+                    <p><strong>P(A∪B) = P(A) + P(B) - P(A∩B)</strong></p>
+                    <p><strong>P(A|B) = P(A∩B)/P(B)</strong></p>
+                    <p><strong>Binomial:</strong> P(X=r) = nCr pʳ(1-p)ⁿ⁻ʳ</p>
+                    <p><strong>Independent:</strong> P(A∩B) = P(A)P(B)</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('mathematics', 'probability', 'sq-probability')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-distributions" data-big-quest="7" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-distributions')">
+                <div class="quest-icon">📊</div>
+                <div class="side-quest-info"><h3>Side Quest 8.2: Distributions</h3><p>Binomial, Normal</p></div>
+                <div class="side-quest-status" id="sq-distributions-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left-color: #1a5f7a;">
+                    <h4>📚 Distributions</h4>
+                    <p><strong>Binomial:</strong> n trials, success probability p</p>
+                    <p><strong>Mean:</strong> np | Variance: np(1-p)</p>
+                    <p><strong>Normal:</strong> Bell curve, mean μ, SD σ</p>
+                    <p><strong>Standardize:</strong> z = (x-μ)/σ</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('mathematics', 'distributions', 'sq-distributions')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-stats-quiz" data-big-quest="7" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-stats-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info"><h3>Side Quest 8.3: Quiz</h3><p>Test knowledge</p></div>
+                <div class="side-quest-status" id="sq-stats-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container" style="border-left-color: var(--math-primary);">
+                    <div class="mcq-question"><strong>Q:</strong> P(A∪B) for mutually exclusive events?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) P(A) + P(B)</li>
+                        <li class="mcq-option" data-answer="b">B) P(A)P(B)</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>A: A</strong> If A and B can't happen together, P(A∪B) = P(A) + P(B)</div>
+                    <button class="mcq-check-btn"  onclick="checkQuiz()">Check</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('mathematics', 'stats-quiz', 'sq-stats-quiz')">✅ Complete Quiz</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-7-complex.html" class="nav-btn" >← Prev</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const mathData = QuestSystem.QUEST_DATA.mathematics;
+            const bigQuest = mathData.bigQuests[7];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('mathematics', 7, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.mathematics.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'a' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            document.getElementById('quizScore').textContent = `Score: ${score}/1`;
+        }
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

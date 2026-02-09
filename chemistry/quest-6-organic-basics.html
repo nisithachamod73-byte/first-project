@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 6: Organic Basics - Chemistry Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>:root { --chemistry-primary: #c62828; }</style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header chemistry">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 6: Organic Chemistry Basics</h1>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring chemistry" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress">0% Complete</div></div>
+            </div>
+            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge">📊 Level <span id="currentLevel">1</span></span></div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-5-electro.html" class="nav-btn" >← Prev</a>
+            <a href="quest-7-organic-advanced.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-hydrocarbons" data-big-quest="5" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-hydrocarbons')">
+                <div class="quest-icon">🧪</div>
+                <div class="side-quest-info"><h3>Side Quest 6.1: Hydrocarbons</h3><p>Alkanes, alkenes, alkynes</p></div>
+                <div class="side-quest-status" id="sq-hydrocarbons-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Friedrich Wöhler (1828)</strong> - Synthesized urea from inorganic compounds, challenging vitalism.</p>
+                    <p><strong>August Kekulé (1858)</strong> - Developed structural theory and carbon tetravalency.</p>
+                    <p><strong>Jacobus van 't Hoff (1874)</strong> - Proposed tetrahedral carbon atom model.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Hydrocarbons</h4>
+                    <p><strong>Alkanes:</strong> CₙH₂ₙ₊₂ (single bonds only)</p>
+                    <p><strong>Alkenes:</strong> CₙH₂ₙ (at least one C=C)</p>
+                    <p><strong>Alkynes:</strong> CₙH₂ₙ₋₂ (at least one C≡C)</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Petroleum Industry</strong> - Hydrocarbons are the basis of fuels and plastics
+                    </div>
+                    <div class="application-example">
+                        <strong>Pharmaceuticals</strong> - Many drugs are based on hydrocarbon structures
+                    </div>
+                    <div class="application-example">
+                        <strong>Materials Science</strong> - Polymers and synthetic materials from hydrocarbons
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> Name and classify the compound: CH₃-CH₂-CH=CH₂</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> </p>
+                        <p><strong>Name:</strong> But-1-ene</p>
+                        <p><strong>Classification:</strong> Alkene (contains C=C double bond)</p>
+                        <p><strong>Structure:</strong> 4 carbon chain with double bond between C1 and C2</p>
+                        <p><strong>Molecular formula:</strong> C₄H₈</p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Confusing alkane, alkene, and alkyne formulas</p>
+                    <p><strong>Tip:</strong> Alkane: CₙH₂ₙ₊₂, Alkene: CₙH₂ₙ, Alkyne: CₙH₂ₙ₋₂</p>
+                    <p><strong>Mistake:</strong> Forgetting to number carbon chains correctly</p>
+                    <p><strong>Tip:</strong> Number from end closest to functional group/double bond</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'hydrocarbons', 'sq-hydrocarbons')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-functional-groups" data-big-quest="5" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-functional-groups')">
+                <div class="quest-icon">🔬</div>
+                <div class="side-quest-info"><h3>Side Quest 6.2: Functional Groups</h3><p>OH, carbonyl, carboxyl</p></div>
+                <div class="side-quest-status" id="sq-functional-groups-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Functional Groups</h4>
+                    <p><strong>Alcohol:</strong> -OH (e.g., ethanol)</p>
+                    <p><strong>Carbonyl:</strong> C=O (aldehydes/ketones)</p>
+                    <p><strong>Carboxyl:</strong> -COOH (acids)</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'functional-groups', 'sq-functional-groups')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-organic-quiz" data-big-quest="5" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-organic-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info"><h3>Side Quest 6.3: Quiz</h3><p>Test knowledge</p></div>
+                <div class="side-quest-status" id="sq-organic-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary);">
+                    <div class="mcq-question"><strong>Q:</strong> Which is an alkane?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) C₂H₄</li>
+                        <li class="mcq-option" data-answer="b">B) C₂H₆</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>A: B</strong> C₂H₆ (ethane) is an alkane.</div>
+                    <button class="mcq-check-btn"  onclick="checkQuiz()">Check</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'organic-quiz', 'sq-organic-quiz')">✅ Complete Quiz</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-5-electro.html" class="nav-btn" >← Prev</a>
+            <a href="quest-7-organic-advanced.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const chemData = QuestSystem.QUEST_DATA.chemistry;
+            const bigQuest = chemData.bigQuests[5];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('chemistry', 5, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.chemistry.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'b' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            document.getElementById('quizScore').textContent = `Score: ${score}/1`;
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

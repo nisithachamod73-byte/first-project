@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 1: Atomic Structure - Chemistry Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        :root { --chemistry-primary: #c62828; --chemistry-secondary: #d32f2f; }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <header class="quest-header chemistry">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 1: Atomic Structure</h1>
+        <p style="color: #666; margin-top: 8px;">Understanding atoms and periodicity</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring chemistry" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
+            </div>
+            <div>
+                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+            </div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back to Home</a>
+            <a href="quest-2-bonding.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-atomic-models" data-big-quest="0" data-side-quest="0">
+             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-atomic-models')">
+                <div class="quest-icon">⚛️</div>
+                <div class="side-quest-info"><h3>Side Quest 1.1: Atomic Models</h3><p>From Dalton to Bohr</p></div>
+                <div class="side-quest-status" id="sq-atomic-models-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: The Evolution of Atomic Theory</h4>
+                    <p><strong>John Dalton (1766-1844):</strong> Proposed atomic theory based on chemical reactions and ratios.</p>
+                    <p><strong>J.J. Thomson (1856-1940):</strong> Discovered electron using cathode ray tubes.</p>
+                    <p><strong>Ernest Rutherford (1871-1937):</strong> Gold foil experiment revealed atomic nucleus.</p>
+                    <p><strong>Niels Bohr (1885-1962):</strong> Developed quantum model with quantized energy levels.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Atomic Models</h4>
+                    <p><strong>Dalton:</strong> Atoms as solid spheres</p>
+                    <p><strong>Thomson:</strong> "Plum pudding" model with electrons</p>
+                    <p><strong>Rutherford:</strong> Nuclear model with nucleus</p>
+                    <p><strong>Bohr:</strong> Quantized energy levels</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>⚛️ Nuclear Energy:</strong> Understanding atomic structure enables nuclear power generation
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🔬 Medical Imaging:</strong> PET scans use positron-emitting isotopes based on atomic principles
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>💡 Electronics:</strong> Semiconductor technology relies on understanding electron behavior
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <p class="formula-name">Bohr's Energy Levels</p>
+                    <p>E_n = -13.6/n² eV (hydrogen)</p>
+                    <p>E = hf for photon emission/absorption</p>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Thinking electrons orbit like planets
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Electrons exist in probability clouds, not fixed orbits!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Confusing atomic number and mass number
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Atomic number = protons, Mass number = protons + neutrons</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> Calculate the energy of a photon emitted when an electron transitions from n=3 to n=1 in hydrogen.</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            E₃ = -13.6/3² = -1.51 eV<br>
+                            E₁ = -13.6/1² = -13.6 eV<br>
+                            ΔE = E₃ - E₁ = -1.51 - (-13.6) = <strong>12.09 eV</strong><br>
+                            <em>Hint: Use E_n = -13.6/n² formula!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'atomic-models', 'sq-atomic-models')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-periodicity" data-big-quest="0" data-side-quest="1">
+             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-periodicity')">
+                <div class="quest-icon">📊</div>
+                <div class="side-quest-info"><h3>Side Quest 1.2: Periodic Trends</h3><p>Properties across periods and groups</p></div>
+                <div class="side-quest-status" id="sq-periodicity-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>📜 Historical Context: Mendeleev's Periodic Table</h4>
+                    <p><strong>Dmitri Mendeleev (1834-1907):</strong> Created the first periodic table in 1869, predicting properties of missing elements.</p>
+                    <p><strong>Henry Moseley (1887-1915):</strong> Organized elements by atomic number instead of atomic mass.</p>
+                    <p><strong>Glenn Seaborg (1912-1999):</strong> Discovered transuranium elements and restructured the table.</p>
+                </div>
+                
+                <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
+                    <h4>📚 Key Periodic Trends</h4>
+                    <p><strong>Atomic radius:</strong> Decreases across period, increases down group</p>
+                    <p><strong>Ionization energy:</strong> Increases across period, decreases down group</p>
+                    <p><strong>Electronegativity:</strong> Increases across period, decreases down group</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🔋 Battery Technology:</strong> Lithium's position in the periodic table makes it ideal for batteries
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>💊 Pharmaceuticals:</strong> Understanding element properties helps design effective drugs
+                    </div>
+                    <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
+                        <strong>🏭 Industrial Catalysts:</strong> Transition metals are used as catalysts due to their properties
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Thinking atomic radius increases across a period
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Atomic radius DECREASES across period due to increased nuclear charge!</div>
+                    </div>
+                    <div class="mistake-item" style="margin: 8px 0;">
+                        <strong>Mistake:</strong> Confusing ionization energy trends
+                        <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Ionization energy INCREASES across period as atoms hold electrons tighter</div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
+                    <h4>💪 Practice Exercise</h4>
+                    <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>Problem:</strong> Arrange these elements in order of increasing atomic radius: Na, Mg, Al, Si.</p>
+                        <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
+                        <div class="solution" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 8px;">
+                            <strong>Solution:</strong><br>
+                            All elements are in Period 3.<br>
+                            Atomic radius DECREASES across period due to increasing nuclear charge.<br>
+                            Order: <strong>Na > Mg > Al > Si</strong><br>
+                            <em>Hint: Remember radius decreases across period!</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'periodicity', 'sq-periodicity')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-atomic-quiz" data-big-quest="0" data-side-quest="2">
+             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-atomic-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info"><h3>Side Quest 1.3: Quiz Challenge</h3><p>Test your atomic knowledge</p></div>
+                <div class="side-quest-status" id="sq-atomic-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container" style="border-left-color: var(--chemistry-primary);">
+                    <h3 style="margin-bottom: 15px;">🎯 Atomic Structure Quiz</h3>
+                    
+                    <div class="mcq-question"><strong>Question 1:</strong> Which particle has no charge?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) Proton</li>
+                        <li class="mcq-option" data-answer="b">B) Electron</li>
+                        <li class="mcq-option" data-answer="c">C) Neutron</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: C) Neutron</strong><br>Neutrons are neutral; protons (+), electrons (-).</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 2:</strong> Who discovered the nucleus using gold foil experiments?</div>
+                    <ul class="mcq-options" data-question="q2">
+                        <li class="mcq-option" data-answer="a">A) Dalton</li>
+                        <li class="mcq-option" data-answer="b">B) Thomson</li>
+                        <li class="mcq-option" data-answer="c">C) Rutherford</li>
+                        <li class="mcq-option" data-answer="d">D) Bohr</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q2-explanation"><strong>Answer: C) Rutherford</strong><br>Rutherford's gold foil experiment revealed the atomic nucleus.</div>
+                    
+                    <div class="mcq-question" style="margin-top: 20px;"><strong>Question 3:</strong> Which trend decreases across a period?</div>
+                    <ul class="mcq-options" data-question="q3">
+                        <li class="mcq-option" data-answer="a">A) Atomic radius</li>
+                        <li class="mcq-option" data-answer="b">B) Ionization energy</li>
+                        <li class="mcq-option" data-answer="c">C) Electronegativity</li>
+                        <li class="mcq-option" data-answer="d">D) All of the above</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q3-explanation"><strong>Answer: A) Atomic radius</strong><br>Atomic radius decreases across period due to increasing nuclear charge.</div>
+                    
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                
+                <!-- Quiz Performance Feedback -->
+                <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
+                    <h4>🎯 Performance Feedback</h4>
+                    <div id="feedbackContent"></div>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('chemistry', 'atomic-quiz', 'sq-atomic-quiz')">✅ Complete Quiz (+10 XP)</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back to Home</a>
+            <a href="quest-2-bonding.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const chemData = QuestSystem.QUEST_DATA.chemistry;
+            const bigQuest = chemData.bigQuests[0];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('chemistry', 0, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.chemistry.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+            document.getElementById('subjectProgress').textContent = percent + '% Complete';
+                nextBtn.disabled = false;
+            }
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        // Interactive practice solution toggle
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#c62828';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#1976d2';
+            }
+        }
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                document.getElementById('currentLevel').textContent = progress.level;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'c', q2: 'c', q3: 'a' };
+            let score = 0;
+            
+            // Initialize MCQ selection
+            document.querySelectorAll('.mcq-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const question = this.closest('.mcq-options').dataset.question;
+                    document.querySelectorAll(`[data-question="${question}"] .mcq-option`).forEach(o => {
+                        o.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            
+            const percentage = Math.round((score / 3) * 100);
+            document.getElementById('quizScore').textContent = `Score: ${score}/3 (${percentage}%)`;
+            
+            // Performance feedback
+            const feedback = document.getElementById('quizFeedback');
+            const feedbackContent = document.getElementById('feedbackContent');
+            feedback.style.display = 'block';
+            
+            if (percentage >= 80) {
+                feedback.style.background = 'linear-gradient(135deg, #e8f5e9, #c8e6c9)';
+                feedbackContent.innerHTML = '<strong>🎉 Excellent!</strong> You have mastered atomic structure. Ready to move to the next quest!';
+            } else if (percentage >= 60) {
+                feedback.style.background = 'linear-gradient(135deg, #fff3e0, #ffe0b2)';
+                feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
+            } else {
+                feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
+                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+            }
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

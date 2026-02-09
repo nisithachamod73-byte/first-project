@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 4: Differentiation - Mathematics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>:root { --math-primary: #1a5f7a; }</style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header mathematics">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 4: Differentiation</h1>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring mathematics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress">0% Complete</div></div>
+            </div>
+            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge">📊 Level <span id="currentLevel">1</span></span></div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-3-trigonometry.html" class="nav-btn" >← Prev</a>
+            <a href="quest-5-integration.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-derivatives" data-big-quest="3" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-derivatives')">
+                <div class="quest-icon">dy/dx</div>
+                <div class="side-quest-info"><h3>Side Quest 4.1: Basic Derivatives</h3><p>Derivative rules</p></div>
+                <div class="side-quest-status" id="sq-derivatives-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <!-- Historical Context -->
+                <div class="history-box">
+                    <h4>📜 Historical Context</h4>
+                    <p><strong>Isaac Newton (17th century)</strong> - Developed calculus independently, calling it "fluxions".</p>
+                    <p><strong>Gottfried Leibniz (17th century)</strong> - Independently developed calculus with modern notation (dy/dx).</p>
+                    <p><strong>Augustin-Louis Cauchy (19th century)</strong> - Rigorized calculus with formal definitions.</p>
+                </div>
+                
+                <div class="formula-box">
+                    <p class="formula-name">Derivative Rules</p>
+                    <p>d/dx(xⁿ) = nxⁿ⁻¹</p>
+                    <p>d/dx(eˣ) = eˣ</p>
+                    <p>d/dx(ln x) = 1/x</p>
+                    <p>d/dx(sin x) = cos x</p>
+                    <p>d/dx(cos x) = -sin x</p>
+                    <p>d/dx(uv) = u'v + uv' (product)</p>
+                </div>
+                
+                <!-- Real-World Applications -->
+                <div class="application-box">
+                    <h4>🌍 Real-World Applications</h4>
+                    <div class="application-example">
+                        <strong>Physics</strong> - Velocity and acceleration calculations
+                    </div>
+                    <div class="application-example">
+                        <strong>Economics</strong> - Marginal cost and revenue analysis
+                    </div>
+                    <div class="application-example">
+                        <strong>Engineering</strong> - Optimization of systems and structures
+                    </div>
+                </div>
+                
+                <!-- Interactive Practice -->
+                <div class="interactive-practice">
+                    <h4>💪 Practice Exercise</h4>
+                    <p><strong>Problem:</strong> Find the derivative of f(x) = 3x⁴ - 2x³ + 5x - 7</p>
+                    <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong> Apply power rule to each term:</p>
+                        <p>f'(x) = d/dx(3x⁴) - d/dx(2x³) + d/dx(5x) - d/dx(7)</p>
+                        <p>= 4×3x³ - 3×2x² + 5×1 - 0</p>
+                        <p>= 12x³ - 6x² + 5</p>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes & Tips -->
+                <div class="mistakes-box">
+                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <p><strong>Mistake:</strong> Forgetting the constant multiple rule</p>
+                    <p><strong>Tip:</strong> Derivative of k×f(x) = k×f'(x)</p>
+                    <p><strong>Mistake:</strong> Misapplying power rule to constants</p>
+                    <p><strong>Tip:</strong> Derivative of constant is 0</p>
+                </div>
+                
+                <button class="complete-btn" onclick="completeSideQuest('mathematics', 'derivatives', 'sq-derivatives')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-applications" data-big-quest="3" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-applications')">
+                <div class="quest-icon">📈</div>
+                <div class="side-quest-info"><h3>Side Quest 4.2: Applications</h3><p>Rates of change</p></div>
+                <div class="side-quest-status" id="sq-applications-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left-color: #1a5f7a;">
+                    <h4>📚 Applications of Differentiation</h4>
+                    <p><strong>Velocity:</strong> v = ds/dt</p>
+                    <p><strong>Acceleration:</strong> a = dv/dt = d²s/dt²</p>
+                    <p><strong>Tangent:</strong> gradient = f'(x)</p>
+                    <p><strong>Max/Min:</strong> f'(x) = 0 at critical points</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('mathematics', 'applications', 'sq-applications')">✅ Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-diff-quiz" data-big-quest="3" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-diff-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info"><h3>Side Quest 4.3: Quiz</h3><p>Test knowledge</p></div>
+                <div class="side-quest-status" id="sq-diff-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container" style="border-left-color: var(--math-primary);">
+                    <div class="mcq-question"><strong>Q:</strong> d/dx(x³) = ?</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) 3x²</li>
+                        <li class="mcq-option" data-answer="b">B) x⁴</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>A: A</strong> d/dx(x³) = 3x²</div>
+                    <button class="mcq-check-btn"  onclick="checkQuiz()">Check</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('mathematics', 'diff-quiz', 'sq-diff-quiz')">✅ Complete Quiz</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn" >← Back</a>
+            <a href="quest-3-trigonometry.html" class="nav-btn" >← Prev</a>
+            <a href="quest-5-integration.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const mathData = QuestSystem.QUEST_DATA.mathematics;
+            const bigQuest = mathData.bigQuests[3];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('mathematics', 3, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.mathematics.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'a' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            document.getElementById('quizScore').textContent = `Score: ${score}/1`;
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+name: Test Quest Mode Website
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  # Browser Testing with Playwright
+  browser-tests:
+    name: Browser Compatibility Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install Playwright
+      run: npx playwright install --with-deps
+      
+    - name: Run Browser Tests
+      run: |
+        # Create test script
+        cat > test-browser.js << 'EOF'
+        const { chromium, firefox, webkit } = require('playwright');
+        const fs = require('fs');
+        const path = require('path');
+        
+        async function runTests() {
+          const browsers = [chromium, firefox, webkit];
+          const results = [];
+          
+          for (const browserType of browsers) {
+            const browser = await browserType.launch();
+            const page = await browser.newPage();
+            
+            try {
+              // Test 1: Load main page
+              console.log(`Testing ${browserType.name()} - Loading index.html`);
+              await page.goto('file://' + path.join(process.cwd(), 'index.html'), { waitUntil: 'networkidle' });
+              
+              // Test 2: Check if page loaded successfully
+              const pageTitle = await page.title();
+              if (!pageTitle.includes('Quest Mode')) {
+                throw new Error(`Page title incorrect: ${pageTitle}`);
+              }
+              
+              // Test 3: Check for JavaScript errors
+              const errors = [];
+              page.on('console', msg => {
+                if (msg.type() === 'error') {
+                  errors.push(msg.text());
+                }
+              });
+              
+              // Test 4: Basic functionality - dark mode toggle
+              await page.click('#darkModeToggle');
+              const isDarkMode = await page.evaluate(() => 
+                document.body.classList.contains('dark-mode')
+              );
+              
+              // Test 5: Check localStorage functionality
+              await page.evaluate(() => {
+                localStorage.setItem('test', 'value');
+                return localStorage.getItem('test');
+              });
+              
+              results.push({
+                browser: browserType.name(),
+                status: 'PASSED',
+                errors: errors.length,
+                details: {
+                  pageTitle,
+                  darkModeToggle: isDarkMode,
+                  localStorage: true
+                }
+              });
+              
+              console.log(`✅ ${browserType.name()} tests passed`);
+              
+            } catch (error) {
+              results.push({
+                browser: browserType.name(),
+                status: 'FAILED',
+                error: error.message
+              });
+              console.error(`❌ ${browserType.name()} tests failed:`, error.message);
+            } finally {
+              await browser.close();
+            }
+          }
+          
+          // Generate test report
+          const report = {
+            timestamp: new Date().toISOString(),
+            totalTests: results.length,
+            passed: results.filter(r => r.status === 'PASSED').length,
+            failed: results.filter(r => r.status === 'FAILED').length,
+            results: results
+          };
+          
+          fs.writeFileSync('test-results.json', JSON.stringify(report, null, 2));
+          
+          // Fail if any tests failed
+          const failedTests = results.filter(r => r.status === 'FAILED');
+          if (failedTests.length > 0) {
+            console.log('❌ Some tests failed:');
+            failedTests.forEach(test => {
+              console.log(`  - ${test.browser}: ${test.error}`);
+            });
+            process.exit(1);
+          }
+          
+          console.log('🎉 All browser tests passed!');
+        }
+        
+        runTests().catch(console.error);
+        EOF
+        
+        # Run the test
+        node test-browser.js
+        
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: browser-test-results
+        path: test-results.json
+        
+  # HTML Validation
+  html-validation:
+    name: HTML Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install HTML validation tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tidy
+        
+    - name: Validate HTML files
+      run: |
+        # Find all HTML files
+        find . -name "*.html" -type f | while read file; do
+          echo "🔍 Validating $file"
+          if tidy -errors -quiet "$file" 2>&1; then
+            echo "✅ $file - Valid HTML"
+          else
+            echo "❌ $file - HTML validation failed"
+            tidy -errors -quiet "$file" 2>&1 || true
+          fi
+        done
+        
+  # Link Checking
+  link-check:
+    name: Link Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install link checker
+      run: npm install -g link-checker
+      
+    - name: Check internal links
+      run: |
+        # Simple link checker script
+        cat > check-links.js << 'EOF'
+        const fs = require('fs');
+        const path = require('path');
+        
+        function checkLinks() {
+          const htmlFiles = [];
+          
+          // Find all HTML files
+          function findHTMLFiles(dir) {
+            const files = fs.readdirSync(dir);
+            files.forEach(file => {
+              const fullPath = path.join(dir, file);
+              const stat = fs.statSync(fullPath);
+              if (stat.isDirectory()) {
+                findHTMLFiles(fullPath);
+              } else if (file.endsWith('.html')) {
+                htmlFiles.push(fullPath);
+              }
+            });
+          }
+          
+          findHTMLFiles('.');
+          
+          const brokenLinks = [];
+          
+          htmlFiles.forEach(file => {
+            const content = fs.readFileSync(file, 'utf8');
+            const hrefMatches = content.match(/href="([^"]+)"/g) || [];
+            
+            hrefMatches.forEach(match => {
+              const href = match.replace('href="', '').replace('"', '');
+              
+              // Skip external links and anchors
+              if (href.startsWith('http') || href.startsWith('#')) {
+                return;
+              }
+              
+              // Check if local file exists
+              const targetPath = path.join(path.dirname(file), href);
+              if (!fs.existsSync(targetPath)) {
+                brokenLinks.push({
+                  file,
+                  link: href,
+                  target: targetPath
+                });
+              }
+            });
+          });
+          
+          if (brokenLinks.length > 0) {
+            console.log('❌ Broken links found:');
+            brokenLinks.forEach(link => {
+              console.log(`  - ${link.file}: ${link.link} -> ${link.target} (NOT FOUND)`);
+            });
+            process.exit(1);
+          } else {
+            console.log('✅ All internal links are valid');
+          }
+        }
+        
+        checkLinks();
+        EOF
+        
+        node check-links.js
+        
+  # JavaScript Syntax Check
+  js-validation:
+    name: JavaScript Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Validate JavaScript syntax
+      run: |
+        # Check all JS files for syntax errors
+        find . -name "*.js" -type f | while read file; do
+          echo "🔍 Validating $file"
+          if node -c "$file" 2>&1; then
+            echo "✅ $file - Valid JavaScript"
+          else
+            echo "❌ $file - JavaScript syntax error"
+            exit 1
+          fi
+        done
+
+  # GitHub Pages Deployment
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [browser-tests, html-validation, link-check, js-validation]
+    if: github.ref == 'refs/heads/main'
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest 8: Electricity - Physics Quest Mode</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+        <header class="quest-header physics">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        <h1>🎯 Quest 8: Electricity & Magnetism</h1>
+        <p style="color: #666; margin-top: 8px;">Understanding electric circuits and fields</p>
+        <div class="quest-meta">
+            <div class="progress-ring-container">
+                <div class="progress-ring physics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
+                <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
+            </div>
+            <div>
+                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+            </div>
+        </div>
+    </header>
+    <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-7-waves.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-9-modern.html" class="nav-btn">Next Quest →</a>
+        </nav>
+        
+        <article class="side-quest unlocked" id="sq-electrostatics" data-big-quest="7" data-side-quest="0">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-electrostatics')">
+                <div class="quest-icon">⚡</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 8.1: Electrostatics</h3>
+                    <p>Electric charge and fields</p>
+                </div>
+                <div class="side-quest-status" id="sq-electrostatics-status">🔓</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Coulomb's Law</h4>
+                    <p>The force between two charges: F = kq₁q₂/r²</p>
+                    <p><strong>Electric field:</strong> E = F/q = kQ/r²</p>
+                    <p><strong>Electric potential:</strong> V = kQ/r</p>
+                </div>
+                <div class="remember-box"><h4>⚠️ Remember</h4><p>Like charges repel, opposite charges attract.</p></div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'electrostatics', 'sq-electrostatics')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-current" data-big-quest="7" data-side-quest="1">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-current')">
+                <div class="quest-icon">🔋</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 8.2: Current Electricity</h3>
+                    <p>Ohm's law and circuits</p>
+                </div>
+                <div class="side-quest-status" id="sq-current-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Ohm's Law & Power</h4>
+                    <p><strong>Ohm's Law:</strong> V = IR</p>
+                    <p><strong>Power:</strong> P = VI = I²R = V²/R</p>
+                    <p><strong>Resistance:</strong> R = ρL/A</p>
+                </div>
+                <div class="formula-box">
+                    <p class="formula-name">Series & Parallel</p>
+                    <p><strong>Series:</strong> R_eq = R₁ + R₂, I same, V adds</p>
+                    <p><strong>Parallel:</strong> 1/R_eq = 1/R₁ + 1/R₂, V same, I adds</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'current', 'sq-current')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-magnetism" data-big-quest="7" data-side-quest="2">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-magnetism')">
+                <div class="quest-icon">🧲</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 8.3: Magnetism</h3>
+                    <p>Magnetic fields and forces</p>
+                </div>
+                <div class="side-quest-status" id="sq-magnetism-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Magnetic Force</h4>
+                    <p><strong>On charge:</strong> F = qvB sin θ (right-hand rule)</p>
+                    <p><strong>On wire:</strong> F = BIL sin θ</p>
+                    <p><strong>Field around wire:</strong> B = μ₀I/2πr</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'magnetism', 'sq-magnetism')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-emi" data-big-quest="7" data-side-quest="3">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-emi')">
+                <div class="quest-icon">📡</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 8.4: Electromagnetic Induction</h3>
+                    <p>Faraday's law and Lenz's law</p>
+                </div>
+                <div class="side-quest-status" id="sq-emi-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="concept-box">
+                    <h4>📚 Faraday's Law</h4>
+                    <p><strong>EMF:</strong> ε = -dΦ_B/dt</p>
+                    <p><strong>Lenz's Law:</strong> Induced current opposes the change producing it</p>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'emi', 'sq-emi')">✅ Mark as Complete (+10 XP)</button>
+            </div>
+        </article>
+        
+        <article class="side-quest locked" id="sq-electricity-quiz" data-big-quest="7" data-side-quest="4">
+            <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-electricity-quiz')">
+                <div class="quest-icon">📝</div>
+                <div class="side-quest-info">
+                    <h3>Side Quest 8.5: Quiz Challenge</h3>
+                    <p>Test your electricity knowledge</p>
+                </div>
+                <div class="side-quest-status" id="sq-electricity-quiz-status">🔒</div>
+            </div>
+            <div class="side-quest-content">
+                <div class="mcq-container">
+                    <div class="mcq-question"><strong>Question 1:</strong> Ohm's law states:</div>
+                    <ul class="mcq-options" data-question="q1">
+                        <li class="mcq-option" data-answer="a">A) V = IR</li>
+                        <li class="mcq-option" data-answer="b">B) P = VI</li>
+                        <li class="mcq-option" data-answer="c">C) F = qvB</li>
+                        <li class="mcq-option" data-answer="d">D) ε = -dΦ/dt</li>
+                    </ul>
+                    <div class="mcq-explanation" id="q1-explanation"><strong>Answer: A) V = IR</strong><br>Ohm's law relates voltage, current, and resistance.</div>
+                    <button class="mcq-check-btn" onclick="checkQuiz()">Check Answers</button>
+                    <div class="mcq-score" id="quizScore"></div>
+                </div>
+                <button class="complete-btn" onclick="completeSideQuest('physics', 'electricity-quiz', 'sq-electricity-quiz')">✅ Complete Quiz (+10 XP)</button>
+            </div>
+        </article>
+        
+        <nav class="quest-nav">
+            <a href="../index.html" class="nav-btn">← Back to Home</a>
+            <a href="quest-7-waves.html" class="nav-btn">← Previous Quest</a>
+            <a href="quest-9-modern.html" class="nav-btn">Next Quest →</a>
+        </nav>
+    </main>
+        <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn?.querySelector('.theme-icon');
+            
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkMode = savedDarkMode === 'true' || (savedDarkMode === null && prefersDark);
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.textContent = '☀️';
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const isNowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isNowDark);
+                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                });
+            }
+        })();
+    </script>
+
+    <script src="../shared/game-elements.js"></script>
+    <script>
+        const QuestSystem = window.QuestSystem;
+        const progress = QuestSystem.getProgress();
+        document.getElementById('totalXP').textContent = progress.totalXP;
+        
+        // Initialize theme selector
+        QuestSystem.initThemeSelector();
+        document.getElementById('currentLevel').textContent = progress.level;
+        
+        function updateStatuses() {
+            const physicsData = QuestSystem.QUEST_DATA.physics;
+            const bigQuest = physicsData.bigQuests[7];
+            bigQuest.sideQuests.forEach((sq, index) => {
+                const el = document.getElementById('sq-' + sq.id);
+                if (el) {
+                    const status = QuestSystem.getStatusIcon('physics', 7, index, progress);
+                    el.dataset.status = status.status;
+                    el.className = 'side-quest ' + status.status;
+                    const statusEl = document.getElementById('sq-' + sq.id + '-status');
+                    if (statusEl) statusEl.textContent = status.icon;
+                }
+            });
+            let completed = bigQuest.sideQuests.filter(sq => progress.physics.completedSideQuests.includes(sq.id)).length;
+            const percent = Math.round((completed / bigQuest.sideQuests.length) * 100);
+            document.getElementById('questProgressRing').style.setProperty('--progress', percent + '%');
+            document.getElementById('subjectProgress').textContent = percent + '% Complete';
+            if (completed === bigQuest.sideQuests.length) {
+            }
+        }
+        
+        // toggleQuest function is now centralized in shared/game-elements.js
+        
+        function completeSideQuest(subject, sqId, elId) {
+            if (QuestSystem.completeSideQuest(subject, sqId, progress)) {
+                const el = document.getElementById(elId);
+                el.className = 'side-quest completed';
+                document.getElementById(elId.replace('sq-', 'sq-') + 'status').textContent = '✅';
+                document.getElementById('totalXP').textContent = progress.totalXP;
+                document.getElementById('currentLevel').textContent = progress.level;
+                const next = el.nextElementSibling;
+                if (next && next.classList.contains('side-quest')) {
+                    next.className = 'side-quest unlocked';
+                    next.dataset.status = 'unlocked';
+                    next.querySelector('.side-quest-status').textContent = '🔓';
+                }
+                updateStatuses();
+            }
+        }
+        
+        function checkQuiz() {
+            const correct = { q1: 'a' };
+            let score = 0;
+            for (let q in correct) {
+                const sel = document.querySelector(`[data-question="${q}"] .mcq-option.selected`);
+                document.querySelectorAll(`[data-question="${q}"] .mcq-option`).forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                    if (o.dataset.answer === correct[q]) o.classList.add('correct');
+                    else if (sel && o.dataset.answer === sel.dataset.answer) o.classList.add('incorrect');
+                });
+                if (sel && sel.dataset.answer === correct[q]) score++;
+                document.getElementById(q + '-explanation').classList.add('visible');
+            }
+            document.getElementById('quizScore').textContent = `Score: ${score}/1`;
+        }
+        
+        updateStatuses();
+    </script>
+
+    <script>
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const navBtns = document.querySelectorAll('.nav-btn[href]');
+                const currentFocus = document.activeElement;
+                let currentIndex = Array.from(navBtns).indexOf(currentFocus);
+                
+                if (currentIndex === -1) currentIndex = 0;
+                
+                if (e.key === 'ArrowRight' && currentIndex < navBtns.length - 1) {
+                    navBtns[currentIndex + 1].focus();
+                } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    navBtns[currentIndex - 1].focus();
+                }
+            }
+            
+            // Enter to click
+            if (e.key === 'Enter' && document.activeElement.classList.contains('nav-btn')) {
+                document.activeElement.click();
+            }
+            
+            // D key for dark mode
+            if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey) {
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>
