@@ -21,10 +21,9 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
         
     - name: Install Playwright
-      run: npx playwright install --with-deps
+      run: npm init -y && npx playwright install --with-deps
       
     - name: Run Browser Tests
       run: |
@@ -147,20 +146,24 @@ jobs:
     - name: Install HTML validation tools
       run: |
         sudo apt-get update
-        sudo apt-get install -y tidy
+        sudo apt-get install -y tidy || echo "tidy not available, skipping HTML validation"
         
     - name: Validate HTML files
       run: |
         # Find all HTML files
-        find . -name "*.html" -type f | while read file; do
-          echo "🔍 Validating $file"
-          if tidy -errors -quiet "$file" 2>&1; then
-            echo "✅ $file - Valid HTML"
-          else
-            echo "❌ $file - HTML validation failed"
-            tidy -errors -quiet "$file" 2>&1 || true
-          fi
-        done
+        if command -v tidy >/dev/null 2>&1; then
+          find . -name "*.html" -type f | while read file; do
+            echo "🔍 Validating $file"
+            if tidy -errors -quiet "$file" 2>&1; then
+              echo "✅ $file - Valid HTML"
+            else
+              echo "❌ $file - HTML validation failed"
+              tidy -errors -quiet "$file" 2>&1 || true
+            fi
+          done
+        else
+          echo "⚠️ tidy not available, skipping HTML validation"
+        fi
         
   # Link Checking
   link-check:
@@ -171,8 +174,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Install link checker
-      run: npm install -g link-checker
+    - name: Install link checker dependencies
+      run: npm init -y
       
     - name: Check internal links
       run: |
@@ -237,7 +240,12 @@ jobs:
           }
         }
         
-        checkLinks();
+        try {
+          checkLinks();
+        } catch (error) {
+          console.error('Link checking failed:', error.message);
+          process.exit(1);
+        }
         EOF
         
         node check-links.js
@@ -259,6 +267,7 @@ jobs:
     - name: Validate JavaScript syntax
       run: |
         # Check all JS files for syntax errors
+        npm init -y
         find . -name "*.js" -type f | while read file; do
           echo "🔍 Validating $file"
           if node -c "$file" 2>&1; then
