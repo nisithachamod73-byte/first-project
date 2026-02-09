@@ -543,48 +543,104 @@ body.dark-mode .achievements-section {
 /* Responsive Design Improvements */
 @media (max-width: 768px) {
     .container {
-        padding: 20px 15px;
+        padding: 15px 10px;
     }
     
     .hero {
-        padding: 30px 15px;
+        padding: 25px 10px;
     }
     
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        line-height: 1.3;
     }
     
     .subjects-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
     }
     
     .subject-card {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
+        padding: 15px;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
     }
     
     .theme-selector {
-        top: 80px;
-        right: 10px;
-        padding: 10px;
+        top: 70px;
+        right: 5px;
+        padding: 8px;
+        min-width: 100px;
     }
     
     .achievement-overlay {
-        top: 10px;
-        right: 10px;
-        max-width: calc(100vw - 40px);
+        top: 5px;
+        right: 5px;
+        max-width: calc(100vw - 30px);
     }
     
     .quest-list-preview {
-        max-height: 200px;
+        max-height: 180px;
         overflow-y: auto;
+    }
+    
+    /* Better touch targets for mobile */
+    .quest-preview-item {
+        padding: 12px 10px;
+        min-height: 50px;
+    }
+    
+    .complete-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+        min-height: 44px;
     }
 }
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        text-align: center;
     }
+    
+    .subject-header {
+        padding: 15px;
+    }
+    
+    .subject-body {
+        padding: 15px;
+    }
+    
+    .stats-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .stat {
+        flex: 1;
+    }
+    
+    /* Ultra-small screen optimizations */
+    .quest-preview-item {
+        padding: 10px 8px;
+        min-height: 45px;
+        font-size: 0.9rem;
+    }
+    
+    .side-quest-header {
+        padding: 12px 8px;
+    }
+    
+    .quest-icon {
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+}
     
     .subject-header {
         padding: 20px;
