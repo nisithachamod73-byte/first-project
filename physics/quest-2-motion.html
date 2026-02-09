@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 2: Linear Motion - Physics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
     
     <header class="quest-header physics">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 2: Linear Motion</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 2: Linear Motion</h1>
         <p style="color: #666; margin-top: 8px;">Understand motion, velocity, and acceleration</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
@@ -24,8 +25,8 @@
                 </div>
             </div>
             <div>
-                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
-                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+                <span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span>
             </div>
         </div>
     </header>
@@ -39,24 +40,24 @@
         
         <article class="side-quest unlocked" id="sq-motion-concepts" data-big-quest="1" data-side-quest="0">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-motion-concepts')">
-                <div class="quest-icon">📚</div>
+                <div class="quest-icon"><i class="fas fa-book"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 2.1: Motion Concepts</h3>
                     <p>Displacement, velocity, and acceleration explained</p>
                 </div>
-                <div class="side-quest-status" id="sq-motion-concepts-status">🔓</div>
+                <div class="side-quest-status" id="sq-motion-concepts-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: The Science of Motion</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: The Science of Motion</h4>
                     <p><strong>Galileo Galilei (1564-1642):</strong> The "Father of Modern Physics" who first systematically studied motion using inclined planes and mathematical analysis.</p>
                     <p><strong>Isaac Newton (1643-1727):</strong> Developed the mathematical framework for motion in his "Principia Mathematica" (1687), laying foundation for classical mechanics.</p>
                     <p><strong>Impact:</strong> Their work revolutionized how we understand everything from falling objects to planetary motion!</p>
                 </div>
                 
                 <div class="concept-box">
-                    <h4>📚 Moving Through Life</h4>
+                    <h4><i class="fas fa-book"></i> Moving Through Life</h4>
                     <p>Everything around us is in motion. The car on the road, the ball you throw, the earth orbiting the sun - all exhibit motion. But how do we describe this mathematically?</p>
                 </div>
                 
@@ -82,7 +83,7 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🚗 Transportation:</strong> Car safety systems use acceleration data to deploy airbags during crashes
                     </div>
@@ -96,7 +97,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Confusing speed and velocity
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Remember: Velocity includes direction, speed does not!</div>
@@ -109,7 +110,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> A cyclist travels 3 km north, then 4 km east. What is their total distance traveled and displacement?</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -135,12 +136,12 @@
                     <h3>Side Quest 2.2: Equations of Motion</h3>
                     <p>Master the four equations for constant acceleration</p>
                 </div>
-                <div class="side-quest-status" id="sq-equations-status">🔒</div>
+                <div class="side-quest-status" id="sq-equations-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: Newton's Mathematical Framework</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: Newton's Mathematical Framework</h4>
                     <p><strong>Isaac Newton (1643-1727):</strong> Developed these equations as part of his "method of fluxions" (calculus) to describe motion mathematically.</p>
                     <p><strong>Gottfried Leibniz (1646-1716):</strong> Independently developed calculus, contributing to the mathematical language of motion.</p>
                     <p><strong>Impact:</strong> These equations became the foundation for classical mechanics, enabling predictions of everything from cannonball trajectories to planetary orbits!</p>
@@ -158,7 +159,7 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🚗 Automotive Safety:</strong> Engineers use these equations to design braking systems and calculate stopping distances
                     </div>
@@ -171,7 +172,7 @@
                 </div>
                 
                 <div class="worked-example">
-                    <h4>📝 Let's Solve Together: Free Fall</h4>
+                    <h4><i class="fas fa-pencil-alt"></i> Let's Solve Together: Free Fall</h4>
                     <div class="problem"><strong>Scenario:</strong> You drop a stone from rest (u = 0) from a bridge. It falls 45 meters. Find (a) how long it takes, and (b) how fast it's going when it hits the water. (g = 9.81 m/s²)</div>
                     <div class="solution">
                         <div class="step"><strong>Step 1:</strong> Write down what we know</div>
@@ -185,7 +186,7 @@
                 
                 <!-- Additional Worked Examples -->
                 <div class="worked-example">
-                    <h4>📝 Advanced Example: Car Acceleration</h4>
+                    <h4><i class="fas fa-pencil-alt"></i> Advanced Example: Car Acceleration</h4>
                     <div class="problem"><strong>Scenario:</strong> A car accelerates from 20 m/s to 35 m/s over a distance of 150 meters. Find the acceleration and time taken.</div>
                     <div class="solution">
                         <div class="step"><strong>Step 1:</strong> Use v² = u² + 2as</div>
@@ -197,7 +198,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Using wrong sign for acceleration (especially gravity)
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Define your coordinate system first - positive direction matters!</div>
@@ -214,7 +215,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> A train accelerates from rest at 2 m/s² for 10 seconds. What is its final velocity and how far does it travel?</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -235,17 +236,17 @@
         
         <article class="side-quest locked" id="sq-motion-quiz" data-big-quest="1" data-side-quest="2">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-motion-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 2.3: Quiz Challenge</h3>
                     <p>Test your knowledge of motion</p>
                 </div>
-                <div class="side-quest-status" id="sq-motion-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-motion-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Quiz Introduction -->
                 <div class="concept-box">
-                    <h4>📝 Quiz Challenge: Test Your Motion Knowledge</h4>
+                    <h4><i class="fas fa-pencil-alt"></i> Quiz Challenge: Test Your Motion Knowledge</h4>
                     <p>This quiz covers all concepts from this quest: displacement vs distance, speed vs velocity, acceleration, and motion equations.</p>
                     <p><strong>Tip:</strong> Read each question carefully and think about which motion concept applies!</p>
                 </div>
@@ -302,7 +303,7 @@
                 
                 <!-- Quiz Performance Feedback -->
                 <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
-                    <h4>🎯 Performance Feedback</h4>
+                    <h4><i class="fas fa-bullseye"></i> Performance Feedback</h4>
                     <div id="feedbackContent"></div>
                 </div>
                 
@@ -330,7 +331,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -338,7 +339,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -406,7 +407,7 @@
                     nextElement.classList.remove('locked');
                     nextElement.classList.add('unlocked');
                     const nextStatusElement = nextElement.querySelector('.side-quest-status');
-                    if (nextStatusElement) nextStatusElement.textContent = '🔓';
+                    if (nextStatusElement) nextStatusElement.textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 
                 updateAllStatuses();
@@ -460,7 +461,7 @@
                 feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
             } else {
                 feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
-                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+                feedbackContent.innerHTML = '<strong><i class="fas fa-book"></i> Needs review:</strong> Study the explanations carefully and practice more problems.';
             }
         }
             document.getElementById('quizScore').textContent = `Score: ${score}/2`;

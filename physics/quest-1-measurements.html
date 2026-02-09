@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 1: Measurements & Units - Physics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -214,12 +215,12 @@
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
     
     <!-- Quest Header -->
     <header class="quest-header physics">
-        <h1>🎯 Quest 1: Measurements & Units</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 1: Measurements & Units</h1>
         <p style="color: #666; margin-top: 8px;">Learn about SI Units and Dimensional Analysis</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
@@ -230,8 +231,8 @@
                 </div>
             </div>
             <div>
-                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
-                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+                <span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span>
             </div>
         </div>
     </header>
@@ -246,24 +247,24 @@
         <!-- Side Quest 1: SI Units -->
         <article class="side-quest unlocked" id="sq-si-units" data-big-quest="0" data-side-quest="0">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-si-units')">
-                <div class="quest-icon">📚</div>
+                <div class="quest-icon"><i class="fas fa-book"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 1.1: SI Units</h3>
                     <p>Learn about the International System of Units</p>
                 </div>
-                <div class="side-quest-status" id="sq-si-units-status">🔓</div>
+                <div class="side-quest-status" id="sq-si-units-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: The Birth of Standardization</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: The Birth of Standardization</h4>
                     <p><strong>French Revolution (1790s):</strong> The metric system was born during the French Revolution as part of a movement to create universal standards based on nature rather than arbitrary royal measurements.</p>
                     <p><strong>Gabriel Mouton (1618-1694):</strong> Proposed the first decimal-based measurement system using Earth's circumference as reference.</p>
                     <p><strong>International System (1960):</strong> SI units were officially adopted by international treaty, creating the first truly global measurement standard.</p>
                 </div>
                 
                 <div class="concept-box">
-                    <h4>📚 Welcome to Physics!</h4>
+                    <h4><i class="fas fa-book"></i> Welcome to Physics!</h4>
                     <p>Have you ever wondered why scientists all over the world use the same units? Why doesn't Japan use different units than Sri Lanka, or the USA use different units than England?</p>
                     <p>The answer is <strong>SI Units</strong> - the International System of Units. Think of it as a universal language for measurement that every scientist, engineer, and researcher on Earth can understand.</p>
                 </div>
@@ -275,7 +276,7 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🌐 Global Trade:</strong> SI units enable seamless international commerce - cargo ships worldwide use metric tons for consistent weight measurement
                     </div>
@@ -348,7 +349,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Writing "kilometers" as "kms"
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Unit symbols are singular - it's always <strong>km</strong>, never "kms"!</div>
@@ -365,7 +366,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> Convert 2.5 kilometers to meters and millimeters.</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -392,19 +393,19 @@
                     <h3>Side Quest 1.2: Dimensional Analysis</h3>
                     <p>Master checking equations using dimensions</p>
                 </div>
-                <div class="side-quest-status" id="sq-dimensional-status">🔒</div>
+                <div class="side-quest-status" id="sq-dimensional-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: The Language of Dimensions</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: The Language of Dimensions</h4>
                     <p><strong>Jean-Baptiste Fourier (1768-1830):</strong> Pioneered dimensional analysis in his work on heat transfer, showing that physical equations must be dimensionally consistent.</p>
                     <p><strong>Lord Rayleigh (1842-1919):</strong> Developed the method of dimensional analysis for solving complex physics problems without detailed mathematical analysis.</p>
                     <p><strong>Edgar Buckingham (1867-1940):</strong> Formulated Buckingham π theorem, which provides a systematic way to derive dimensionless parameters.</p>
                 </div>
                 
                 <div class="concept-box">
-                    <h4>📚 What is Dimensional Analysis?</h4>
+                    <h4><i class="fas fa-book"></i> What is Dimensional Analysis?</h4>
                     <p>Dimensional analysis is a powerful tool to check if equations make sense. Every physical quantity has dimensions - we represent them with square brackets [].</p>
                     <p>Think of dimensions like "types" of measurements - you can't add length to mass!</p>
                 </div>
@@ -420,15 +421,15 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🏭 Engineering Design:</strong> Engineers use dimensional analysis to verify that bridge designs and machinery specifications are physically possible
                     </div>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
-                        <strong>🔬 Scientific Research:</strong> Researchers use dimensional analysis to check if proposed equations make physical sense before expensive experiments
+                        <strong><i class="fas fa-microscope"></i> Scientific Research:</strong> Researchers use dimensional analysis to check if proposed equations make physical sense before expensive experiments
                     </div>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
-                        <strong>📊 Data Analysis:</strong> Statisticians use dimensional consistency to verify that calculated results have the correct physical meaning
+                        <strong><i class="fas fa-chart-bar"></i> Data Analysis:</strong> Statisticians use dimensional consistency to verify that calculated results have the correct physical meaning
                     </div>
                 </div>
                 
@@ -477,7 +478,7 @@
                 </table>
                 
                 <div class="worked-example">
-                    <h4>📝 Worked Example: Check if v² = u² + 2as is correct</h4>
+                    <h4><i class="fas fa-pencil-alt"></i> Worked Example: Check if v² = u² + 2as is correct</h4>
                     <div class="problem">
                         <strong>Problem:</strong> Check if the equation v² = u² + 2as is dimensionally correct.
                     </div>
@@ -494,7 +495,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Thinking dimensional analysis can prove an equation is correct
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Dimensional analysis only checks if an equation is POSSIBLY correct - it can't prove it's right!</div>
@@ -511,7 +512,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> Check if the equation for kinetic energy, KE = ½mv², is dimensionally correct.</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -534,16 +535,16 @@
         <!-- Side Quest 3: Quiz -->
         <article class="side-quest locked" id="sq-measurements-quiz" data-big-quest="0" data-side-quest="2">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-measurements-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 1.3: Quiz Challenge</h3>
                     <p>Test your knowledge of measurements & units</p>
                 </div>
-                <div class="side-quest-status" id="sq-measurements-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-measurements-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container">
-                    <h3 style="margin-bottom: 15px;">🎯 Measurements & Units Quiz</h3>
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-bullseye"></i> Measurements & Units Quiz</h3>
                     
                     <div class="mcq-question">
                         <strong>Question 1:</strong> Which of the following is NOT an SI base unit?
@@ -593,7 +594,7 @@
                 
                 <!-- Quiz Performance Feedback -->
                 <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
-                    <h4>🎯 Performance Feedback</h4>
+                    <h4><i class="fas fa-bullseye"></i> Performance Feedback</h4>
                     <div id="feedbackContent"></div>
                 </div>
                 
@@ -621,7 +622,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -629,7 +630,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -741,7 +742,7 @@
                     nextElement.classList.add('unlocked');
                     const nextStatus = nextElement.querySelector('.side-quest-status');
                     if (nextStatus) {
-                        nextStatus.textContent = '🔓';
+                        nextStatus.textContent = '<i class="fas fa-lock-open"></i>';
                     }
                     nextElement.dataset.status = 'unlocked';
                 }
@@ -758,7 +759,7 @@
                     nextElement.classList.add('unlocked');
                     const nextStatus = nextElement.querySelector('.side-quest-status');
                     if (nextStatus) {
-                        nextStatus.textContent = '🔓';
+                        nextStatus.textContent = '<i class="fas fa-lock-open"></i>';
                     }
                     nextElement.dataset.status = 'unlocked';
                 }
@@ -822,7 +823,7 @@
                 feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
             } else {
                 feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
-                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+                feedbackContent.innerHTML = '<strong><i class="fas fa-book"></i> Needs review:</strong> Study the explanations carefully and practice more problems.';
             }
         }
         

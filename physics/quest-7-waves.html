@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 7: Waves - Physics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <header class="quest-header physics">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 7: Waves & Oscillations</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 7: Waves & Oscillations</h1>
         <p style="color: #666; margin-top: 8px;">Understanding wave motion and properties</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
@@ -20,8 +21,8 @@
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
             </div>
             <div>
-                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
-                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+                <span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span>
             </div>
         </div>
     </header>
@@ -39,11 +40,11 @@
                     <h3>Side Quest 7.1: Wave Properties</h3>
                     <p>Understanding wave characteristics</p>
                 </div>
-                <div class="side-quest-status" id="sq-wave-basics-status">🔓</div>
+                <div class="side-quest-status" id="sq-wave-basics-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Wave Fundamentals</h4>
+                    <h4><i class="fas fa-book"></i> Wave Fundamentals</h4>
                     <p><strong>Transverse:</strong> Oscillation perpendicular to wave direction (light, waves on string)</p>
                     <p><strong>Longitudinal:</strong> Oscillation parallel to wave direction (sound)</p>
                     <p><strong>Key quantities:</strong> λ = wavelength, f = frequency, T = period, v = fλ</p>
@@ -64,17 +65,17 @@
                     <h3>Side Quest 7.2: Superposition</h3>
                     <p>Interference and standing waves</p>
                 </div>
-                <div class="side-quest-status" id="sq-superposition-status">🔒</div>
+                <div class="side-quest-status" id="sq-superposition-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Superposition Principle</h4>
+                    <h4><i class="fas fa-book"></i> Superposition Principle</h4>
                     <p>When two waves meet, the resultant displacement is the sum of individual displacements.</p>
                     <p><strong>Constructive interference:</strong> Waves in phase → larger amplitude</p>
                     <p><strong>Destructive interference:</strong> Waves out of phase → smaller amplitude</p>
                 </div>
                 <div class="remember-box">
-                    <h4>⚠️ Standing Waves</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Standing Waves</h4>
                     <p>Standing waves form when waves reflect and interfere with incident waves. They only occur at specific frequencies (harmonics).</p>
                 </div>
                 <button class="complete-btn" onclick="completeSideQuest('physics', 'superposition', 'sq-superposition')">✅ Mark as Complete (+10 XP)</button>
@@ -83,12 +84,12 @@
         
         <article class="side-quest locked" id="sq-waves-quiz" data-big-quest="6" data-side-quest="2">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-waves-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 7.3: Quiz Challenge</h3>
                     <p>Test your wave knowledge</p>
                 </div>
-                <div class="side-quest-status" id="sq-waves-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-waves-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container">
@@ -124,7 +125,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -132,7 +133,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -182,7 +183,7 @@
                 if (next && next.classList.contains('side-quest')) {
                     next.className = 'side-quest unlocked';
                     next.dataset.status = 'unlocked';
-                    next.querySelector('.side-quest-status').textContent = '🔓';
+                    next.querySelector('.side-quest-status').textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateStatuses();
             }

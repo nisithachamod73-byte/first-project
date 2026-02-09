@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 2: Chemical Bonding - Chemistry Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>:root { --chemistry-primary: #c62828; }</style>
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <header class="quest-header chemistry">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 2: Chemical Bonding</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 2: Chemical Bonding</h1>
         <p style="color: #666; margin-top: 8px;">Ionic, covalent, and metallic bonds</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
                 <div class="progress-ring chemistry" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
             </div>
-            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span></div>
+            <div><span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span><span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span></div>
         </div>
     </header>
     <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
@@ -34,19 +35,19 @@
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-ionic')">
                 <div class="quest-icon">🔗</div>
                 <div class="side-quest-info"><h3>Side Quest 2.1: Ionic Bonding</h3><p>Metal + Non-metal transfer</p></div>
-                <div class="side-quest-status" id="sq-ionic-status">🔓</div>
+                <div class="side-quest-status" id="sq-ionic-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box">
-                    <h4>📜 Historical Context</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context</h4>
                     <p><strong>Svante Arrhenius (1884)</strong> - First proposed ionic theory explaining how salts dissociate into ions in water.</p>
                     <p><strong>Gilbert N. Lewis (1916)</strong> - Developed electron pair theory and octet rule, explaining ionic bond formation.</p>
                     <p><strong>Linus Pauling (1930s)</strong> - Applied quantum mechanics to chemical bonding, quantifying ionic character.</p>
                 </div>
                 
                 <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
-                    <h4>📚 Ionic Bonds</h4>
+                    <h4><i class="fas fa-book"></i> Ionic Bonds</h4>
                     <p><strong>Formation:</strong> Metal loses electrons → cation, non-metal gains → anion</p>
                     <p><strong>Properties:</strong> High melting points, soluble in water, conduct when molten</p>
                 </div>
@@ -54,7 +55,7 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example">
                         <strong>Table Salt (NaCl)</strong> - Essential electrolyte for nerve conduction and muscle contraction
                     </div>
@@ -68,7 +69,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <p><strong>Problem:</strong> Predict the formula for magnesium oxide and explain the electron transfer process.</p>
                     <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
                     <div class="solution" style="display: none;">
@@ -80,7 +81,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <p><strong>Mistake:</strong> Thinking ionic bonds form between any metal and non-metal (must have significant electronegativity difference)</p>
                     <p><strong>Tip:</strong> Use the periodic table - metals on left, non-metals on right typically form ionic bonds</p>
                     <p><strong>Mistake:</strong> Forgetting that ionic compounds form crystal lattices, not discrete molecules</p>
@@ -93,30 +94,30 @@
         
         <article class="side-quest locked" id="sq-covalent" data-big-quest="1" data-side-quest="1">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-covalent')">
-                <div class="quest-icon">🧪</div>
+                <div class="quest-icon"><i class="fas fa-flask"></i></div>
                 <div class="side-quest-info"><h3>Side Quest 2.2: Covalent Bonding</h3><p>Non-metal + Non-metal share</p></div>
-                <div class="side-quest-status" id="sq-covalent-status">🔒</div>
+                <div class="side-quest-status" id="sq-covalent-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box">
-                    <h4>📜 Historical Context</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context</h4>
                     <p><strong>Gilbert N. Lewis (1916)</strong> - Proposed covalent bonding as electron pair sharing between atoms.</p>
                     <p><strong>Irving Langmuir (1919)</strong> - Expanded Lewis theory and coined term "covalent bond."</p>
                     <p><strong>Linus Pauling (1930s)</strong> - Developed valence bond theory and introduced concept of hybridization.</p>
                 </div>
                 
                 <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
-                    <h4>📚 Covalent Bonds</h4>
+                    <h4><i class="fas fa-book"></i> Covalent Bonds</h4>
                     <p><strong>Single:</strong> 2 electrons shared (H-H)</p>
                     <p><strong>Double:</strong> 4 electrons shared (O=O)</p>
                     <p><strong>Triple:</strong> 6 electrons shared (N≡N)</p>
                 </div>
-                <div class="remember-box"><h4>⚠️ Polar vs Non-polar</h4><p>Equal sharing = non-polar. Unequal sharing = polar covalent.</p></div>
+                <div class="remember-box"><h4><i class="fas fa-exclamation-triangle"></i> Polar vs Non-polar</h4><p>Equal sharing = non-polar. Unequal sharing = polar covalent.</p></div>
                 
                 <!-- Real-World Applications -->
                 <div class="application-box">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example">
                         <strong>Water (H₂O)</strong> - Polar covalent bonds enable hydrogen bonding, essential for life
                     </div>
@@ -130,7 +131,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <p><strong>Problem:</strong> Draw the Lewis structure for carbon dioxide (CO₂) and explain why it has a linear shape.</p>
                     <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
                     <div class="solution" style="display: none;">
@@ -142,7 +143,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <p><strong>Mistake:</strong> Thinking covalent bonds are weaker than ionic bonds (some covalent bonds are very strong)</p>
                     <p><strong>Tip:</strong> Bond strength depends on bond order - triple bonds > double bonds > single bonds</p>
                     <p><strong>Mistake:</strong> Forgetting that covalent bonds can be polar or non-polar</p>
@@ -155,14 +156,14 @@
         
         <article class="side-quest locked" id="sq-bonding-quiz" data-big-quest="1" data-side-quest="2">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-bonding-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info"><h3>Side Quest 2.3: Quiz Challenge</h3><p>Test your bonding knowledge</p></div>
-                <div class="side-quest-status" id="sq-bonding-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-bonding-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Quiz Performance Feedback System -->
                 <div class="quiz-intro">
-                    <h4>🧪 Bonding Concepts Quiz</h4>
+                    <h4><i class="fas fa-flask"></i> Bonding Concepts Quiz</h4>
                     <p>Test your understanding of ionic, covalent, and metallic bonding concepts.</p>
                 </div>
                 
@@ -223,7 +224,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -231,7 +232,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -277,7 +278,7 @@
                 if (next && next.classList.contains('side-quest')) {
                     next.className = 'side-quest unlocked';
                     next.dataset.status = 'unlocked';
-                    next.querySelector('.side-quest-status').textContent = '🔓';
+                    next.querySelector('.side-quest-status').textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateStatuses();
             }
@@ -340,7 +341,7 @@
                 feedbackElement.innerHTML = '<span style="color: #2196f3;">👍 Good job! Review the explanations to improve.</span>';
             } else if (percentage >= 50) {
                 scoreElement.style.color = '#ff9800';
-                feedbackElement.innerHTML = '<span style="color: #ff9800;">📚 Keep practicing! Study the concepts again.</span>';
+                feedbackElement.innerHTML = '<span style="color: #ff9800;"><i class="fas fa-book"></i> Keep practicing! Study the concepts again.</span>';
             } else {
                 scoreElement.style.color = '#f44336';
                 feedbackElement.innerHTML = '<span style="color: #f44336;">📖 Needs improvement. Review the side quests carefully.</span>';

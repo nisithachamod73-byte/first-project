@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 8: Electricity - Physics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <header class="quest-header physics">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 8: Electricity & Magnetism</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 8: Electricity & Magnetism</h1>
         <p style="color: #666; margin-top: 8px;">Understanding electric circuits and fields</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
@@ -20,8 +21,8 @@
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
             </div>
             <div>
-                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
-                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+                <span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span>
             </div>
         </div>
     </header>
@@ -34,21 +35,21 @@
         
         <article class="side-quest unlocked" id="sq-electrostatics" data-big-quest="7" data-side-quest="0">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-electrostatics')">
-                <div class="quest-icon">⚡</div>
+                <div class="quest-icon"><i class="fas fa-bolt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 8.1: Electrostatics</h3>
                     <p>Electric charge and fields</p>
                 </div>
-                <div class="side-quest-status" id="sq-electrostatics-status">🔓</div>
+                <div class="side-quest-status" id="sq-electrostatics-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Coulomb's Law</h4>
+                    <h4><i class="fas fa-book"></i> Coulomb's Law</h4>
                     <p>The force between two charges: F = kq₁q₂/r²</p>
                     <p><strong>Electric field:</strong> E = F/q = kQ/r²</p>
                     <p><strong>Electric potential:</strong> V = kQ/r</p>
                 </div>
-                <div class="remember-box"><h4>⚠️ Remember</h4><p>Like charges repel, opposite charges attract.</p></div>
+                <div class="remember-box"><h4><i class="fas fa-exclamation-triangle"></i> Remember</h4><p>Like charges repel, opposite charges attract.</p></div>
                 <button class="complete-btn" onclick="completeSideQuest('physics', 'electrostatics', 'sq-electrostatics')">✅ Mark as Complete (+10 XP)</button>
             </div>
         </article>
@@ -60,11 +61,11 @@
                     <h3>Side Quest 8.2: Current Electricity</h3>
                     <p>Ohm's law and circuits</p>
                 </div>
-                <div class="side-quest-status" id="sq-current-status">🔒</div>
+                <div class="side-quest-status" id="sq-current-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Ohm's Law & Power</h4>
+                    <h4><i class="fas fa-book"></i> Ohm's Law & Power</h4>
                     <p><strong>Ohm's Law:</strong> V = IR</p>
                     <p><strong>Power:</strong> P = VI = I²R = V²/R</p>
                     <p><strong>Resistance:</strong> R = ρL/A</p>
@@ -85,11 +86,11 @@
                     <h3>Side Quest 8.3: Magnetism</h3>
                     <p>Magnetic fields and forces</p>
                 </div>
-                <div class="side-quest-status" id="sq-magnetism-status">🔒</div>
+                <div class="side-quest-status" id="sq-magnetism-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Magnetic Force</h4>
+                    <h4><i class="fas fa-book"></i> Magnetic Force</h4>
                     <p><strong>On charge:</strong> F = qvB sin θ (right-hand rule)</p>
                     <p><strong>On wire:</strong> F = BIL sin θ</p>
                     <p><strong>Field around wire:</strong> B = μ₀I/2πr</p>
@@ -105,11 +106,11 @@
                     <h3>Side Quest 8.4: Electromagnetic Induction</h3>
                     <p>Faraday's law and Lenz's law</p>
                 </div>
-                <div class="side-quest-status" id="sq-emi-status">🔒</div>
+                <div class="side-quest-status" id="sq-emi-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Faraday's Law</h4>
+                    <h4><i class="fas fa-book"></i> Faraday's Law</h4>
                     <p><strong>EMF:</strong> ε = -dΦ_B/dt</p>
                     <p><strong>Lenz's Law:</strong> Induced current opposes the change producing it</p>
                 </div>
@@ -119,12 +120,12 @@
         
         <article class="side-quest locked" id="sq-electricity-quiz" data-big-quest="7" data-side-quest="4">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-electricity-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 8.5: Quiz Challenge</h3>
                     <p>Test your electricity knowledge</p>
                 </div>
-                <div class="side-quest-status" id="sq-electricity-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-electricity-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container">
@@ -160,7 +161,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -168,7 +169,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -218,7 +219,7 @@
                 if (next && next.classList.contains('side-quest')) {
                     next.className = 'side-quest unlocked';
                     next.dataset.status = 'unlocked';
-                    next.querySelector('.side-quest-status').textContent = '🔓';
+                    next.querySelector('.side-quest-status').textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateStatuses();
             }

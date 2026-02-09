@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 3: Newton's Laws - Physics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <header class="quest-header physics">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 3: Newton's Laws</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 3: Newton's Laws</h1>
         <p style="color: #666; margin-top: 8px;">The foundation of classical mechanics</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
@@ -20,8 +21,8 @@
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
             </div>
             <div>
-                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
-                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+                <span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span>
             </div>
         </div>
     </header>
@@ -35,31 +36,31 @@
         
         <article class="side-quest unlocked" id="sq-first-law" data-big-quest="2" data-side-quest="0">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-first-law')">
-                <div class="quest-icon">📚</div>
+                <div class="quest-icon"><i class="fas fa-book"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 3.1: Newton's First Law</h3>
                     <p>The law of inertia</p>
                 </div>
-                <div class="side-quest-status" id="sq-first-law-status">🔓</div>
+                <div class="side-quest-status" id="sq-first-law-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: Isaac Newton's Revolution</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: Isaac Newton's Revolution</h4>
                     <p><strong>Isaac Newton (1643-1727):</strong> Published "Philosophiæ Naturalis Principia Mathematica" in 1687, containing the three laws of motion.</p>
                     <p><strong>Galileo Galilei (1564-1642):</strong> Pioneered the concept of inertia through experiments with inclined planes.</p>
                     <p><strong>Impact:</strong> Newton's laws became the foundation of classical mechanics, revolutionizing physics and engineering!</p>
                 </div>
                 
                 <div class="concept-box">
-                    <h4>📚 First Law (Inertia)</h4>
+                    <h4><i class="fas fa-book"></i> First Law (Inertia)</h4>
                     <p><strong>"An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by a net force."</strong></p>
                     <p>This is called the <strong>law of inertia</strong>. Inertia is the tendency of objects to resist changes in their state of motion.</p>
                 </div>
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🚗 Car Safety:</strong> Seatbelts prevent passengers from continuing forward motion during sudden stops
                     </div>
@@ -73,7 +74,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Thinking objects "want" to stop moving
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Objects naturally continue moving - friction and air resistance cause them to stop!</div>
@@ -86,7 +87,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> A book is resting on a table. Explain why it doesn't move using Newton's First Law.</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -112,26 +113,26 @@
                     <h3>Side Quest 3.2: Newton's Second Law</h3>
                     <p>F = ma</p>
                 </div>
-                <div class="side-quest-status" id="sq-second-law-status">🔒</div>
+                <div class="side-quest-status" id="sq-second-law-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: The Birth of Dynamics</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: The Birth of Dynamics</h4>
                     <p><strong>Isaac Newton (1643-1727):</strong> Developed the second law as part of his comprehensive theory of motion.</p>
                     <p><strong>Leonhard Euler (1707-1783):</strong> Later formalized F = ma as the fundamental equation of dynamics.</p>
                     <p><strong>Impact:</strong> This law enabled engineers to calculate forces needed for bridges, buildings, and machinery!</p>
                 </div>
                 
                 <div class="concept-box">
-                    <h4>📚 Second Law: F = ma</h4>
+                    <h4><i class="fas fa-book"></i> Second Law: F = ma</h4>
                     <p><strong>"The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass."</strong></p>
                     <p>F = ma, where F = net force (N), m = mass (kg), a = acceleration (m/s²)</p>
                 </div>
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🏗️ Construction:</strong> Engineers use F = ma to design safe building foundations and bridges
                     </div>
@@ -151,7 +152,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Forgetting that F is NET force
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Always calculate the vector sum of all forces acting on the object!</div>
@@ -163,7 +164,7 @@
                 </div>
                 
                 <div class="worked-example">
-                    <h4>📝 Worked Example</h4>
+                    <h4><i class="fas fa-pencil-alt"></i> Worked Example</h4>
                     <div class="problem"><strong>Problem:</strong> A 1000 kg car accelerates at 2 m/s². What force is needed?</div>
                     <div class="solution">
                         <div class="step">F = ma = 1000 × 2 = 2000 N</div>
@@ -172,7 +173,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> A 50 kg object experiences a net force of 200 N. What is its acceleration?</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -196,25 +197,25 @@
                     <h3>Side Quest 3.3: Newton's Third Law</h3>
                     <p>Action and reaction</p>
                 </div>
-                <div class="side-quest-status" id="sq-third-law-status">🔒</div>
+                <div class="side-quest-status" id="sq-third-law-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: Newton's Complete Picture</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: Newton's Complete Picture</h4>
                     <p><strong>Isaac Newton (1643-1727):</strong> The third law completed his comprehensive theory of motion.</p>
                     <p><strong>Impact:</strong> This law explains everything from rocket propulsion to walking - forces always come in pairs!</p>
                 </div>
                 
                 <div class="concept-box">
-                    <h4>📚 Third Law: Action-Reaction</h4>
+                    <h4><i class="fas fa-book"></i> Third Law: Action-Reaction</h4>
                     <p><strong>"For every action, there is an equal and opposite reaction."</strong></p>
                     <p>Forces always come in pairs. If object A exerts a force on object B, then object B exerts an equal and opposite force on object A.</p>
                 </div>
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🚀 Rocket Propulsion:</strong> Rockets push exhaust gases backward, gases push rocket forward
                     </div>
@@ -228,7 +229,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Thinking action-reaction forces cancel
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Action-reaction forces act on DIFFERENT objects, so they never cancel!</div>
@@ -241,7 +242,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> A book rests on a table. Identify the action-reaction pair between the book and table.</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -261,16 +262,16 @@
         
         <article class="side-quest locked" id="sq-newton-quiz" data-big-quest="2" data-side-quest="3">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-newton-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 3.4: Quiz Challenge</h3>
                     <p>Test your knowledge of Newton's Laws</p>
                 </div>
-                <div class="side-quest-status" id="sq-newton-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-newton-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container">
-                    <h3 style="margin-bottom: 15px;">🎯 Newton's Laws Quiz</h3>
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-bullseye"></i> Newton's Laws Quiz</h3>
                     
                     <div class="mcq-question"><strong>Question 1:</strong> A 5 kg object accelerates at 3 m/s². What is the net force?</div>
                     <ul class="mcq-options" data-question="q1">
@@ -305,7 +306,7 @@
                 
                 <!-- Quiz Performance Feedback -->
                 <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
-                    <h4>🎯 Performance Feedback</h4>
+                    <h4><i class="fas fa-bullseye"></i> Performance Feedback</h4>
                     <div id="feedbackContent"></div>
                 </div>
                 
@@ -331,7 +332,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -339,7 +340,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -413,7 +414,7 @@
                     nextElement.classList.add('unlocked');
                     nextElement.dataset.status = 'unlocked';
                     const nextStatus = nextElement.querySelector('.side-quest-status');
-                    if (nextStatus) nextStatus.textContent = '🔓';
+                    if (nextStatus) nextStatus.textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateAllStatuses();
             }
@@ -461,7 +462,7 @@
                 feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
             } else {
                 feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
-                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+                feedbackContent.innerHTML = '<strong><i class="fas fa-book"></i> Needs review:</strong> Study the explanations carefully and practice more problems.';
             }
         }
             document.getElementById('quizScore').textContent = `Score: ${score}/2`;

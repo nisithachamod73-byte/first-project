@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 3: Trigonometry - Mathematics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>:root { --math-primary: #1a5f7a; }</style>
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <header class="quest-header mathematics">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 3: Trigonometry</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 3: Trigonometry</h1>
         <div class="quest-meta">
             <div class="progress-ring-container">
                 <div class="progress-ring mathematics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress">0% Complete</div></div>
             </div>
-            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge">📊 Level <span id="currentLevel">1</span></span></div>
+            <div><span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span><span class="level-badge"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span></div>
         </div>
     </header>
     <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
@@ -33,12 +34,12 @@
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-identities')">
                 <div class="quest-icon">📐</div>
                 <div class="side-quest-info"><h3>Side Quest 3.1: Trig Identities</h3><p>Fundamental identities</p></div>
-                <div class="side-quest-status" id="sq-identities-status">🔓</div>
+                <div class="side-quest-status" id="sq-identities-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box">
-                    <h4>📜 Historical Context</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context</h4>
                     <p><strong>Hipparchus (2nd century BCE)</strong> - Ancient Greek astronomer who created the first trigonometric table.</p>
                     <p><strong>Ptolemy (2nd century CE)</strong> - Developed comprehensive trigonometric tables in "Almagest".</p>
                     <p><strong>Leonhard Euler (18th century)</strong> - Standardized modern trigonometric notation and identities.</p>
@@ -54,7 +55,7 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example">
                         <strong>Navigation</strong> - GPS systems use trigonometry for location calculations
                     </div>
@@ -68,7 +69,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <p><strong>Problem:</strong> Prove the identity: sin²θ + cos²θ = 1 using a right triangle.</p>
                     <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
                     <div class="solution" style="display: none;">
@@ -82,7 +83,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <p><strong>Mistake:</strong> Confusing degrees and radians</p>
                     <p><strong>Tip:</strong> Always check your calculator mode - radians for calculus, degrees for geometry</p>
                     <p><strong>Mistake:</strong> Forgetting domain restrictions</p>
@@ -97,11 +98,11 @@
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-trig-equations')">
                 <div class="quest-icon">=</div>
                 <div class="side-quest-info"><h3>Side Quest 3.2: Trig Equations</h3><p>Solving trig equations</p></div>
-                <div class="side-quest-status" id="sq-trig-equations-status">🔒</div>
+                <div class="side-quest-status" id="sq-trig-equations-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left-color: #1a5f7a;">
-                    <h4>📚 Solving Equations</h4>
+                    <h4><i class="fas fa-book"></i> Solving Equations</h4>
                     <p>General solution for sinθ = k:</p>
                     <p>θ = arcsin(k) + 360n or θ = 180 - arcsin(k) + 360n</p>
                     <p>For cosθ = k:</p>
@@ -113,9 +114,9 @@
         
         <article class="side-quest locked" id="sq-trig-quiz" data-big-quest="2" data-side-quest="2">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-trig-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info"><h3>Side Quest 3.3: Quiz</h3><p>Test knowledge</p></div>
-                <div class="side-quest-status" id="sq-trig-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-trig-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container" style="border-left-color: var(--math-primary);">
@@ -149,7 +150,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -157,7 +158,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -203,7 +204,7 @@
                 if (next && next.classList.contains('side-quest')) {
                     next.className = 'side-quest unlocked';
                     next.dataset.status = 'unlocked';
-                    next.querySelector('.side-quest-status').textContent = '🔓';
+                    next.querySelector('.side-quest-status').textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateStatuses();
             }

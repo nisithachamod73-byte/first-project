@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 1: Algebra - Mathematics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>:root { --math-primary: #1a5f7a; --math-secondary: #2c8fb5; }</style>
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <header class="quest-header mathematics">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 1: Algebra & Polynomials</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 1: Algebra & Polynomials</h1>
         <div class="quest-meta">
             <div class="progress-ring-container">
                 <div class="progress-ring mathematics" id="questProgressRing" data-progress="0" style="--progress: 0%"></div>
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress">0% Complete</div></div>
             </div>
-            <div><span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span><span class="level-badge">📊 Level <span id="currentLevel">1</span></span></div>
+            <div><span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span><span class="level-badge"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span></div>
         </div>
     </header>
     <main style="max-width: 900px; margin: 0 auto; padding: 20px;">
@@ -32,19 +33,19 @@
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-polynomials')">
                 <div class="quest-icon">📐</div>
                 <div class="side-quest-info"><h3>Side Quest 1.1: Polynomials</h3><p>Types and operations</p></div>
-                <div class="side-quest-status" id="sq-polynomials-status">🔓</div>
+                <div class="side-quest-status" id="sq-polynomials-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box">
-                    <h4>📜 Historical Context</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context</h4>
                     <p><strong>Al-Khwarizmi (9th century)</strong> - Persian mathematician who wrote "The Compendious Book on Calculation by Completion and Balancing" - the foundation of algebra.</p>
                     <p><strong>François Viète (16th century)</strong> - Developed symbolic algebra using letters for variables.</p>
                     <p><strong>Leonhard Euler (18th century)</strong> - Advanced polynomial theory and algebraic equations.</p>
                 </div>
                 
                 <div class="concept-box" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left-color: #1a5f7a;">
-                    <h4>📚 Polynomials</h4>
+                    <h4><i class="fas fa-book"></i> Polynomials</h4>
                     <p><strong>Degree:</strong> Highest power of x</p>
                     <p><strong>Linear:</strong> ax + b (degree 1)</p>
                     <p><strong>Quadratic:</strong> ax² + bx + c (degree 2)</p>
@@ -53,7 +54,7 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example">
                         <strong>Physics Modeling</strong> - Polynomials describe projectile motion, oscillations, and wave functions
                     </div>
@@ -67,7 +68,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <p><strong>Problem:</strong> Find the degree and leading coefficient of the polynomial: 3x⁴ - 2x³ + 5x - 7</p>
                     <button class="show-solution" onclick="toggleSolution(this)">Show Solution</button>
                     <div class="solution" style="display: none;">
@@ -81,7 +82,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <p><strong>Mistake:</strong> Confusing degree with number of terms</p>
                     <p><strong>Tip:</strong> Degree = highest exponent, not term count</p>
                     <p><strong>Mistake:</strong> Forgetting to include zero coefficients</p>
@@ -96,7 +97,7 @@
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-roots')">
                 <div class="quest-icon">√</div>
                 <div class="side-quest-info"><h3>Side Quest 1.2: Roots of Equations</h3><p>Quadratic formula</p></div>
-                <div class="side-quest-status" id="sq-roots-status">🔒</div>
+                <div class="side-quest-status" id="sq-roots-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="formula-box">
@@ -111,9 +112,9 @@
         
         <article class="side-quest locked" id="sq-algebra-quiz" data-big-quest="0" data-side-quest="2">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-algebra-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info"><h3>Side Quest 1.3: Quiz</h3><p>Test knowledge</p></div>
-                <div class="side-quest-status" id="sq-algebra-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-algebra-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container" style="border-left-color: var(--math-primary);">
@@ -146,7 +147,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -154,7 +155,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -201,7 +202,7 @@
                 if (next && next.classList.contains('side-quest')) {
                     next.className = 'side-quest unlocked';
                     next.dataset.status = 'unlocked';
-                    next.querySelector('.side-quest-status').textContent = '🔓';
+                    next.querySelector('.side-quest-status').textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateStatuses();
             }

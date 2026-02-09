@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 1: Atomic Structure - Chemistry Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --chemistry-primary: #c62828; --chemistry-secondary: #d32f2f; }
     </style>
@@ -14,9 +15,9 @@
     
     <header class="quest-header chemistry">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 1: Atomic Structure</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 1: Atomic Structure</h1>
         <p style="color: #666; margin-top: 8px;">Understanding atoms and periodicity</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
@@ -24,8 +25,8 @@
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
             </div>
             <div>
-                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
-                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+                <span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span>
             </div>
         </div>
     </header>
@@ -37,14 +38,14 @@
         
         <article class="side-quest unlocked" id="sq-atomic-models" data-big-quest="0" data-side-quest="0">
              <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-atomic-models')">
-                <div class="quest-icon">⚛️</div>
+                <div class="quest-icon"><i class="fas fa-atom"></i></div>
                 <div class="side-quest-info"><h3>Side Quest 1.1: Atomic Models</h3><p>From Dalton to Bohr</p></div>
-                <div class="side-quest-status" id="sq-atomic-models-status">🔓</div>
+                <div class="side-quest-status" id="sq-atomic-models-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: The Evolution of Atomic Theory</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: The Evolution of Atomic Theory</h4>
                     <p><strong>John Dalton (1766-1844):</strong> Proposed atomic theory based on chemical reactions and ratios.</p>
                     <p><strong>J.J. Thomson (1856-1940):</strong> Discovered electron using cathode ray tubes.</p>
                     <p><strong>Ernest Rutherford (1871-1937):</strong> Gold foil experiment revealed atomic nucleus.</p>
@@ -52,7 +53,7 @@
                 </div>
                 
                 <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
-                    <h4>📚 Atomic Models</h4>
+                    <h4><i class="fas fa-book"></i> Atomic Models</h4>
                     <p><strong>Dalton:</strong> Atoms as solid spheres</p>
                     <p><strong>Thomson:</strong> "Plum pudding" model with electrons</p>
                     <p><strong>Rutherford:</strong> Nuclear model with nucleus</p>
@@ -61,12 +62,12 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
-                        <strong>⚛️ Nuclear Energy:</strong> Understanding atomic structure enables nuclear power generation
+                        <strong><i class="fas fa-atom"></i> Nuclear Energy:</strong> Understanding atomic structure enables nuclear power generation
                     </div>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
-                        <strong>🔬 Medical Imaging:</strong> PET scans use positron-emitting isotopes based on atomic principles
+                        <strong><i class="fas fa-microscope"></i> Medical Imaging:</strong> PET scans use positron-emitting isotopes based on atomic principles
                     </div>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>💡 Electronics:</strong> Semiconductor technology relies on understanding electron behavior
@@ -81,7 +82,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Thinking electrons orbit like planets
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Electrons exist in probability clouds, not fixed orbits!</div>
@@ -94,7 +95,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> Calculate the energy of a photon emitted when an electron transitions from n=3 to n=1 in hydrogen.</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -114,21 +115,21 @@
         
         <article class="side-quest locked" id="sq-periodicity" data-big-quest="0" data-side-quest="1">
              <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-periodicity')">
-                <div class="quest-icon">📊</div>
+                <div class="quest-icon"><i class="fas fa-chart-bar"></i></div>
                 <div class="side-quest-info"><h3>Side Quest 1.2: Periodic Trends</h3><p>Properties across periods and groups</p></div>
-                <div class="side-quest-status" id="sq-periodicity-status">🔒</div>
+                <div class="side-quest-status" id="sq-periodicity-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <!-- Historical Context -->
                 <div class="history-box" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left: 4px solid #ef6c00; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>📜 Historical Context: Mendeleev's Periodic Table</h4>
+                    <h4><i class="fas fa-scroll"></i> Historical Context: Mendeleev's Periodic Table</h4>
                     <p><strong>Dmitri Mendeleev (1834-1907):</strong> Created the first periodic table in 1869, predicting properties of missing elements.</p>
                     <p><strong>Henry Moseley (1887-1915):</strong> Organized elements by atomic number instead of atomic mass.</p>
                     <p><strong>Glenn Seaborg (1912-1999):</strong> Discovered transuranium elements and restructured the table.</p>
                 </div>
                 
                 <div class="concept-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left-color: #c62828;">
-                    <h4>📚 Key Periodic Trends</h4>
+                    <h4><i class="fas fa-book"></i> Key Periodic Trends</h4>
                     <p><strong>Atomic radius:</strong> Decreases across period, increases down group</p>
                     <p><strong>Ionization energy:</strong> Increases across period, decreases down group</p>
                     <p><strong>Electronegativity:</strong> Increases across period, decreases down group</p>
@@ -136,7 +137,7 @@
                 
                 <!-- Real-World Applications -->
                 <div class="application-box" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>🌍 Real-World Applications</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Real-World Applications</h4>
                     <div class="application-example" style="background: white; padding: 10px; margin: 8px 0; border-radius: 6px; border-left: 3px solid #4caf50;">
                         <strong>🔋 Battery Technology:</strong> Lithium's position in the periodic table makes it ideal for batteries
                     </div>
@@ -150,7 +151,7 @@
                 
                 <!-- Common Mistakes & Tips -->
                 <div class="mistakes-box" style="background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 4px solid #c62828; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>⚠️ Common Mistakes & Tips</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Mistakes & Tips</h4>
                     <div class="mistake-item" style="margin: 8px 0;">
                         <strong>Mistake:</strong> Thinking atomic radius increases across a period
                         <div class="tip" style="color: #2e7d32; font-weight: bold;"><strong>Tip:</strong> Atomic radius DECREASES across period due to increased nuclear charge!</div>
@@ -163,7 +164,7 @@
                 
                 <!-- Interactive Practice -->
                 <div class="interactive-practice" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-left: 4px solid #1976d2; padding: 15px; border-radius: 10px; margin: 14px 0;">
-                    <h4>💪 Practice Exercise</h4>
+                    <h4><i class="fas fa-dumbbell"></i> Practice Exercise</h4>
                     <div class="practice-problem" style="background: white; padding: 12px; border-radius: 6px; margin: 10px 0;">
                         <p><strong>Problem:</strong> Arrange these elements in order of increasing atomic radius: Na, Mg, Al, Si.</p>
                         <button class="show-solution" onclick="toggleSolution(this)" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 8px 0;">Show Solution</button>
@@ -183,13 +184,13 @@
         
         <article class="side-quest locked" id="sq-atomic-quiz" data-big-quest="0" data-side-quest="2">
              <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-atomic-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info"><h3>Side Quest 1.3: Quiz Challenge</h3><p>Test your atomic knowledge</p></div>
-                <div class="side-quest-status" id="sq-atomic-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-atomic-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container" style="border-left-color: var(--chemistry-primary);">
-                    <h3 style="margin-bottom: 15px;">🎯 Atomic Structure Quiz</h3>
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-bullseye"></i> Atomic Structure Quiz</h3>
                     
                     <div class="mcq-question"><strong>Question 1:</strong> Which particle has no charge?</div>
                     <ul class="mcq-options" data-question="q1">
@@ -223,7 +224,7 @@
                 
                 <!-- Quiz Performance Feedback -->
                 <div class="performance-feedback" style="display: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; margin: 14px 0;" id="quizFeedback">
-                    <h4>🎯 Performance Feedback</h4>
+                    <h4><i class="fas fa-bullseye"></i> Performance Feedback</h4>
                     <div id="feedbackContent"></div>
                 </div>
                 
@@ -247,7 +248,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -255,7 +256,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -319,7 +320,7 @@
                 if (next && next.classList.contains('side-quest')) {
                     next.className = 'side-quest unlocked';
                     next.dataset.status = 'unlocked';
-                    next.querySelector('.side-quest-status').textContent = '🔓';
+                    next.querySelector('.side-quest-status').textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateStatuses();
             }
@@ -367,7 +368,7 @@
                 feedbackContent.innerHTML = '<strong>👍 Good job!</strong> Review the explanations and try again for better understanding.';
             } else {
                 feedback.style.background = 'linear-gradient(135deg, #ffebee, #ffcdd2)';
-                feedbackContent.innerHTML = '<strong>📚 Needs review:</strong> Study the explanations carefully and practice more problems.';
+                feedbackContent.innerHTML = '<strong><i class="fas fa-book"></i> Needs review:</strong> Study the explanations carefully and practice more problems.';
             }
         }
         

@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest 4: Work, Energy & Power - Physics Quest Mode</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
         <header class="quest-header physics">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
         </button>
-        <h1>🎯 Quest 4: Work, Energy & Power</h1>
+        <h1><i class="fas fa-bullseye"></i> Quest 4: Work, Energy & Power</h1>
         <p style="color: #666; margin-top: 8px;">Understanding energy transformations</p>
         <div class="quest-meta">
             <div class="progress-ring-container">
@@ -20,8 +21,8 @@
                 <div><div style="font-weight: 600;">Progress</div><div id="subjectProgress" style="color: #666; font-size: 0.9rem;">0% Complete</div></div>
             </div>
             <div>
-                <span class="xp-badge">⚡ <span id="totalXP">0</span> XP</span>
-                <span class="level-badge" style="margin-left: 10px;">📊 Level <span id="currentLevel">1</span></span>
+                <span class="xp-badge"><i class="fas fa-bolt"></i> <span id="totalXP">0</span> XP</span>
+                <span class="level-badge" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> Level <span id="currentLevel">1</span></span>
             </div>
         </div>
     </header>
@@ -35,16 +36,16 @@
         
         <article class="side-quest unlocked" id="sq-work" data-big-quest="3" data-side-quest="0">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-work')">
-                <div class="quest-icon">📚</div>
+                <div class="quest-icon"><i class="fas fa-book"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 4.1: Work & Energy</h3>
                     <p>Understanding work and energy concepts</p>
                 </div>
-                <div class="side-quest-status" id="sq-work-status">🔓</div>
+                <div class="side-quest-status" id="sq-work-status"><i class="fas fa-lock-open"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Key Concepts</h4>
+                    <h4><i class="fas fa-book"></i> Key Concepts</h4>
                     <ul>
                         <li><strong>Work:</strong> Energy transferred by force (W = Fd cos θ, unit: Joule)</li>
                         <li><strong>Kinetic Energy:</strong> Energy of motion (KE = ½mv²)</li>
@@ -63,16 +64,16 @@
         
         <article class="side-quest locked" id="sq-power" data-big-quest="3" data-side-quest="1">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-power')">
-                <div class="quest-icon">⚡</div>
+                <div class="quest-icon"><i class="fas fa-bolt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 4.2: Power</h3>
                     <p>Rate of doing work</p>
                 </div>
-                <div class="side-quest-status" id="sq-power-status">🔒</div>
+                <div class="side-quest-status" id="sq-power-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="concept-box">
-                    <h4>📚 Power</h4>
+                    <h4><i class="fas fa-book"></i> Power</h4>
                     <p><strong>Power</strong> is the rate of doing work or transferring energy.</p>
                     <p>P = W/t (Power = Work ÷ Time)</p>
                     <p>P = Fv (Power = Force × Velocity)</p>
@@ -80,7 +81,7 @@
                 </div>
                 
                 <div class="worked-example">
-                    <h4>📝 Worked Example</h4>
+                    <h4><i class="fas fa-pencil-alt"></i> Worked Example</h4>
                     <div class="problem"><strong>Problem:</strong> A motor lifts 100 kg at 2 m/s. What is its power output?</div>
                     <div class="solution">
                         <div class="step">Force needed = mg = 100 × 9.81 = 981 N</div>
@@ -94,12 +95,12 @@
         
         <article class="side-quest locked" id="sq-energy-quiz" data-big-quest="3" data-side-quest="2">
             <div class="side-quest-header" onclick="QuestSystem.toggleQuest('sq-energy-quiz')">
-                <div class="quest-icon">📝</div>
+                <div class="quest-icon"><i class="fas fa-pencil-alt"></i></div>
                 <div class="side-quest-info">
                     <h3>Side Quest 4.3: Quiz Challenge</h3>
                     <p>Test your energy knowledge</p>
                 </div>
-                <div class="side-quest-status" id="sq-energy-quiz-status">🔒</div>
+                <div class="side-quest-status" id="sq-energy-quiz-status"><i class="fas fa-lock"></i></div>
             </div>
             <div class="side-quest-content">
                 <div class="mcq-container">
@@ -147,7 +148,7 @@
             
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
-                if (icon) icon.textContent = '☀️';
+                if (icon) icon.textContent = '<i class="fas fa-sun"></i>';
             }
             
             if (toggleBtn) {
@@ -155,7 +156,7 @@
                     document.body.classList.toggle('dark-mode');
                     const isNowDark = document.body.classList.contains('dark-mode');
                     localStorage.setItem('darkMode', isNowDark);
-                    if (icon) icon.textContent = isNowDark ? '☀️' : '🌙';
+                    if (icon) icon.textContent = isNowDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                 });
             }
         })();
@@ -211,7 +212,7 @@
                     next.classList.remove('locked');
                     next.classList.add('unlocked');
                     next.dataset.status = 'unlocked';
-                    next.querySelector('.side-quest-status').textContent = '🔓';
+                    next.querySelector('.side-quest-status').textContent = '<i class="fas fa-lock-open"></i>';
                 }
                 updateStatuses();
             }
