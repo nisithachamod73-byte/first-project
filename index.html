@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest Mode - A/L Study Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="shared/styles.css">
 </head>
 <body>
     <!-- Hero Header -->
     <header class="hero">
         <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto 20px;">
-            <h1 style="font-size: 1.8rem; margin: 0;">🎮 Quest Mode - A/L Study Guides</h1>
+            <h1 style="font-size: 1.8rem; margin: 0;"><i class="fas fa-gamepad" style="margin-right: 10px; color: #667eea;"></i>Quest Mode - A/L Study Guides</h1>
             <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="theme-icon">🌙</span>
+                <span class="theme-icon"><i class="fas fa-moon"></i></span>
             </button>
         </div>
         <p>Your gamified learning adventure. Complete quests, earn XP, and unlock your potential!</p>
@@ -22,7 +26,7 @@
         <!-- Bookmarks Section -->
         <div class="bookmarks-section" id="bookmarksSection" style="display: none;">
             <h3 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                <span>🔖</span> Your Bookmarks
+                <i class="fas fa-bookmark" style="color: #ff6b6b;"></i> Your Bookmarks
             </h3>
             <div class="bookmarks-list" id="bookmarksList"></div>
         </div>
@@ -30,7 +34,7 @@
         <!-- Achievements Section -->
         <div class="achievements-section" id="achievementsSection" style="display: none;">
             <h3 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                <span>🏆</span> Your Achievements
+                <i class="fas fa-trophy" style="color: #ffd700;"></i> Your Achievements
             </h3>
             <div class="achievements-list" id="achievementsList"></div>
         </div>
@@ -41,7 +45,7 @@
             <!-- Physics Card -->
             <div class="subject-card physics">
                 <div class="subject-header physics">
-                    <h2>🔬 Physics</h2>
+                    <h2><i class="fas fa-atom" style="margin-right: 10px;"></i>Physics</h2>
                     <p>9 Big Quests • 31 Side Quests</p>
                 </div>
                 <div class="subject-body">
@@ -70,54 +74,54 @@
                     
                     <!-- XP & Level -->
                     <div style="text-align: center; margin-bottom: 15px;">
-                        <span class="xp-badge">⚡ <span id="physicsXP">0</span> XP</span>
+                         <span class="xp-badge"><i class="fas fa-bolt" style="margin-right: 5px;"></i><span id="physicsXP">0</span> XP</span>
                     </div>
                     
                     <!-- Quest Preview -->
                     <div class="quest-list-preview">
                         <h4>All Physics Quests</h4>
-                        <a href="physics/quest-1-measurements.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                         <a href="physics/quest-1-measurements.html" class="quest-preview-item">
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>1. Measurements & Units</span>
-                            <span id="physics-quest-1-status" style="margin-left: auto;">🔓</span>
+                            <span id="physics-quest-1-status" style="margin-left: auto;"><i class="fas fa-lock-open"></i></span>
                         </a>
                         <a href="physics/quest-2-motion.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>2. Linear Motion</span>
-                            <span id="physics-quest-2-status" style="margin-left: auto;">🔓</span>
+                            <span id="physics-quest-2-status" style="margin-left: auto;"><i class="fas fa-lock-open"></i></span>
                         </a>
                         <a href="physics/quest-3-forces.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>3. Newton's Laws</span>
                             <span id="physics-quest-3-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="physics/quest-4-energy.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>4. Work, Energy & Power</span>
                             <span id="physics-quest-4-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="physics/quest-5-momentum.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>5. Momentum & Collisions</span>
                             <span id="physics-quest-5-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="physics/quest-6-circular.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>6. Circular Motion</span>
                             <span id="physics-quest-6-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="physics/quest-7-waves.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>7. Waves & Oscillations</span>
                             <span id="physics-quest-7-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="physics/quest-8-electricity.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>8. Electricity & Magnetism</span>
                             <span id="physics-quest-8-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="physics/quest-9-modern.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>9. Modern Physics</span>
                             <span id="physics-quest-9-status" style="margin-left: auto;">🔓</span>
                         </a>
@@ -130,7 +134,7 @@
             <!-- Chemistry Card -->
             <div class="subject-card chemistry">
                 <div class="subject-header chemistry">
-                    <h2>⚗️ Chemistry</h2>
+                    <h2><i class="fas fa-flask" style="margin-right: 10px;"></i>Chemistry</h2>
                     <p>7 Big Quests • 21 Side Quests</p>
                 </div>
                 <div class="subject-body">
@@ -166,37 +170,37 @@
                     <div class="quest-list-preview">
                         <h4>All Chemistry Quests</h4>
                         <a href="chemistry/quest-1-atomic.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>1. Atomic Structure</span>
                             <span id="chemistry-quest-1-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="chemistry/quest-2-bonding.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>2. Chemical Bonding</span>
                             <span id="chemistry-quest-2-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="chemistry/quest-3-energetics.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>3. Energetics & Kinetics</span>
                             <span id="chemistry-quest-3-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="chemistry/quest-4-equilibrium.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>4. Chemical Equilibrium</span>
                             <span id="chemistry-quest-4-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="chemistry/quest-5-electro.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>5. Electrochemistry</span>
                             <span id="chemistry-quest-5-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="chemistry/quest-6-organic-basics.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>6. Organic Basics</span>
                             <span id="chemistry-quest-6-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="chemistry/quest-7-organic-advanced.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>7. Organic Advanced</span>
                             <span id="chemistry-quest-7-status" style="margin-left: auto;">🔓</span>
                         </a>
@@ -209,7 +213,7 @@
             <!-- Mathematics Card -->
             <div class="subject-card mathematics">
                 <div class="subject-header mathematics">
-                    <h2>📐 Mathematics</h2>
+                    <h2><i class="fas fa-calculator" style="margin-right: 10px;"></i>Mathematics</h2>
                     <p>8 Big Quests • 24 Side Quests</p>
                 </div>
                 <div class="subject-body">
@@ -245,42 +249,42 @@
                     <div class="quest-list-preview">
                         <h4>All Mathematics Quests</h4>
                         <a href="mathematics/quest-1-algebra.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>1. Algebra & Polynomials</span>
                             <span id="mathematics-quest-1-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="mathematics/quest-2-binomial.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>2. Binomial & Sequences</span>
                             <span id="mathematics-quest-2-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="mathematics/quest-3-trigonometry.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>3. Trigonometry</span>
                             <span id="mathematics-quest-3-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="mathematics/quest-4-differentiation.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>4. Differentiation</span>
                             <span id="mathematics-quest-4-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="mathematics/quest-5-integration.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>5. Integration</span>
                             <span id="mathematics-quest-5-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="mathematics/quest-6-vectors.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>6. Vectors</span>
                             <span id="mathematics-quest-6-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="mathematics/quest-7-complex.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>7. Complex Numbers</span>
                             <span id="mathematics-quest-7-status" style="margin-left: auto;">🔓</span>
                         </a>
                         <a href="mathematics/quest-8-statistics.html" class="quest-preview-item">
-                            <span class="quest-preview-icon">📚</span>
+                            <span class="quest-preview-icon"><i class="fas fa-book"></i></span>
                             <span>8. Statistics & Probability</span>
                             <span id="mathematics-quest-8-status" style="margin-left: auto;">🔓</span>
                         </a>

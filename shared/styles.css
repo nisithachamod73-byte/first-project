@@ -42,11 +42,34 @@
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
     
+    /* Enhanced Typography */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
     /* New Animation Variables */
     --transition-fast: 0.2s ease;
     --transition-medium: 0.3s ease;
     --transition-slow: 0.5s ease;
     --bounce-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Enhanced Card Design */
+    --card-border-radius: 12px;
+    --card-padding: 20px;
+    --card-spacing: 16px;
+}
+
+/* Animation Keyframes */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(180deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
 /* Base Styles */
@@ -57,11 +80,12 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
     background: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 400;
 }
 
 a {
@@ -602,16 +626,20 @@ body.dark-mode .achievements-section {
 }
 
 .subject-card {
-    background: var(--card-bg);
-    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    border-radius: var(--card-border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
 }
 
 .subject-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
     box-shadow: var(--shadow-hover);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95));
 }
 
 .subject-header {
@@ -621,15 +649,21 @@ body.dark-mode .achievements-section {
 }
 
 .subject-header.physics {
-    background: linear-gradient(135deg, var(--physics-primary), var(--physics-secondary));
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .subject-header.chemistry {
-    background: linear-gradient(135deg, var(--chemistry-primary), var(--chemistry-secondary));
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .subject-header.mathematics {
-    background: linear-gradient(135deg, var(--math-primary), var(--math-secondary));
+    background: linear-gradient(135deg, #1dd1a1 0%, #10ac84 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .subject-header h2 {
