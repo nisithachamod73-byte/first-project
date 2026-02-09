@@ -181,10 +181,14 @@ jobs:
       
     - name: Check internal links
       run: |
-        # Simple link checker script
+        # Simple link checker script with debugging
         cat > check-links.js << 'EOF'
         const fs = require('fs');
         const path = require('path');
+        
+        console.log('🔍 Starting link validation...');
+        console.log('Current directory:', process.cwd());
+        console.log('Files in current directory:', fs.readdirSync('.'));
         
         function checkLinks() {
           const htmlFiles = [];
@@ -196,37 +200,57 @@ jobs:
               const fullPath = path.join(dir, file);
               const stat = fs.statSync(fullPath);
               if (stat.isDirectory()) {
+                console.log('Found directory:', fullPath);
                 findHTMLFiles(fullPath);
               } else if (file.endsWith('.html')) {
+                console.log('Found HTML file:', fullPath);
                 htmlFiles.push(fullPath);
               }
             });
           }
           
           findHTMLFiles('.');
+          console.log('Total HTML files found:', htmlFiles.length);
           
           const brokenLinks = [];
           
           htmlFiles.forEach(file => {
+            console.log('Checking links in:', file);
             const content = fs.readFileSync(file, 'utf8');
+            
+            // Find href attributes, excluding JavaScript template literals
             const hrefMatches = content.match(/href="([^"]+)"/g) || [];
+            console.log('Found href matches:', hrefMatches.length);
             
             hrefMatches.forEach(match => {
               const href = match.replace('href="', '').replace('"', '');
               
-              // Skip external links and anchors
-              if (href.startsWith('http') || href.startsWith('#')) {
+              // Skip external links, anchors, and JavaScript template literals
+              if (href.startsWith('http') || href.startsWith('#') || href.includes('${')) {
+                console.log('Skipping external/template link:', href);
                 return;
               }
               
               // Check if local file exists
               const targetPath = path.join(path.dirname(file), href);
+              console.log('Checking link:', href, '->', targetPath);
+              
               if (!fs.existsSync(targetPath)) {
-                brokenLinks.push({
-                  file,
-                  link: href,
-                  target: targetPath
-                });
+                console.log('❌ File not found:', targetPath);
+                // Try relative path resolution
+                const relativePath = path.relative(process.cwd(), targetPath);
+                console.log('Trying relative path:', relativePath);
+                if (!fs.existsSync(relativePath)) {
+                  brokenLinks.push({
+                    file,
+                    link: href,
+                    target: targetPath
+                  });
+                } else {
+                  console.log('✅ File found via relative path');
+                }
+              } else {
+                console.log('✅ File exists:', targetPath);
               }
             });
           });
@@ -246,6 +270,7 @@ jobs:
           checkLinks();
         } catch (error) {
           console.error('Link checking failed:', error.message);
+          console.error('Stack trace:', error.stack);
           process.exit(1);
         }
         EOF
