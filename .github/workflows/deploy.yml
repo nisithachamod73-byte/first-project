@@ -39,7 +39,7 @@ jobs:
         npm install
         # Simple browser test - just verify HTML loads without errors
         if command -v python3 >/dev/null 2>&1; then
-          python3 -c "
+          python3 << 'EOF'
 import http.server
 import socketserver
 import threading
@@ -50,7 +50,7 @@ import urllib.request
 PORT = 8000
 Handler = http.server.SimpleHTTPRequestHandler
 
-with socketserver.TCPServer((\"\", PORT), Handler) as httpd:
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
     # Start server in background thread
     thread = threading.Thread(target=httpd.serve_forever)
     thread.daemon = True
@@ -78,7 +78,7 @@ with socketserver.TCPServer((\"\", PORT), Handler) as httpd:
             print('❌ Quest page failed to load')
     except Exception as e:
         print(f'❌ Error loading quest page: {e}')
-          "
+EOF
         else
           echo "⚠️ Python not available, skipping browser tests"
         fi
