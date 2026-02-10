@@ -181,85 +181,47 @@ jobs:
       
     - name: Check internal links
       run: |
-        # Simple link checker script for GitHub Actions
-        cat > check-links.js << 'EOF'
-        const fs = require('fs');
-        const path = require('path');
+        # Simple shell-based link checker for GitHub Actions
+        echo "🔍 Starting link validation..."
+        echo "Current directory: $(pwd)"
         
-        console.log('🔍 Starting link validation...');
-        console.log('Current directory:', process.cwd());
+        # Find all HTML files
+        html_files=$(find . -name "*.html" -type f | grep -v ".git")
+        echo "Total HTML files found: $(echo "$html_files" | wc -l)"
         
-        function checkLinks() {
-          const htmlFiles = [];
+        broken_links=0
+        
+        # Check each HTML file
+        while IFS= read -r file; do
+          echo "Checking links in: $file"
           
-          // Find all HTML files (skip .git directories)
-          function findHTMLFiles(dir) {
-            const files = fs.readdirSync(dir);
-            files.forEach(file => {
-              if (file === '.git') return; // Skip git directory
-              
-              const fullPath = path.join(dir, file);
-              const stat = fs.statSync(fullPath);
-              if (stat.isDirectory()) {
-                findHTMLFiles(fullPath);
-              } else if (file.endsWith('.html')) {
-                htmlFiles.push(fullPath);
-              }
-            });
-          }
+          # Extract href attributes, excluding external links and anchors
+          hrefs=$(grep -o 'href="[^"]*"' "$file" | sed 's/href="//g' | sed 's/"//g' | grep -v "http" | grep -v "#" | grep -v '\$')
           
-          findHTMLFiles('.');
-          console.log('Total HTML files found:', htmlFiles.length);
-          
-          const brokenLinks = [];
-          
-          htmlFiles.forEach(file => {
-            const content = fs.readFileSync(file, 'utf8');
+          if [ -n "$hrefs" ]; then
+            echo "Found hrefs: $(echo "$hrefs" | wc -l)"
             
-            // Find href attributes, excluding JavaScript template literals
-            const hrefMatches = content.match(/href="([^"]+)"/g) || [];
-            
-            hrefMatches.forEach(match => {
-              const href = match.replace('href="', '').replace('"', '');
+            while IFS= read -r href; do
+              # Resolve path relative to HTML file location
+              dir=$(dirname "$file")
+              target_path="$dir/$href"
               
-              // Skip external links, anchors, and JavaScript template literals
-              if (href.startsWith('http') || href.startsWith('#') || href.includes('${')) {
-                return;
-              }
-              
-              // Simple path resolution - just check if file exists relative to HTML file
-              const targetPath = path.join(path.dirname(file), href);
-              
-              if (!fs.existsSync(targetPath)) {
-                brokenLinks.push({
-                  file,
-                  link: href,
-                  target: targetPath
-                });
-              }
-            });
-          });
-          
-          if (brokenLinks.length > 0) {
-            console.log('❌ Broken links found:');
-            brokenLinks.forEach(link => {
-              console.log(`  - ${link.file}: ${link.link} -> ${link.target} (NOT FOUND)`);
-            });
-            process.exit(1);
-          } else {
-            console.log('✅ All internal links are valid');
-          }
-        }
+              if [ ! -f "$target_path" ]; then
+                echo "❌ Broken link: $file -> $href (NOT FOUND)"
+                broken_links=$((broken_links + 1))
+              else
+                echo "✅ Link valid: $href"
+              fi
+            done <<< "$hrefs"
+          fi
+        done <<< "$html_files"
         
-        try {
-          checkLinks();
-        } catch (error) {
-          console.error('Link checking failed:', error.message);
-          process.exit(1);
-        }
-        EOF
-        
-        node check-links.js
+        if [ $broken_links -gt 0 ]; then
+          echo "❌ Total broken links found: $broken_links"
+          exit 1
+        else
+          echo "✅ All internal links are valid"
+        fi
         
   # JavaScript Syntax Check
   js-validation:
