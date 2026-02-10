@@ -181,29 +181,28 @@ jobs:
       
     - name: Check internal links
       run: |
-        # Simple link checker script with enhanced path resolution
+        # Simple link checker script for GitHub Actions
         cat > check-links.js << 'EOF'
         const fs = require('fs');
         const path = require('path');
         
         console.log('🔍 Starting link validation...');
         console.log('Current directory:', process.cwd());
-        console.log('Files in current directory:', fs.readdirSync('.'));
         
         function checkLinks() {
           const htmlFiles = [];
           
-          // Find all HTML files
+          // Find all HTML files (skip .git directories)
           function findHTMLFiles(dir) {
             const files = fs.readdirSync(dir);
             files.forEach(file => {
+              if (file === '.git') return; // Skip git directory
+              
               const fullPath = path.join(dir, file);
               const stat = fs.statSync(fullPath);
               if (stat.isDirectory()) {
-                console.log('Found directory:', fullPath);
                 findHTMLFiles(fullPath);
               } else if (file.endsWith('.html')) {
-                console.log('Found HTML file:', fullPath);
                 htmlFiles.push(fullPath);
               }
             });
@@ -215,63 +214,40 @@ jobs:
           const brokenLinks = [];
           
           htmlFiles.forEach(file => {
-            console.log('\\nChecking links in:', file);
             const content = fs.readFileSync(file, 'utf8');
             
             // Find href attributes, excluding JavaScript template literals
             const hrefMatches = content.match(/href="([^"]+)"/g) || [];
-            console.log('Found href matches:', hrefMatches.length);
             
             hrefMatches.forEach(match => {
               const href = match.replace('href="', '').replace('"', '');
               
               // Skip external links, anchors, and JavaScript template literals
               if (href.startsWith('http') || href.startsWith('#') || href.includes('${')) {
-                console.log('Skipping external/template link:', href);
                 return;
               }
               
-              // Multiple path resolution strategies
-              const targetPaths = [
-                path.join(path.dirname(file), href),                    // Original strategy
-                path.resolve(path.dirname(file), href),                  // Absolute path
-                path.join(process.cwd(), path.dirname(file), href),      // From root
-                path.resolve(process.cwd(), path.dirname(file), href)    // Absolute from root
-              ];
+              // Simple path resolution - just check if file exists relative to HTML file
+              const targetPath = path.join(path.dirname(file), href);
               
-              let found = false;
-              let foundPath = '';
-              
-              for (const targetPath of targetPaths) {
-                console.log('Checking:', targetPath);
-                if (fs.existsSync(targetPath)) {
-                  found = true;
-                  foundPath = targetPath;
-                  break;
-                }
-              }
-              
-              if (!found) {
-                console.log('❌ File not found via any path strategy:', href);
+              if (!fs.existsSync(targetPath)) {
                 brokenLinks.push({
                   file,
                   link: href,
-                  target: targetPaths[0]
+                  target: targetPath
                 });
-              } else {
-                console.log('✅ File exists:', foundPath);
               }
             });
           });
           
           if (brokenLinks.length > 0) {
-            console.log('\\n❌ Broken links found:');
+            console.log('❌ Broken links found:');
             brokenLinks.forEach(link => {
               console.log(`  - ${link.file}: ${link.link} -> ${link.target} (NOT FOUND)`);
             });
             process.exit(1);
           } else {
-            console.log('\\n✅ All internal links are valid');
+            console.log('✅ All internal links are valid');
           }
         }
         
@@ -279,7 +255,6 @@ jobs:
           checkLinks();
         } catch (error) {
           console.error('Link checking failed:', error.message);
-          console.error('Stack trace:', error.stack);
           process.exit(1);
         }
         EOF
