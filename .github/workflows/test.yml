@@ -181,7 +181,7 @@ jobs:
       
     - name: Check internal links
       run: |
-        # Simple link checker script with debugging
+        # Simple link checker script with enhanced path resolution
         cat > check-links.js << 'EOF'
         const fs = require('fs');
         const path = require('path');
@@ -215,7 +215,7 @@ jobs:
           const brokenLinks = [];
           
           htmlFiles.forEach(file => {
-            console.log('Checking links in:', file);
+            console.log('\\nChecking links in:', file);
             const content = fs.readFileSync(file, 'utf8');
             
             // Find href attributes, excluding JavaScript template literals
@@ -231,38 +231,47 @@ jobs:
                 return;
               }
               
-              // Check if local file exists
-              const targetPath = path.join(path.dirname(file), href);
-              console.log('Checking link:', href, '->', targetPath);
+              // Multiple path resolution strategies
+              const targetPaths = [
+                path.join(path.dirname(file), href),                    // Original strategy
+                path.resolve(path.dirname(file), href),                  // Absolute path
+                path.join(process.cwd(), path.dirname(file), href),      // From root
+                path.resolve(process.cwd(), path.dirname(file), href)    // Absolute from root
+              ];
               
-              if (!fs.existsSync(targetPath)) {
-                console.log('❌ File not found:', targetPath);
-                // Try relative path resolution
-                const relativePath = path.relative(process.cwd(), targetPath);
-                console.log('Trying relative path:', relativePath);
-                if (!fs.existsSync(relativePath)) {
-                  brokenLinks.push({
-                    file,
-                    link: href,
-                    target: targetPath
-                  });
-                } else {
-                  console.log('✅ File found via relative path');
+              let found = false;
+              let foundPath = '';
+              
+              for (const targetPath of targetPaths) {
+                console.log('Checking:', targetPath);
+                if (fs.existsSync(targetPath)) {
+                  found = true;
+                  foundPath = targetPath;
+                  break;
                 }
+              }
+              
+              if (!found) {
+                console.log('❌ File not found via any path strategy:', href);
+                brokenLinks.push({
+                  file,
+                  link: href,
+                  target: targetPaths[0]
+                });
               } else {
-                console.log('✅ File exists:', targetPath);
+                console.log('✅ File exists:', foundPath);
               }
             });
           });
           
           if (brokenLinks.length > 0) {
-            console.log('❌ Broken links found:');
+            console.log('\\n❌ Broken links found:');
             brokenLinks.forEach(link => {
               console.log(`  - ${link.file}: ${link.link} -> ${link.target} (NOT FOUND)`);
             });
             process.exit(1);
           } else {
-            console.log('✅ All internal links are valid');
+            console.log('\\n✅ All internal links are valid');
           }
         }
         
